@@ -1,4 +1,4 @@
-package test.test;
+package angular_based_rest.hibernate_angular_rest;
 
 import java.util.List;
 
