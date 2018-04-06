@@ -10,9 +10,14 @@ import com.model.model;
 
 public class datadao {
 	
+	Session session;
+	Transaction tx;
+	
+	model model = new model();
+	
 	public model add_data(model m){
-        Session session = sessionutil.getSession();        
-        Transaction tx = session.beginTransaction();
+         session = sessionutil.getSession();        
+         tx = session.beginTransaction();
        
         model model=  add_data_session(session,m);
         
@@ -23,7 +28,7 @@ public class datadao {
     }
     
     private model add_data_session(Session session, model m){
-    	model model = new model();
+    	
         
     	model.setZipcode(m.getZipcode());
     	model.setRisk_level(m.getRisk_level());
@@ -36,21 +41,19 @@ public class datadao {
     
     
     /* input validation test method */
-    public String input_validation(model m) 
+    public model input_validation(model m) 
     {
-    	 Session session = sessionutil.getSession();        
-         Transaction tx = session.beginTransaction();
+    	  session = sessionutil.getSession();        
+          tx = session.beginTransaction();
         
     	
-    	
-    	model model = new model();
     	
        	Query query = session.createQuery("from model where zipcode ="+m.getZipcode());
     	List return_data=query.list();
     
     	if(return_data.isEmpty()==false) 
     	{
-    		return "Already exist Zipcode";
+    		return null;
     		
     	}
     	else
@@ -63,7 +66,7 @@ public class datadao {
         session.save(model);
         
         tx.commit();
-		return "Data Added Successfully";
+		return model;
     	}
     }
     
@@ -72,18 +75,24 @@ public class datadao {
     
     
     public List<model> get_alldata(){
-        Session session = sessionutil.getSession();    
+         session = sessionutil.getSession(); 
+         tx=session.beginTransaction();
         Query query = session.createQuery("from model");
         List<model> alldata = query.list();
+        
+        tx.commit();
         session.close();
         return alldata;
     }
  
     public List<model> get_zipcode(int zipcode)
     {
-        Session session = sessionutil.getSession();    
+        session = sessionutil.getSession();   
+        tx=session.beginTransaction();
         Query query = session.createQuery("from model where zipcode ="+zipcode);
         List<model> alldata = query.list();
+        
+        tx.commit();
         session.close();
         return alldata;
     }
@@ -92,8 +101,8 @@ public class datadao {
     
     
     public int delete_data(int id) {
-        Session session = sessionutil.getSession();
-        Transaction tx = session.beginTransaction();
+         session = sessionutil.getSession();
+         tx = session.beginTransaction();
         String hql = "delete from model where id = :id";
         Query query = session.createQuery(hql);
         query.setInteger("id",id);
@@ -104,23 +113,38 @@ public class datadao {
         return rowCount;
     }
     
-    public int update_data(int id, model m){
-         if(id <=0)  
-               return 0;  
-         Session session = sessionutil.getSession();
-            Transaction tx = session.beginTransaction();
+    public model update_data(int id, model m){
+    	if(id <=0)  
+            return null;  
+      	
+         	
+         	 session = sessionutil.getSession();
+         	 tx=session.beginTransaction();
+        	
+        	
+            
             String hql = "update model set zipcode = :zipcode, risk_level = :risk_level,city = :city,state = :state where id = :id";
             Query query = session.createQuery(hql);
             query.setInteger("id",id);
-            query.setInteger("zipcode",m.getZipcode());
+            
+         
+            Query qc = session.createQuery("from model where zipcode ="+ query.setInteger("zipcode",m.getZipcode()));
+        	List return_data=qc.list();
+        	if(return_data.isEmpty()==false) 
+        	{
+        		return null;
+        	}
+        	else {
+        	query.setInteger("zipcode",m.getZipcode());
             query.setFloat("risk_level", m.getRisk_level());
             query.setString("city", m.getCity());
             query.setString("state", m.getState());
             int rowCount = query.executeUpdate();
             System.out.println("Rows affected: " + rowCount);
-            tx.commit();
-            session.close();
-            return rowCount;
+            return model;
+        	}
+        		
+        	
     }
 
 }

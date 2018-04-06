@@ -39,14 +39,11 @@ public class MyResource {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<model> getEmployee() {
+    public List<model> getdata() {
       
         List<model> all_list = dao.get_alldata();
         return all_list;
     }
-    
-    
-    
     
     
     @POST

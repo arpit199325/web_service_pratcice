@@ -72,10 +72,9 @@ public class datadao {
     
     
     public List<model> get_alldata(){
-    	 Session session = connection.gSession();          
+    	Session session = connection.gSession(); 
         Query query = session.createQuery("from model");
         List<model> alldata = query.list();
-        session.close();
         return alldata;
     }
  
