@@ -46,11 +46,33 @@ public class MyResource {
     }
     
     
+    
+    @POST
+    @Path("/validationtest")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String validation(model m) 
+    {
+    	
+    	
+    	m.setCity(m.getCity());
+    	m.setRisk_level(m.getRisk_level());
+    	m.setState(m.getState());
+    	m.setZipcode(m.getZipcode());
+    	
+    	String model=dao.input_validation(m);
+    	
+		return model;
+
+    }
+   
+    
  
     
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public model add(model m){
     	
         m.setZipcode(m.getZipcode());

@@ -14,7 +14,7 @@ public class datadao {
         Session session = sessionutil.getSession();        
         Transaction tx = session.beginTransaction();
        
-      model model=  add_data_session(session,m);
+        model model=  add_data_session(session,m);
         
         tx.commit();
         session.close();
@@ -33,6 +33,43 @@ public class datadao {
         session.save(model);
 		return model;
     }
+    
+    
+    /* input validation test method */
+    public String input_validation(model m) 
+    {
+    	 Session session = sessionutil.getSession();        
+         Transaction tx = session.beginTransaction();
+        
+    	
+    	
+    	model model = new model();
+    	
+       	Query query = session.createQuery("from model where zipcode ="+m.getZipcode());
+    	List return_data=query.list();
+    
+    	if(return_data.isEmpty()==false) 
+    	{
+    		return "Already exist Zipcode";
+    		
+    	}
+    	else
+    	{
+    	model.setZipcode(m.getZipcode());
+    	model.setRisk_level(m.getRisk_level());
+    	model.setCity(m.getCity());
+    	model.setState(m.getState());
+        
+        session.save(model);
+        
+        tx.commit();
+		return "Data Added Successfully";
+    	}
+    }
+    
+    
+    
+    
     
     public List<model> get_alldata(){
         Session session = sessionutil.getSession();    
