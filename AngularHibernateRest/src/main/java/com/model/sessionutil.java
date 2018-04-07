@@ -8,8 +8,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-public class hibernateutil {
-	
+public class sessionutil {
+
 	private static ServiceRegistry sr;
 	private  static SessionFactory sf;
 	private static  Session session;
@@ -21,11 +21,10 @@ public class hibernateutil {
 		prop.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 		prop.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/test");
 		prop.setProperty("hibernate.connection.username", "root");
-		prop.setProperty("hibernate.connection.username", "password");
+		prop.setProperty("hibernate.connection.password", "password");
 		prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		prop.setProperty("hibernate.hbm2ddl.auto", "update");
 		prop.setProperty("hibernate.show_sql", "true");
-		
 		
 		Configuration conf=new Configuration();
 		conf.addPackage("com.model").addProperties(prop).addAnnotatedClass(model.class);
@@ -35,9 +34,9 @@ public class hibernateutil {
 		sf=conf.buildSessionFactory(sr);
 		session=sf.openSession();
 		
-		
 		return session;
 		
 	}
+	
 	
 }

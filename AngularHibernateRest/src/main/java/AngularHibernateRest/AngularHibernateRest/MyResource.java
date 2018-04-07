@@ -1,4 +1,4 @@
-package angular_hibernate_rest.angular_hibernate_rest;
+package AngularHibernateRest.AngularHibernateRest;
 
 import java.util.List;
 
@@ -16,20 +16,10 @@ import javax.ws.rs.core.Response;
 import com.model.datadao;
 import com.model.model;
 
-
 @Path("/testing")
 public class MyResource {
 
     datadao dao = new datadao();
-    
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String message() 
-    {
-		return "hello word";
-    	
-    	
-    }
     
     @Path("/test/{zipcode}")
     @GET
@@ -42,7 +32,6 @@ public class MyResource {
     }
     
     @GET
-    @Path("/alldata")
     @Produces(MediaType.APPLICATION_JSON)
     public List<model> getdata() {
       

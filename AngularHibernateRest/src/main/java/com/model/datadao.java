@@ -16,8 +16,8 @@ public class datadao {
 	model model = new model();
 	
 	public model add_data(model m){
-        session = sessionutil.getSession();        
-        tx = session.beginTransaction();
+         session = sessionutil.gSession();        
+         tx = session.beginTransaction();
        
         model model=  add_data_session(session,m);
         
@@ -43,9 +43,11 @@ public class datadao {
     /* input validation test method */
     public model input_validation(model m) 
     {
-    	session = sessionutil.getSession();        
+    	session = sessionutil.gSession();        
         tx = session.beginTransaction();
         
+    	
+    	
        	Query query = session.createQuery("from model where zipcode ="+m.getZipcode());
     	List return_data=query.list();
     
@@ -68,9 +70,10 @@ public class datadao {
     	}
     }
     
+    
     public List<model> get_alldata(){
-        session = sessionutil.getSession(); 
-        tx=session.beginTransaction();
+         session = sessionutil.gSession(); 
+         tx=session.beginTransaction();
         Query query = session.createQuery("from model");
         List<model> alldata = query.list();
         
@@ -81,7 +84,7 @@ public class datadao {
  
     public List<model> get_zipcode(int zipcode)
     {
-        session = sessionutil.getSession();   
+        session = sessionutil.gSession();   
         tx=session.beginTransaction();
         Query query = session.createQuery("from model where zipcode ="+zipcode);
         List<model> alldata = query.list();
@@ -92,8 +95,8 @@ public class datadao {
     }
     
     public int delete_data(int id) {
-        session = sessionutil.getSession();
-        tx = session.beginTransaction();
+         session = sessionutil.gSession();
+         tx = session.beginTransaction();
         String hql = "delete from model where id = :id";
         Query query = session.createQuery(hql);
         query.setInteger("id",id);
@@ -107,32 +110,37 @@ public class datadao {
     public model update_data(int id, model m){
     	if(id <=0)  
             return null;  
-      	
-         session = sessionutil.getSession();
-         tx=session.beginTransaction();
-        	
-         String hql = "update model set zipcode = :zipcode, risk_level = :risk_level,city = :city,state = :state where id = :id";
-         Query query = session.createQuery(hql);
-         query.setInteger("id",id);
+      		
+         	session = sessionutil.gSession();
+         	tx=session.beginTransaction();
+         	
+           
+         	String hql = "update model set zipcode = :zipcode, risk_level = :risk_level,city = :city,state = :state where id = :id";
+        		 
+         	
+         	
+         	query = session.createQuery(hql);
+            query.setInteger("id",id);
+            query.setInteger("zipcode",m.getZipcode());
             
-         Query qc = session.createQuery("from model where zipcode ="+ query.setInteger("zipcode",m.getZipcode()));
-         List return_data=qc.list();
-         
-         if(return_data.isEmpty()==false) 
+            Query query = session.createQuery("from model where zipcode = "+m.getZipcode());
+        	List return_data=query.list();
+        	if(return_data.isEmpty()==false) 
         	{
         		return null;
         	}
-        else
-        	{
-        		query.setInteger("zipcode",m.getZipcode());
-        		query.setFloat("risk_level", m.getRisk_level());
-        		query.setString("city", m.getCity());
-        		query.setString("state", m.getState());
-        		int rowCount = query.executeUpdate();
-        		System.out.println("Rows affected: " + rowCount);
-        		
-        		return model;
-        	}
+            
+            
+            query.setFloat("risk_level", m.getRisk_level());
+            query.setString("city", m.getCity());
+            query.setString("state", m.getState());
+                  
+            int rowCount = query.executeUpdate();
+            System.out.println("Rows affected: " + rowCount);
+                  
+            return model;
+                  
+        	
         	
     }
 

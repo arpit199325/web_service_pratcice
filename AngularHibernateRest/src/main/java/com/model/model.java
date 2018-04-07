@@ -113,15 +113,6 @@ public class model {
 	public void setState(String state) {
 		this.state = state;
 	}
-
-
-
-
-	@Override
-	public String toString() {
-		return "model [id=" + id + ", zipcode=" + zipcode + ", risk_level=" + risk_level + ", city=" + city + ", state="
-				+ state + "]";
-	}
 	
 	
 
