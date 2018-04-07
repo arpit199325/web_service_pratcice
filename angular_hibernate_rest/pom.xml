@@ -3,14 +3,14 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>test</groupId>
-    <artifactId>test</artifactId>
+    <groupId>angular_hibernate_rest</groupId>
+    <artifactId>angular_hibernate_rest</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>test</name>
+    <name>angular_hibernate_rest</name>
 
     <build>
-        <finalName>test</finalName>
+        <finalName>angular_hibernate_rest</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -55,6 +55,14 @@
             <artifactId>hibernate-core</artifactId>
             <version>4.3.10.Final</version>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-core</artifactId>
+    		<version>4.0.1.Final</version>
+		</dependency>
+        
  
         <dependency>
             <groupId>mysql</groupId>
@@ -66,11 +74,9 @@
 		<dependency>
     		<groupId>javax.servlet</groupId>
     		<artifactId>javax.servlet-api</artifactId>
-   	 		<version>4.0.0</version>
+    		<version>4.0.0</version>
     		<scope>provided</scope>
 		</dependency>
-        
-       
     </dependencies>
     <properties>
         <jersey.version>2.22.2</jersey.version>
