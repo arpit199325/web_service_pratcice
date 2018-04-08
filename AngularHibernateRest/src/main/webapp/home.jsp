@@ -103,7 +103,7 @@ app.controller("myctrl", alldatarequest);
 
 <div>
 
-<p>Search Risk Level By Your Zip Code :  <input type="text" ng-model="zipcode_search"> </p></n>
+<p> Filter Your Data :  <input type="text" ng-model="zipcode_search"> </p></n>
 
 
 <p>
@@ -118,7 +118,7 @@ app.controller("myctrl", alldatarequest);
 </tr>
 
 
-<tr ng-repeat="x in result | filter : zipcode_search">
+<tr ng-repeat="x in result | filter : zipcode_search | orderby : zipcode | orderby : city | orderby : state | orderby : risk_level">
 <td>{{x.id}}</td>
 <td>{{x.zipcode}}</td>
 <td>{{x.city}}</td>
