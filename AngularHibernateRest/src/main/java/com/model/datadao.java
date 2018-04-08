@@ -16,13 +16,13 @@ public class datadao {
 	model model = new model();
 
     
-    /* input validation test method */
+    /* input validation test method for zipcode */
     public model input_validation(model m) 
     {
     	session = sessionutil.gSession();        
         tx = session.beginTransaction();
         
-       	Query query = session.createQuery("from model where zipcode ="+m.getZipcode());
+       	Query query = session.createQuery("from model where zipcode = " +m.getZipcode());
     	List return_data=query.list();
     
     	if(return_data.isEmpty()==false) 
@@ -37,6 +37,7 @@ public class datadao {
     	 tx.commit();
  		return m;
     }
+    
     
     
     public List<model> get_alldata(){

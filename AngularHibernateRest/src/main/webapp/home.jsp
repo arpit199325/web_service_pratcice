@@ -6,8 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <script type="text/javascript" src="angular.js"></script>
-<script type="text/javascript" src="angular.min.js"></script>
-<script type="text/javascript" src="controller.js"></script>
 
 <title>Rest Angular Hibernate Test</title>
 </head>
@@ -25,7 +23,6 @@ app.controller("myctrl", alldatarequest);
 	var zipcodebasedata ="http://localhost:8002/AngularHibernateRest/webapi/testing/test/62610";
 	var deletedata="http://localhost:8002/AngularHibernateRest/webapi/testing/delete/127";
 	var adddata="http://localhost:8002/AngularHibernateRest/webapi/testing/validationtest";
-
 	
 	$http.get(all_data).then(function(response){
 		
@@ -46,7 +43,7 @@ app.controller("myctrl", alldatarequest);
 					$scope.status=data;
 					$http.get(all_data).then(function(response)
 							{
-								$scope.result = response;
+								$scope.result = response.data;
 							
 							})
 				
@@ -58,12 +55,59 @@ app.controller("myctrl", alldatarequest);
 
 </script>
 
-<form action="" ng-controller="myctrl" method="get">
+<form action="" ng-controller="myctrl">
+
+
+<fieldset>
+
+<table cellpadding="2" cellspacing="2">
+
+	<legend> Add Information </legend>
+	
+	<tr>
+	<td> City : </td>
+	<td><input type="text" name="city" ng-model="city"></td>
+	</tr>
+	
+	<tr>
+	<td> Risk Level : </td>
+	<td><input type="text" name="risklevel" ng-model="risklevel"></td>
+	</tr>
+	
+	<tr>
+	<td> State : </td>
+	<td>
+	<select name="state" ng-model="state">
+	<option value="IL"> IL </option>
+	<option value="FL"> FL </option>
+	<option value="CA"> CA </option>
+	<option value="AR"> AR </option>
+	<option value="Hawaii"> Hawaii </option>
+	</select>
+	</td>
+	</tr>
+	
+	<tr>
+	<td> Zip code : </td>
+	<td><input type="text" name="zipcode" ng-model="zipcode"></td>
+	</tr>
+	
+	<tr>
+	<td><input type="submit" ng-click="savedata()" value="ADD DATA"></td>
+	</tr>
+
+</table>
+
+</fieldset>
+
+
 <div>
 
-<p>Search Risk Level By Your Zipcode :  <input type="text" ng-model="zipcode"> </p>
+<p>Search Risk Level By Your Zip Code :  <input type="text" ng-model="zipcode_search"> </p></n>
+
 
 <p>
+
 <table>
 <tr>
 <th> Id </th>
@@ -74,7 +118,7 @@ app.controller("myctrl", alldatarequest);
 </tr>
 
 
-<tr ng-repeat="x in result">
+<tr ng-repeat="x in result | filter : zipcode_search">
 <td>{{x.id}}</td>
 <td>{{x.zipcode}}</td>
 <td>{{x.city}}</td>
@@ -83,6 +127,7 @@ app.controller("myctrl", alldatarequest);
 </tr>
 
 </table>
+
 </p>
 
 
