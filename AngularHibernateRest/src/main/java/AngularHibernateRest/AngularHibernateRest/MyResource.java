@@ -46,11 +46,11 @@ public class MyResource {
     public model validation(model m) 
     {
     	
-    	m.setCity(m.getCity());
-    	m.setRisk_level(m.getRisk_level());
-    	m.setState(m.getState());
-    	m.setZipcode(m.getZipcode());
-    	
+//    	m.setCity(m.getCity());
+//    	m.setRisk_level(m.getRisk_level());
+//    	m.setState(m.getState());
+//    	m.setZipcode(m.getZipcode());
+//    	
     	model model=dao.input_validation(m);
     	
 		return model;

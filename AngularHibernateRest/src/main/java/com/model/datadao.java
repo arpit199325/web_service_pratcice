@@ -14,31 +14,7 @@ public class datadao {
 	Transaction tx;
 	
 	model model = new model();
-	
-	public model add_data(model m){
-         session = sessionutil.gSession();        
-         tx = session.beginTransaction();
-       
-        model model=  add_data_session(session,m);
-        
-        tx.commit();
-        session.close();
-        return model;
-        
-    }
-    
-    private model add_data_session(Session session, model m){
-    	
-        
-    	model.setZipcode(m.getZipcode());
-    	model.setRisk_level(m.getRisk_level());
-    	model.setCity(m.getCity());
-    	model.setState(m.getState());
-        
-        session.save(model);
-		return model;
-    }
-    
+
     
     /* input validation test method */
     public model input_validation(model m) 
@@ -46,8 +22,6 @@ public class datadao {
     	session = sessionutil.gSession();        
         tx = session.beginTransaction();
         
-    	
-    	
        	Query query = session.createQuery("from model where zipcode ="+m.getZipcode());
     	List return_data=query.list();
     
@@ -57,17 +31,11 @@ public class datadao {
     		
     	}
     	else
-    	{
-    	model.setZipcode(m.getZipcode());
-    	model.setRisk_level(m.getRisk_level());
-    	model.setCity(m.getCity());
-    	model.setState(m.getState());
-        
-        session.save(model);
-        
-        tx.commit();
-		return model;
+    	{ 
+        session.save(m);
     	}
+    	 tx.commit();
+ 		return m;
     }
     
     
@@ -113,35 +81,26 @@ public class datadao {
       		
          	session = sessionutil.gSession();
          	tx=session.beginTransaction();
-         	
-           
-         	String hql = "update model set zipcode = :zipcode, risk_level = :risk_level,city = :city,state = :state where id = :id";
-        		 
-         	
-         	
+         	Query query;
+           	
+         	String hql = "update model set zipcode = ?, risk_level = ?,city = ?,state = ? where id = ?";
+   
          	query = session.createQuery(hql);
-            query.setInteger("id",id);
-            query.setInteger("zipcode",m.getZipcode());
-            
-            Query query = session.createQuery("from model where zipcode = "+m.getZipcode());
-        	List return_data=query.list();
+         	
+         	
+         	query = session.createQuery("from model where zipcode ="+m.getZipcode());
+         	List return_data = query.list();
         	if(return_data.isEmpty()==false) 
         	{
         		return null;
         	}
+        	query.setInteger(1, m.getZipcode());
+         	query.setFloat(2, m.getRisk_level());
+         	query.setString(3, m.getCity());
+         	query.setString(4, m.getState());
+         	query.setInteger(5, id);
             
-            
-            query.setFloat("risk_level", m.getRisk_level());
-            query.setString("city", m.getCity());
-            query.setString("state", m.getState());
-                  
-            int rowCount = query.executeUpdate();
-            System.out.println("Rows affected: " + rowCount);
-                  
             return model;
-                  
-        	
-        	
-    }
-
+        	}   
+       
 }

@@ -23,7 +23,7 @@ public class sessionutil {
 		prop.setProperty("hibernate.connection.username", "root");
 		prop.setProperty("hibernate.connection.password", "password");
 		prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-		prop.setProperty("hibernate.hbm2ddl.auto", "update");
+//		prop.setProperty("hibernate.hbm2ddl.auto", "update");
 		prop.setProperty("hibernate.show_sql", "true");
 		
 		Configuration conf=new Configuration();
