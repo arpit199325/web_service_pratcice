@@ -14,7 +14,75 @@ public class datadao {
 	Transaction tx;
 	
 	model model = new model();
-
+	
+	riskdatasearch rds=new riskdatasearch();
+	
+	
+	/*risk level data search by equality operators*/
+	public List<model> risk_data_search(riskdatasearch r) 
+	{
+		
+		session= sessionutil.gSession();
+		tx=session.beginTransaction();
+		
+		
+		if (r.getEuqlaity().equals(">")) 
+		{
+			Query q=session.createQuery("from model where risk_level > "+r.getRisk_level());
+			List<model> data=q.list();
+			return data;
+			
+		}
+		else if (r.getEuqlaity().equals("<")) 
+		{
+			Query q=session.createQuery("from model where risk_level < "+r.getRisk_level());
+			List<model> data=q.list();
+			return data;
+			
+		}
+		else if (r.getEuqlaity().equals(">=")) 
+		{
+			Query q=session.createQuery("from model where risk_level >= "+r.getRisk_level());
+			List<model> data=q.list();
+			return data;
+			
+		}
+		else if (r.getEuqlaity().equals("<=")) 
+		{
+			Query q=session.createQuery("from model where risk_level <= "+r.getRisk_level());
+			List<model> data=q.list();
+			return data;
+			
+		}
+		else if (r.getEuqlaity().equals("=")) 
+		{
+			Query q=session.createQuery("from model where risk_level = "+r.getRisk_level());
+			List<model> data=q.list();
+			return data;
+			
+		}
+		else if (r.getEuqlaity().equals("!=")) 
+		{
+			Query q=session.createQuery("from model where risk_level != "+r.getRisk_level());
+			List<model> data=q.list();
+			return data;
+			
+		}
+		else if (r.getEuqlaity().equals(" ")) 
+		{
+			
+			return null;
+			
+		}
+		
+		tx.commit();
+		
+		
+		return null;
+		
+	}
+	
+	
     
     /* input validation test method for zipcode */
     public model input_validation(model m) 
@@ -30,10 +98,18 @@ public class datadao {
     		return null;
     		
     	}
-    	else
-    	{ 
-        session.save(m);
-    	}
+    	
+    	 if(m.getRisk_level()>=0.2 && m.getRisk_level()<=1.9) 
+     	{
+     		session.save(m);
+     		
+     	}
+         else 
+         {
+         	return null;
+         	
+         }
+    	
     	 tx.commit();
  		return m;
     }

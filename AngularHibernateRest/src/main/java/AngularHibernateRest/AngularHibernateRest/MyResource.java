@@ -15,11 +15,25 @@ import javax.ws.rs.core.Response;
 
 import com.model.datadao;
 import com.model.model;
+import com.model.riskdatasearch;
 
 @Path("/testing")
 public class MyResource {
 
     datadao dao = new datadao();
+    
+    @Path("/riskdatasearch")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response riskdatasearch(riskdatasearch r)
+    {
+    	List<model> riskbydata=dao.risk_data_search(r);
+    	
+		return Response.ok().header("Access-Control-Allow-Origin", "*")
+							.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,HEAD").build();
+    	
+    	
+    }
     
     @Path("/test/{zipcode}")
     @GET
