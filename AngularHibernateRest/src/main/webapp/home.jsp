@@ -55,7 +55,7 @@ app.controller("myctrl", alldatarequest);
 					state : $scope.staten,
 					zipcode : $scope.zipcoden			
 				    }
-		}).then(function(reponse){
+		}).then(function(response){
 				
 			$scope.result=response.data;
 			
@@ -64,6 +64,11 @@ app.controller("myctrl", alldatarequest);
 				$scope.result=response.data;
 				
 							});
+			
+				},
+				function(error)
+				{
+				alert("Data Is not Valid + " +response.error)
 			
 				})
 	
