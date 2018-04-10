@@ -23,6 +23,7 @@ app.controller("myctrl", alldatarequest);
 	var zipcodebasedata ="http://localhost:8002/AngularHibernateRest/webapi/testing/test";
 	var deletedata="http://localhost:8002/AngularHibernateRest/webapi/testing/delete";
 	var adddata="http://localhost:8002/AngularHibernateRest/webapi/testing/validationtest";
+	var newaddmethod="http://localhost:8002/AngularHibernateRest/webapi/testing/add";
 	var riskbyurl="http://localhost:8002/AngularHibernateRest/webapi/testing/riskdatasearch";
 	
 	$scope.evalues=[">","<",">=","<=","==","!="];
@@ -41,60 +42,62 @@ app.controller("myctrl", alldatarequest);
 	});
 	
 	
-	
-	
-	
-	$scope.submit=function($scope,$http)
+	$scope.add=function()
 	{
-		
-		var dataobj=
-			
-		{
-				city:$scope.cityn,
-				riskl_evel:$scope.riskleveln,
-				state : $scope.staten,
-				zipcode : $scope.zipcoden			
+		$http
+		({
+			method : 'POST',
+			url : adddata,
+			data : {
+					city : $scope.cityn,
+					risk_level :$scope.riskleveln,
+					state : $scope.staten,
+					zipcode : $scope.zipcoden			
+				    }
+		}).then(function(reponse){
 				
-		}
-		
-		$http.post(adddata,dataobj).success(function(response)
-				{
-			alert("Success : " + data);
-			$http.get(all_data).then(function (response){
+			$scope.result=response.data;
+			
+			$http.get(all_data).then(function(response){
 				
 				$scope.result=response.data;
-			},
-			function(response)
-			{
-				alert("Not Valid Data : " + data);
 				
-			}
-			)
+							});
 			
 				})
-				
+			
+	
+		$scope.cityn ='';
+		$scope.riskleveln = '';
+		$scope.staten ='';
+		$scope.zipcoden = '';
+
+		
 	}
 	
-	$scope.riskbyfilter=function($scope,$http)
+	
+	$scope.riskbyfilter=function()
 	{
 		$http({
 			
-			method : "POST",
-			url : riskbyurl,
-			headers : {'Content Type' : 'application/json'}
-			
-			 }).success(function(data)
-						{
-					$scope.status = data;
-					$scope.get(all_data).then(function(response){
-						$scope.result=response.data;
-						
-					})
-				
+			method : 'GET',
+			url : riskbyurl+$scope.risklevelfilter+ $scope.risklevelfilterdata,
+			data : 
+				{ 
+				euqlaity :$scope.risklevelfilter,
+				risk_level : $scope.risklevelfilterdata
 				}
-	   )
+			
+			 }).then(function(response)
+						{
+					$scope.result = response.data;
+				
+						})
+				
+				$scope.equalityj = '';
+				$scope.risklevelfilterdataj = '';
 	
-}
+	 }
 	
 	
 	
@@ -103,7 +106,7 @@ app.controller("myctrl", alldatarequest);
 
 </script>
 
-<form ng-controller="myctrl" enctype="application/json">
+<form ng-submit="add()" ng-controller="myctrl" enctype="application/json">
 
 
 <fieldset>
@@ -114,30 +117,30 @@ app.controller("myctrl", alldatarequest);
 	
 	<tr>
 	<td> City : </td>
-	<td><input type="text" name="city" ng-model="cityn"></td>
+	<td><input type="text" name="cityj" ng-model="cityn"></td>
 	</tr>
 	
 	<tr>
 	<td> Risk Level : </td>
-	<td><input type="text" name="risklevel" ng-model="riskleveln"></td>
+	<td><input type="text" name="risklevelj" ng-model="riskleveln"></td>
 	</tr>
 	
 	<tr>
 	<td> State : </td>
 	<td>
-	<select name="state" ng-model="staten" ng-options="states for states in statedata">
+	<select name="statej" ng-model="staten" ng-options="states for states in statedata">
 	</select>
 	</td>
 	</tr>
 	
 	<tr>
 	<td> Zip code : </td>
-	<td><input type="text" name="zipcode" ng-model="zipcoden" ng-maxlength="6"></td>
+	<td><input type="text" name="zipcodej" ng-model="zipcoden" ng-maxlength="6"></td>
 	<h1>{{zipcode.$valid}}</h1>
 	</tr>
 	
 	<tr>
-	<td><input type="submit" ng-click="submit()" value="Submit"></td>
+	<td><input type="submit" value="Submit"></td>
 	</tr>
 
 </table>
@@ -151,11 +154,11 @@ app.controller("myctrl", alldatarequest);
 
 <p> Risk Level : 
 
-<select ng-model="risklevelfilter" ng-options="equality for equality in evalues"></select>
+<select name="equalityj" ng-model="risklevelfilter" ng-options="equality for equality in evalues"></select>
 
-<input type="text" name="risklevelfilterdata" ng-model="risklevelfilterdata" >
+<input type="text" name="risklevelfilterdataj" ng-model="risklevelfilterdata" >
 
-<input type="submit" ng-click="riskbyfilter()" value="Search">
+<input type="button" ng-click="riskbyfilter()" value="Search">
 
 </p></n>
 

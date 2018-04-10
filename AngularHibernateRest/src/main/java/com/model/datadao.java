@@ -19,56 +19,56 @@ public class datadao {
 	
 	
 	/*risk level data search by equality operators*/
-	public List<model> risk_data_search(riskdatasearch r) 
+	public List<model> risk_data_search(String equality_core,String risk_core) 
 	{
 		
 		session= sessionutil.gSession();
 		tx=session.beginTransaction();
 		
 		
-		if (r.getEuqlaity().equals(">")) 
+		if (equality_core.equals(">")) 
 		{
-			Query q=session.createQuery("from model where risk_level > "+r.getRisk_level());
+			Query q=session.createQuery("from model where risk_level > "+risk_core);
 			List<model> data=q.list();
 			return data;
 			
 		}
-		else if (r.getEuqlaity().equals("<")) 
+		else if (equality_core.equals("<")) 
 		{
-			Query q=session.createQuery("from model where risk_level < "+r.getRisk_level());
+			Query q=session.createQuery("from model where risk_level < "+risk_core);
 			List<model> data=q.list();
 			return data;
 			
 		}
-		else if (r.getEuqlaity().equals(">=")) 
+		else if (equality_core.equals(">=")) 
 		{
-			Query q=session.createQuery("from model where risk_level >= "+r.getRisk_level());
+			Query q=session.createQuery("from model where risk_level >= "+risk_core);
 			List<model> data=q.list();
 			return data;
 			
 		}
-		else if (r.getEuqlaity().equals("<=")) 
+		else if (equality_core.equals("<=")) 
 		{
-			Query q=session.createQuery("from model where risk_level <= "+r.getRisk_level());
+			Query q=session.createQuery("from model where risk_level <= "+risk_core);
 			List<model> data=q.list();
 			return data;
 			
 		}
-		else if (r.getEuqlaity().equals("=")) 
+		else if (equality_core.equals("==")) 
 		{
-			Query q=session.createQuery("from model where risk_level = "+r.getRisk_level());
+			Query q=session.createQuery("from model where risk_level = "+risk_core);
 			List<model> data=q.list();
 			return data;
 			
 		}
-		else if (r.getEuqlaity().equals("!=")) 
+		else if (equality_core.equals("!=")) 
 		{
-			Query q=session.createQuery("from model where risk_level != "+r.getRisk_level());
+			Query q=session.createQuery("from model where risk_level != "+risk_core);
 			List<model> data=q.list();
 			return data;
 			
 		}
-		else if (r.getEuqlaity().equals(" ")) 
+		else if (equality_core.equals(" ")) 
 		{
 			
 			return null;
@@ -93,13 +93,13 @@ public class datadao {
        	Query query = session.createQuery("from model where zipcode = " +m.getZipcode());
     	List return_data=query.list();
     
-    	if(return_data.isEmpty()==false) 
+    	if(m.getZipcode() > 0 && return_data.isEmpty() == false ) 
     	{
     		return null;
     		
     	}
     	
-    	 if(m.getRisk_level()>=0.2 && m.getRisk_level()<=1.9) 
+    	if(m.getRisk_level()>=0.2 && m.getRisk_level()<=1.9) 
      	{
      		session.save(m);
      		
@@ -113,6 +113,52 @@ public class datadao {
     	 tx.commit();
  		return m;
     }
+    
+    
+    
+    
+    /*getter setter based method*/
+    public model add_data_new_mehtod(model m) 
+    {
+    	session = sessionutil.gSession();        
+        tx = session.beginTransaction();
+        
+       	Query query = session.createQuery("from model where zipcode = " +m.getZipcode());
+    	List return_data=query.list();
+    
+    	if(return_data.isEmpty()==false) 
+    	{
+    		return null;
+    		
+    	}
+    	
+    	 if(m.getRisk_level()>=0.2 && m.getRisk_level()<=1.9) 
+     	{
+    		 
+    		 model.setCity(m.getCity());
+    		 model.setRisk_level(m.getRisk_level());
+    		 model.setState(m.getState());
+    		 model.setZipcode(m.getZipcode());
+     		
+    		 
+    		 session.save(m);
+     		
+     	}
+         else 
+         {
+         	return null;
+         	
+         }
+    	
+    	 tx.commit();
+ 		return m;
+    }
+    
+    
+    
+    
+    
+    
     
     
     

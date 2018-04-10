@@ -22,15 +22,14 @@ public class MyResource {
 
     datadao dao = new datadao();
     
-    @Path("/riskdatasearch")
-    @POST
+    @Path("/riskdatasearch/{equality}/{risk}")
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response riskdatasearch(riskdatasearch r)
+    public List<model> riskdatasearch(@PathParam("equality") String equality,@PathParam("risk") String risk)
     {
-    	List<model> riskbydata=dao.risk_data_search(r);
+    	List<model> riskbydata=dao.risk_data_search(equality,risk);
     	
-		return Response.ok().header("Access-Control-Allow-Origin", "*")
-							.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,HEAD").build();
+		return riskbydata;
     	
     	
     }
@@ -55,7 +54,7 @@ public class MyResource {
     
     @POST
     @Path("/validationtest")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON) 
     @Produces(MediaType.APPLICATION_JSON)
     public model validation(model m) 
     {
@@ -70,7 +69,35 @@ public class MyResource {
 		return model;
 
     }
-  
+    
+    
+    
+    /*getter setter base add method*/
+    @POST
+    @Path("/add")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public model add_data(model m)  
+    {
+    	model model=new model();
+    	
+    	model.setCity(m.getCity());
+    	model.setRisk_level(m.getRisk_level());
+    	model.setState(m.getState());
+    	model.setZipcode(m.getZipcode());
+    	
+    	 dao.add_data_new_mehtod(m);
+		return m;
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     @PUT
     @Path("/update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
