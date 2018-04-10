@@ -20,15 +20,13 @@ app.controller("myctrl", alldatarequest);
 	function alldatarequest($scope,$http){
 
 	var all_data="http://localhost:8002/AngularHibernateRest/webapi/testing";
-	var zipcodebasedata ="http://localhost:8002/AngularHibernateRest/webapi/testing/test/62610";
-	var deletedata="http://localhost:8002/AngularHibernateRest/webapi/testing/delete/127";
+	var zipcodebasedata ="http://localhost:8002/AngularHibernateRest/webapi/testing/test";
+	var deletedata="http://localhost:8002/AngularHibernateRest/webapi/testing/delete";
 	var adddata="http://localhost:8002/AngularHibernateRest/webapi/testing/validationtest";
 	var riskbyurl="http://localhost:8002/AngularHibernateRest/webapi/testing/riskdatasearch";
 	
 	$scope.evalues=[">","<",">=","<=","==","!="];
 	$scope.statedata=["IL","AR","FL","Hawai","CA","NJ","NY"];
-	
-	$scope.data={};
 	
 	$scope.sortingorder=function(x)
 	{
@@ -42,29 +40,42 @@ app.controller("myctrl", alldatarequest);
 		
 	});
 	
-	$scope.savedata=function()
+	
+	
+	
+	
+	$scope.submit=function($scope,$http)
 	{
-		$http({
+		
+		var dataobj=
 			
-			method : "POST",
-			url : adddata,
-			headers : {'Content Type' : 'application/json'},
-			data : $scope.data
+		{
+				city:$scope.cityn,
+				riskl_evel:$scope.riskleveln,
+				state : $scope.staten,
+				zipcode : $scope.zipcoden			
+				
+		}
+		
+		$http.post(adddata,dataobj).success(function(response)
+				{
+			alert("Success : " + data);
+			$http.get(all_data).then(function (response){
+				
+				$scope.result=response.data;
+			},
+			function(response)
+			{
+				alert("Not Valid Data : " + data);
+				
+			}
+			)
 			
-		}).success(function(data)
-							{
-								$scope.status = data;
-								$scope.get(all_data).success(function(response){
-									$scope.result=response;
-									
-								})
-							
-							}
-				   )
+				})
 				
 	}
 	
-	$scope.riskbyfilter=function()
+	$scope.riskbyfilter=function($scope,$http)
 	{
 		$http({
 			
@@ -103,30 +114,30 @@ app.controller("myctrl", alldatarequest);
 	
 	<tr>
 	<td> City : </td>
-	<td><input type="text" name="city" ng-model="city"></td>
+	<td><input type="text" name="city" ng-model="cityn"></td>
 	</tr>
 	
 	<tr>
 	<td> Risk Level : </td>
-	<td><input type="text" name="risklevel" ng-model="risklevel"></td>
+	<td><input type="text" name="risklevel" ng-model="riskleveln"></td>
 	</tr>
 	
 	<tr>
 	<td> State : </td>
 	<td>
-	<select name="state" ng-model="state" ng-options="states for states in statedata">
+	<select name="state" ng-model="staten" ng-options="states for states in statedata">
 	</select>
 	</td>
 	</tr>
 	
 	<tr>
 	<td> Zip code : </td>
-	<td><input type="text" name="zipcode" ng-model="zipcode" ng-maxlength="6"></td>
+	<td><input type="text" name="zipcode" ng-model="zipcoden" ng-maxlength="6"></td>
 	<h1>{{zipcode.$valid}}</h1>
 	</tr>
 	
 	<tr>
-	<td><input type="submit" ng-click="savedata()" value="ADD DATA"></td>
+	<td><input type="submit" ng-click="submit()" value="Submit"></td>
 	</tr>
 
 </table>
