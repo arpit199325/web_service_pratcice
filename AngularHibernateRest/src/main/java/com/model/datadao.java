@@ -128,6 +128,10 @@ public class datadao {
     		return null;
     		
     	}
+    	if(m.getState().equals("") && m.getCity().equals("") && (m.getRisk_level()==0) && (m.getZipcode()==0))
+    	{
+    		return null;
+    	}
     	
     	 if(m.getRisk_level()>=0.2 && m.getRisk_level()<=1.9) 
      	{
@@ -135,6 +139,7 @@ public class datadao {
     		 model.setCity(m.getCity());
     		 model.setRisk_level(m.getRisk_level());
     		 model.setState(m.getState());
+    		
     		 model.setZipcode(m.getZipcode());
      		
     		 
