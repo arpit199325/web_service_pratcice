@@ -98,6 +98,8 @@ app.controller("myctrl", alldatarequest);
 	
 	 }
 	
+	$scope
+	
 	
 }
 
