@@ -50,10 +50,10 @@ app.controller("myctrl", alldatarequest);
 			method : 'POST',
 			url : adddata,
 			data : {
-					citya : $scope.cityn,
-					risk_levela :$scope.riskleveln,
-					statea : $scope.staten,
-					zipcodea : $scope.zipcoden			
+					city : $scope.cityn,
+					risk_level :$scope.riskleveln,
+					state : $scope.staten,
+					zipcode : $scope.zipcoden			
 				    }
 		}).then(function(reponse){
 				
