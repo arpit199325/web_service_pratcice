@@ -113,10 +113,7 @@ public class datadao {
     	 tx.commit();
  		return m;
     }
-    
-    
-    
-    
+   
     /*getter setter based method*/
     public model add_data_new_mehtod(model m) 
     {
@@ -153,14 +150,7 @@ public class datadao {
     	 tx.commit();
  		return m;
     }
-    
-    
-    
-    
-    
-    
-    
-    
+   
     
     public List<model> get_alldata(){
          session = sessionutil.gSession(); 
@@ -198,32 +188,17 @@ public class datadao {
         return rowCount;
     }
     
-    public model update_data(int id, model m){
-    	if(id <=0)  
-            return null;  
-      		
+    public model update_data(model m)
+    {
+    	
          	session = sessionutil.gSession();
          	tx=session.beginTransaction();
-         	Query query;
-           	
-         	String hql = "update model set zipcode = ?, risk_level = ?,city = ?,state = ? where id = ?";
-   
-         	query = session.createQuery(hql);
          	
-         	
-         	query = session.createQuery("from model where zipcode ="+m.getZipcode());
-         	List return_data = query.list();
-        	if(return_data.isEmpty()==false) 
-        	{
-        		return null;
-        	}
-        	query.setInteger(1, m.getZipcode());
-         	query.setFloat(2, m.getRisk_level());
-         	query.setString(3, m.getCity());
-         	query.setString(4, m.getState());
-         	query.setInteger(5, id);
-            
+         	session.update(m);
+         
+            tx.commit();
             return model;
-        	}   
+    }
+   
        
 }

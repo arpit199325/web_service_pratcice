@@ -25,6 +25,7 @@ app.controller("myctrl", alldatarequest);
 	var adddata="http://localhost:8002/AngularHibernateRest/webapi/testing/validationtest";
 	var newaddmethod="http://localhost:8002/AngularHibernateRest/webapi/testing/add";
 	var riskbyurl="http://localhost:8002/AngularHibernateRest/webapi/testing/riskdatasearch";
+	var editdataurl="http://localhost:8002/AngularHibernateRest/webapi/testing/update";
 	
 	$scope.evalues=[">","<",">=","<=","==","!="];
 	$scope.statedata=["IL","AR","FL","Hawai","CA","NJ","NY"];
@@ -65,13 +66,11 @@ app.controller("myctrl", alldatarequest);
 							});
 			
 				})
-			
 	
 		$scope.cityn ='';
 		$scope.riskleveln = '';
 		$scope.staten ='';
 		$scope.zipcoden = '';
-
 		
 	}
 	
@@ -81,12 +80,7 @@ app.controller("myctrl", alldatarequest);
 		$http({
 			
 			method : 'GET',
-			url : riskbyurl+$scope.risklevelfilter+ $scope.risklevelfilterdata,
-			data : 
-				{ 
-				euqlaity :$scope.risklevelfilter,
-				risk_level : $scope.risklevelfilterdata
-				}
+			url : riskbyurl+"/"+$scope.risklevelfilter+"/"+ $scope.risklevelfilterdata
 			
 			 }).then(function(response)
 						{
@@ -98,7 +92,6 @@ app.controller("myctrl", alldatarequest);
 				$scope.risklevelfilterdataj = '';
 	
 	 }
-	
 	
 	
 }
@@ -158,7 +151,7 @@ app.controller("myctrl", alldatarequest);
 
 <input type="text" name="risklevelfilterdataj" ng-model="risklevelfilterdata" >
 
-<input type="button" ng-click="riskbyfilter()" value="Search">
+<input type="button" ng-model="myfilter" ng-click="riskbyfilter()" value="Search">
 
 </p></n>
 
@@ -175,7 +168,7 @@ app.controller("myctrl", alldatarequest);
 </tr>
 
 
-<tr ng-repeat="x in result | filter : data_filter | orderBy : sortbydata">
+<tr ng-repeat="x in result | filter : data_filter : myfilter | orderBy : sortbydata">
 <td>{{x.id}}</td>
 <td>{{x.zipcode}}</td>
 <td>{{x.city}}</td>

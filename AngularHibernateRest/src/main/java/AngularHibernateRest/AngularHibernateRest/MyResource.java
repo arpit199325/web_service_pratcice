@@ -15,7 +15,6 @@ import javax.ws.rs.core.Response;
 
 import com.model.datadao;
 import com.model.model;
-import com.model.riskdatasearch;
 
 @Path("/testing")
 public class MyResource {
@@ -91,20 +90,14 @@ public class MyResource {
     
     }
     
-    
-    
-    
-    
-    
-    
-    
+       
     @PUT
-    @Path("/update/{id}")
+    @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public model updateEmployee(@PathParam("id") int id, model m){
+    public model updateEmployee(model m){
        
-        model count = dao.update_data(id, m);
+        model count = dao.update_data(m);
         return count;
     }
     
@@ -117,7 +110,7 @@ public class MyResource {
         if(count==0){
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        return Response.ok().build();
+        return Response.ok("Row deleted with id = " +id).build();
     }
     
     
