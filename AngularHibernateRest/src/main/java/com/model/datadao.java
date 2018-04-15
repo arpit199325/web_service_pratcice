@@ -54,7 +54,7 @@ public class datadao {
 			return data;
 			
 		}
-		else if (equality_core.equals("==")) 
+		else if (equality_core.equals("=")) 
 		{
 			Query q=session.createQuery("from model where risk_level = "+risk_core);
 			List<model> data=q.list();

@@ -1,4 +1,4 @@
-package com.model;
+package com;
 
 import java.util.Properties;
 
@@ -8,8 +8,10 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-public class sessionutil {
+import com.customer;
 
+public class connection {
+	
 	private static ServiceRegistry sr;
 	private  static SessionFactory sf;
 	private static  Session session;
@@ -19,7 +21,7 @@ public class sessionutil {
 
 		Properties prop=new Properties();
 		prop.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		prop.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/test");
+		prop.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/task1");
 		prop.setProperty("hibernate.connection.username", "root");
 		prop.setProperty("hibernate.connection.password", "password");
 		prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
@@ -27,8 +29,7 @@ public class sessionutil {
 		prop.setProperty("hibernate.show_sql", "true");
 		
 		Configuration conf=new Configuration();
-		conf.addPackage("com.model").addProperties(prop).addAnnotatedClass(model.class);
-		
+		conf.addPackage("com.model").addProperties(prop).addAnnotatedClass(customer.class);
 		
 		sr=new ServiceRegistryBuilder().applySettings(conf.getProperties()).buildServiceRegistry();
 		sf=conf.buildSessionFactory(sr);
@@ -38,5 +39,5 @@ public class sessionutil {
 		
 	}
 	
-	
+
 }
