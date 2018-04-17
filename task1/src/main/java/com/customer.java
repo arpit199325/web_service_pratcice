@@ -8,12 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-
 public class customer {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private int customer_id;
 	
 	@Column
 	private String name;
@@ -25,7 +24,6 @@ public class customer {
 	
 	@Column
 	private int ssn;
-	
 	
 	
 	@Column
@@ -44,8 +42,6 @@ public class customer {
 	
 	@Column
 	private String gender;
-	
-	
 	
 	
 	@Column

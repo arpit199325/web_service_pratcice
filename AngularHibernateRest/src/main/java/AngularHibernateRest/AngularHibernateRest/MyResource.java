@@ -20,6 +20,17 @@ import com.model.model;
 public class MyResource {
 
     datadao dao = new datadao();
+    @Path("/test")
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String message() 
+    {
+		return "hello world";
+    	
+    	
+    }
+    
+    
     
     @Path("/riskdatasearch/{equality}/{risk}")
     @GET

@@ -2,6 +2,7 @@ package com;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -57,8 +58,12 @@ public class datadao implements datadaoi
 		session=connection.gSession();
 		tx=session.beginTransaction();
 		
-		List<customer> customer_list=(List<customer>) session.createQuery("from customer").list();
+		Query q=session.createQuery("from customer");
+		List<customer> customer_list= q.list();
 		
+		tx.commit();
+		session.clear();
+		session.close();
 		
 		// TODO Auto-generated method stub
 		return customer_list;

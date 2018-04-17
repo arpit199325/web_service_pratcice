@@ -29,7 +29,7 @@ public class connection {
 		prop.setProperty("hibernate.show_sql", "true");
 		
 		Configuration conf=new Configuration();
-		conf.addPackage("com.model").addProperties(prop).addAnnotatedClass(customer.class);
+		conf.addPackage("com").addProperties(prop).addAnnotatedClass(customer.class).addAnnotatedClass(vehicle.class).addAnnotatedClass(coverage.class);
 		
 		sr=new ServiceRegistryBuilder().applySettings(conf.getProperties()).buildServiceRegistry();
 		sf=conf.buildSessionFactory(sr);

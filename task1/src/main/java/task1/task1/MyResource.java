@@ -13,24 +13,8 @@ import com.datadao;
 import com.customer;
 import com.vehicle;
 
-/**
- * Root resource (exposed at "myresource" path)
- */
-@Path("task1")
+@Path("/task1")
 public class MyResource {
-
-    /**
-     * Method handling HTTP GET requests. The returned object will be sent
-     * to the client as "text/plain" media type.
-     *
-     * @return String that will be returned as a text/plain response.
-     */
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getIt() {
-        return "Got it!";
-    }
-    
     
 datadao dao=new datadao();
 	
@@ -53,13 +37,14 @@ datadao dao=new datadao();
 	public customer new_customer(customer c) 
 	{
 		dao.add_cutomer(c);
+		System.out.println(c);
 		
 		return c;
 		
 	}
 	
 	
-	@Path("/add_vehicle")
+	@Path("/addvehicle")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -69,7 +54,6 @@ datadao dao=new datadao();
 		
 		dao.add_vehicle(v);
 		return v;
-		
 		
 	}
     

@@ -18,13 +18,19 @@ app.controller("customercntrl", customerdetails);
 
 function customerdetails($scope,$http) 
 {
-	var addurl="http://localhost:8002/TASK_1/task1/addcustomer";
+	var addurl="http://localhost:8002/task1/webapi/task1/addcustomer";
+	var geturl="http://localhost:8002/task1/webapi/task1";
 	
+	$http.get(geturl).then(function(response)
+			{
+				$scope.result=response.data;
+		
+			});
 	
-	var submitbtn=function()
+	 $scope.submitbtn=function()
 	{
 		
-		http({
+		$http({
 		
 		method : 'POST',
 		url : addurl ,
@@ -40,8 +46,14 @@ function customerdetails($scope,$http)
 			contact_no :  $scope.contactnumbern
 			}
 		}).then(function(response){
-			$scope.result=response.data;	
-		})
+			$scope.result=response.data;
+			
+			$http.get(geturl).then(function(response)
+					{
+						$scope.result=response.data;
+				
+					});
+				})
 		
 	}
 	
@@ -50,7 +62,7 @@ function customerdetails($scope,$http)
 </script>
 
 
-<form action="" ng-submit="submitbtn()" method="post" enctype="application/json" ng-controller="customercntrl">
+<form action="" enctype="application/json" ng-controller="customercntrl">
 
 <h1> Customer Registration Details : </h1>
 
@@ -59,7 +71,7 @@ function customerdetails($scope,$http)
 <p>Name : <input type="text" name="namej" ng-model="namen"></p>
 
 <p>Address : 
-<textarea rows="5" cols="15" ng-model="addressn"></textarea>
+<textarea rows="5" cols="15" name="addressj" ng-model="addressn"></textarea>
 </p></n>
 
 
@@ -91,9 +103,9 @@ Marital Status :
 <select name="marritalj" ng-model="marritaln">
 
 <option></option>
-<option> Single </option>
-<option> Married </option>
-<option> Divorced </option>
+<option value="single"> Single </option>
+<option value="married"> Married </option>
+<option value="divorsed"> Divorced </option>
 
 </select>
 
@@ -114,13 +126,48 @@ Contact Number :
 </p>
 
 <p>
-<input type="submit" value="Submit" >
+<input type="submit" ng-click="submitbtn()" value="Submit" >
 <input type="button" value="Cancel">
-
 </p>
+
 
 </div>
 
+
+
+
+<table  >
+
+<tr>
+<td>id</td>
+<td>name</td>
+<td>address</td>
+<td>ssn</td>
+<td>dob</td>
+<td>accident</td>
+<td>married status</td>
+<td>gender</td>
+<td>conatct number</td>
+</tr>
+
+
+
+<tr ng-repeat="x in result">
+
+<td>{{x.customer_id}}</td>
+<td>{{x.name}}</td>
+<td>{{x.address}}</td>
+<td>{{x.ssn}}</td>
+<td>{{x.dob}}</td>
+<td>{{x.number_accident}}</td>
+<td>{{x.marital_status}}</td>
+<td>{{x.gender}}</td>
+<td>{{x.contact_no}}</td>
+
+</tr>
+
+
+</table>
 
 
 </form>

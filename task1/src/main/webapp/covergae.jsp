@@ -17,8 +17,42 @@ var coverageapp=angular.module("coverageapp",[]);
 
 coverageapp.controller("coveragecntrl",coveragefunction);
 
-function coveragefunction($scope,$http){
+function coveragefunction($scope,$http)
+{
+	
+	
 $scope.premium_time=["weekly","monthly","annual"];
+
+var r=function()
+{
+	ng-if($scope.liabitycovergaen=true)
+{
+		
+		$scope.deductible=364;
+		$scope.limit=548;
+		$scope.premium=32746;
+}
+	
+	ng-if($scope.comprehensive_colision_coberagen=true)
+	{
+		$scope.d
+		
+	}
+		ng-if($scope.rental_coveragen=true )
+			{
+			}
+		
+		
+			ng-if($scope.unisured_unserinsured_coveragen)
+			{
+			}
+				ng-if()
+				{
+					
+					
+				}
+				
+}		
 }
 
 
@@ -98,7 +132,7 @@ Property damage liability
 <div>
 
 <p>
-<h2> LIABILITY COVERAGE <input type="checkbox" name="liabitycovergaej" ng-model="liabitycovergaen" ></h2>
+<h2> LIABILITY COVERAGE <input type="checkbox" value="liabity_coverage" name="liabitycovergaej" ng-model="liabitycovergaen" ></h2>
 
 <h3 style="color: red;"> This Coverage is automatically included in your Premium </h3>
 
@@ -116,7 +150,7 @@ You may want to go beyond the state requirements and buy a policy with higher li
 
 
 <p>
-<h2> COMPREHENSIVE AND COLLISION COVERAGE <input type="checkbox" name="liabitycovergaej" ng-model="liabitycovergaen"></h2>
+<h2> COMPREHENSIVE AND COLLISION COVERAGE <input type="checkbox" name="liabitycovergaej" value="comprehensive_colision_coberage" ng-model="comprehensive_colision_coberagen"></h2>
 
 If you are still paying off an auto loan or if you have a lease on your vehicle, your lienholder or financing company usually requires collision coverage and comprehensive coverage. Otherwise, if your vehicle is paid off, these two coverages are typically optional on a car insurance policy.
 
@@ -128,13 +162,13 @@ Comprehensive and collision coverage each have deductibles and limits. A deducti
 </p>
 
 <p>
-<h2> RENTAL REIMBURSEMENT COVERAGE <input type="checkbox" name="liabitycovergaej" ng-model="liabitycovergaen"></h2>
+<h2> RENTAL REIMBURSEMENT COVERAGE <input type="checkbox" name="liabitycovergaej" value="rental_coverage"  ng-model="rental_coveragen"></h2>
 
 Rental reimbursement coverage helps pay for a rental car while yours is being repaired after a covered loss. Be sure to check the coverage limits — typically, rental reimbursement pays up to a certain dollar amount per day, for a set number of days.
 </p>
 
 <p>
-<h2> UNINSURED AND UNDERINSURED MOTORIST COVERAGE <input type="checkbox" name="liabitycovergaej" ng-model="liabitycovergaen"></h2>
+<h2> UNINSURED AND UNDERINSURED MOTORIST COVERAGE <input type="checkbox" name="liabitycovergaej" value="unisured_unserinsured_coverage" ng-model="unisured_unserinsured_coveragen"></h2>
 
 Uninsured motorist coverage helps protect you against drivers without insurance. If you're injured in an accident caused by another driver, that driver's liability insurance will usually help cover medical expenses you incur — unless that driver doesn't have auto liability coverage. In that case, your uninsured motorist coverage would help pay for expenses related to your injuries.
 
@@ -142,7 +176,7 @@ Underinsured motorist coverage works similarly: It takes effect if the other dri
 </p>
 
 <p>
-<h2> MEDICAL PAYMENTS COVERAGE/PERSONAL INJURY PROTECTION <input type="checkbox" name="liabitycovergaej" ng-model="liabitycovergaen"></h2>
+<h2> MEDICAL PAYMENTS COVERAGE/PERSONAL INJURY PROTECTION <input type="checkbox" name="liabitycovergaej" value="medical_PIP_coverage" ng-model="medical_PIP_coveragen"></h2>
 Medical payments coverage helps pay for your (or your passengers') medical expenses after an accident, regardless of who is at fault. Covered expenses may include things like surgery or X-rays.
 
 Personal injury protection (PIP) isn't available in all states, but it's required in some states. PIP works similarly to medical payments coverage — it helps cover your medical expenses resulting from a covered loss. In some cases, it may also help you pay for other expenses while you're healing. These expenses may include child care services and lost income as a result of your injuries.

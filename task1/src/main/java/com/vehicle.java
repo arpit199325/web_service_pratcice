@@ -2,14 +2,20 @@ package com;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 
 public class vehicle {
+	@Id
+	@GeneratedValue
+	private int vehicle_id;
+	
 	@Column
 	private int year;
 	@Column
-	private int vin;
+	private long vin;
 	@Column
 	private String make;
 	@Column
@@ -21,11 +27,9 @@ public class vehicle {
 	@Column
 	private String owning_type;
 	@Column
-	private int days_driven;
+	private String vehicle_usage;
 	@Column
-	private int miles_driven;
-	@Column
-	private int annual_driven;
+	private long milage;
 	@Column
 	private int number_of_vehicle;
 	
@@ -37,9 +41,12 @@ public class vehicle {
 
 
 
-	public vehicle(int year, int vin, String make, String model, String body_style, String anti_theft,
-			String owning_type, int days_driven, int miles_driven, int annual_driven, int number_of_vehicle) {
+
+
+	public vehicle(int vehicle_id, int year, int vin, String make, String model, String body_style, String anti_theft,
+			String owning_type, String vehicle_usage, int milage, int number_of_vehicle) {
 		super();
+		this.vehicle_id = vehicle_id;
 		this.year = year;
 		this.vin = vin;
 		this.make = make;
@@ -47,11 +54,12 @@ public class vehicle {
 		this.body_style = body_style;
 		this.anti_theft = anti_theft;
 		this.owning_type = owning_type;
-		this.days_driven = days_driven;
-		this.miles_driven = miles_driven;
-		this.annual_driven = annual_driven;
+		this.vehicle_usage = vehicle_usage;
+		this.milage = milage;
 		this.number_of_vehicle = number_of_vehicle;
 	}
+
+
 
 
 
@@ -67,7 +75,7 @@ public class vehicle {
 
 
 
-	public int getVin() {
+	public long getVin() {
 		return vin;
 	}
 
@@ -139,42 +147,6 @@ public class vehicle {
 
 
 
-	public int getDays_driven() {
-		return days_driven;
-	}
-
-
-
-	public void setDays_driven(int days_driven) {
-		this.days_driven = days_driven;
-	}
-
-
-
-	public int getMiles_driven() {
-		return miles_driven;
-	}
-
-
-
-	public void setMiles_driven(int miles_driven) {
-		this.miles_driven = miles_driven;
-	}
-
-
-
-	public int getAnnual_driven() {
-		return annual_driven;
-	}
-
-
-
-	public void setAnnual_driven(int annual_driven) {
-		this.annual_driven = annual_driven;
-	}
-
-
-
 	public int getNumber_of_vehicle() {
 		return number_of_vehicle;
 	}
@@ -187,21 +159,53 @@ public class vehicle {
 
 
 
-	@Override
-	public String toString() {
-		return "vehicle [year=" + year + ", vin=" + vin + ", make=" + make + ", model=" + model + ", body_style="
-				+ body_style + ", anti_theft=" + anti_theft + ", owning_type=" + owning_type + ", days_driven="
-				+ days_driven + ", miles_driven=" + miles_driven + ", annual_driven=" + annual_driven
-				+ ", number_of_vehicle=" + number_of_vehicle + "]";
+
+
+	public int getVehicle_id() {
+		return vehicle_id;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+	public void setVehicle_id(int vehicle_id) {
+		this.vehicle_id = vehicle_id;
+	}
+
+
+
+
+
+	public String getVehicle_usage() {
+		return vehicle_usage;
+	}
+
+
+
+
+
+	public void setVehicle_usage(String vehicle_usage) {
+		this.vehicle_usage = vehicle_usage;
+	}
+
+
+
+
+
+	public long getMilage() {
+		return milage;
+	}
+
+
+
+
+
+	public void setMilage(int milage) {
+		this.milage = milage;
+	}
+
+
 	
 	
 	
