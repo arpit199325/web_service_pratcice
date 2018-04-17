@@ -18,10 +18,10 @@ app.controller("customercntrl", customerdetails);
 
 function customerdetails($scope,$http) 
 {
-	var addurl="http://localhost:8002/task1/webapi/task1/addcustomer";
-	var geturl="http://localhost:8002/task1/webapi/task1";
+	var addcustomer="http://localhost:8002/task1/webapi/task1/addcustomer";
+	var getcustomer="http://localhost:8002/task1/webapi/task1";
 	
-	$http.get(geturl).then(function(response)
+	$http.get(getcustomer).then(function(response)
 			{
 				$scope.result=response.data;
 		
@@ -33,7 +33,7 @@ function customerdetails($scope,$http)
 		$http({
 		
 		method : 'POST',
-		url : addurl ,
+		url : addcustomer ,
 		data :
 			{
 			name : $scope.namen,
@@ -48,7 +48,7 @@ function customerdetails($scope,$http)
 		}).then(function(response){
 			$scope.result=response.data;
 			
-			$http.get(geturl).then(function(response)
+			$http.get(getcustomer).then(function(response)
 					{
 						$scope.result=response.data;
 				

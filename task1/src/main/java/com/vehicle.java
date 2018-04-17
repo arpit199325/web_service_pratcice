@@ -29,9 +29,9 @@ public class vehicle {
 	@Column
 	private String vehicle_usage;
 	@Column
-	private long milage;
+	private long mileage;
 	@Column
-	private int number_of_vehicle;
+	private String more_vehicle;
 	
 	
 	
@@ -41,10 +41,8 @@ public class vehicle {
 
 
 
-
-
-	public vehicle(int vehicle_id, int year, int vin, String make, String model, String body_style, String anti_theft,
-			String owning_type, String vehicle_usage, int milage, int number_of_vehicle) {
+	public vehicle(int vehicle_id, int year, long vin, String make, String model, String body_style, String anti_theft,
+			String owning_type, String vehicle_usage, long mileage, String more_vehicle) {
 		super();
 		this.vehicle_id = vehicle_id;
 		this.year = year;
@@ -55,11 +53,21 @@ public class vehicle {
 		this.anti_theft = anti_theft;
 		this.owning_type = owning_type;
 		this.vehicle_usage = vehicle_usage;
-		this.milage = milage;
-		this.number_of_vehicle = number_of_vehicle;
+		this.mileage = mileage;
+		this.more_vehicle = more_vehicle;
 	}
 
 
+
+	public int getVehicle_id() {
+		return vehicle_id;
+	}
+
+
+
+	public void setVehicle_id(int vehicle_id) {
+		this.vehicle_id = vehicle_id;
+	}
 
 
 
@@ -81,7 +89,7 @@ public class vehicle {
 
 
 
-	public void setVin(int vin) {
+	public void setVin(long vin) {
 		this.vin = vin;
 	}
 
@@ -147,41 +155,9 @@ public class vehicle {
 
 
 
-	public int getNumber_of_vehicle() {
-		return number_of_vehicle;
-	}
-
-
-
-	public void setNumber_of_vehicle(int number_of_vehicle) {
-		this.number_of_vehicle = number_of_vehicle;
-	}
-
-
-
-
-
-	public int getVehicle_id() {
-		return vehicle_id;
-	}
-
-
-
-
-
-	public void setVehicle_id(int vehicle_id) {
-		this.vehicle_id = vehicle_id;
-	}
-
-
-
-
-
 	public String getVehicle_usage() {
 		return vehicle_usage;
 	}
-
-
 
 
 
@@ -191,22 +167,29 @@ public class vehicle {
 
 
 
-
-
-	public long getMilage() {
-		return milage;
+	public long getMileage() {
+		return mileage;
 	}
 
 
 
-
-
-	public void setMilage(int milage) {
-		this.milage = milage;
+	public void setMileage(long mileage) {
+		this.mileage = mileage;
 	}
 
 
-	
-	
+
+	public String getMore_vehicle() {
+		return more_vehicle;
+	}
+
+
+
+	public void setMore_vehicle(String more_vehicle) {
+		this.more_vehicle = more_vehicle;
+	}
+
+
+
 	
 }

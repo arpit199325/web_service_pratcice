@@ -69,4 +69,22 @@ public class datadao implements datadaoi
 		return customer_list;
 	}
 
+
+	@Override
+	public List<vehicle> vehicle_details() {
+		
+		session=connection.gSession();
+		tx=session.beginTransaction();
+		
+		Query q=session.createQuery("from vehicle");
+		List<vehicle> listofvehicles=q.list();
+		
+		tx.commit();
+		session.clear();
+		session.close();
+		
+		// TODO Auto-generated method stub
+		return listofvehicles;
+	}
+
 }

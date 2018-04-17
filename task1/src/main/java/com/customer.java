@@ -27,7 +27,7 @@ public class customer {
 	
 	
 	@Column
-	private Date dob;
+	private String dob;
 	
 	
 	@Column
@@ -53,7 +53,7 @@ public class customer {
 	}
 
 
-	public customer(String name, String address, int ssn, Date dob, int number_accident, String marital_status,
+	public customer(String name, String address, int ssn, String dob, int number_accident, String marital_status,
 			String gender, int contact_no) {
 		super();
 		this.name = name;
@@ -97,12 +97,12 @@ public class customer {
 	}
 
 
-	public Date getDob() {
+	public String getDob() {
 		return dob;
 	}
 
 
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 

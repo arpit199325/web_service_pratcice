@@ -16,8 +16,10 @@ import com.vehicle;
 @Path("/task1")
 public class MyResource {
     
-datadao dao=new datadao();
+	datadao dao=new datadao();
 	
+	
+	@Path("/customer_details")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<customer> customerlist()
@@ -40,6 +42,18 @@ datadao dao=new datadao();
 		System.out.println(c);
 		
 		return c;
+		
+	}
+	
+	
+	
+	@Path("/vehicledetails")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<vehicle> vehiclelist()
+	{
+		List<vehicle> vehiclelist=dao.vehicle_details();
+		return vehiclelist;
 		
 	}
 	
