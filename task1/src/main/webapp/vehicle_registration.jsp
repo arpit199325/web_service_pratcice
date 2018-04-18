@@ -4,77 +4,14 @@
 <html ng-app="vehicleapp">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript" src="angular.js"></script>
+<script type="text/javascript" src="controller_js/angular.js"></script>
+<script type="text/javascript" src="controller_js/vehicle_controller.js"></script>
 <title> Vehicle Registration Details </title>
 </head>
 
 <body>
 
-<script type="text/javascript">
-
-var app=angular.module("vehicleapp",[]);
-app.controller("vehiclecntrl",vehicledetails);
-
-
-function vehicledetails($scope,$http)
-{
-	var addvehicle="http://localhost:8002/task1/webapi/task1/addvehicle";
-	var getvehicle="http://localhost:8002/task1/webapi/task1/vehicledetails";
-	
-	$http.get(getvehicle).then(function(response)
-			{
-			$scope.result=response.data;
-		
-			});
-	
-	$scope.submitvehicle=function()
-	{
-		$http({
-			
-			method : 'POST',
-			url : addvehicle,
-			data :
-			{
-					year : $scope.yearn,
-					vin : $scope.vinn,
-					make : $scope.maken,
-					model : $scope.modeln,
-					body_style : $scope.bodystylen,
-					anti_theft : $scope.theftdevicen,
-					owning_type : $scope.ownedtypen,
-					vehicle_usage : $scope.vehicleusen,
-					mileage : $scope.mileagen,
-					more_vehicle : $scope.numberofvehiclesn
-			}
-		}).then(
-				function(response)
-				{
-				$scope.result=response.data;
-				$http.get(getvehicle).then(function(response)
-						{
-						$scope.result=response.data;
-					
-						});
-			
-				},
-				
-				function(error)
-				{
-					alert("Data is not Valid");
-				}
-				)
-
-		
-	}
-	
-	
-}
-
-
-</script>
-
-
-<form action="" enctype="application/json" ng-controller="vehiclecntrl">
+<form action="coverage.jsp" enctype="application/json" ng-controller="vehiclecntrl">
 
 <h1>  Vehicle Details : </h1>
 

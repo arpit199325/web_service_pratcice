@@ -4,65 +4,14 @@
 <html ng-app="customerapp">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript" src="angular.js"></script>
+<script type="text/javascript" src="controller_js/angular.js"></script>
+<script type="text/javascript" src="controller_js/customer_controller.js"></script>
 <title> Customer Registration Details </title>
 </head>
 
 <body>
 
-<script type="text/javascript">
-
-
-var app=angular.module("customerapp",[]);
-app.controller("customercntrl", customerdetails);
-
-function customerdetails($scope,$http) 
-{
-	var addcustomer="http://localhost:8002/task1/webapi/task1/addcustomer";
-	var getcustomer="http://localhost:8002/task1/webapi/task1";
-	
-	$http.get(getcustomer).then(function(response)
-			{
-				$scope.result=response.data;
-		
-			});
-	
-	 $scope.submitbtn=function()
-	{
-		
-		$http({
-		
-		method : 'POST',
-		url : addcustomer ,
-		data :
-			{
-			name : $scope.namen,
-			address : $scope.addressn,
-			ssn : $scope.ssnn,
-	 		dob : $scope.dobn,
-			number_accident :  $scope.accidentn,
-			marital_status :  $scope.marritaln,
-			gender :  $scope.gendern,
-			contact_no :  $scope.contactnumbern
-			}
-		}).then(function(response){
-			$scope.result=response.data;
-			
-			$http.get(getcustomer).then(function(response)
-					{
-						$scope.result=response.data;
-				
-					});
-				})
-		
-	}
-	
-}
-
-</script>
-
-
-<form action="" enctype="application/json" ng-controller="customercntrl">
+<form action="vehicle_registration.jsp" enctype="application/json" ng-controller="customercntrl">
 
 <h1> Customer Registration Details : </h1>
 
@@ -72,14 +21,14 @@ function customerdetails($scope,$http)
 
 <p>Address : 
 <textarea rows="5" cols="15" name="addressj" ng-model="addressn"></textarea>
-</p></n>
+</p><br>
 
 
 <p>
 Social Security Number : 
 <input type="text" name="ssnj" ng-model="ssnn"> 
 
-</p></n>
+</p><br>
 
 
 <p>
@@ -87,14 +36,13 @@ date Of Birth :
 
 <input type="text" name="dobj" ng-model="dobn"> 
 
-</p>
+</p><br>
 
 
 <p>
 Number Of Accident :
 <input type="text" name="accidentj" ng-model="accidentn"> 
-
-</p>
+</p><br>
 
 
 <p>
@@ -109,7 +57,7 @@ Marital Status :
 
 </select>
 
-</p></n>
+</p><br>
 
 
 <p>
@@ -117,19 +65,18 @@ Gender :
 <input type="radio" name="genderj" value="male" ng-model="gendern"> Male
 <input type="radio" name="genderj" value="female" ng-model="gendern"> Female
 
-</p>
+</p><br>
 
 
 <p>
 Contact Number : 
 <input type="text" name="contactnumberj" ng-model="contactnumbern"> 
-</p>
+</p><br>
 
 <p>
 <input type="submit" ng-click="submitbtn()" value="Submit" >
 <input type="button" value="Cancel">
 </p>
-
 
 </div>
 
@@ -147,7 +94,7 @@ Contact Number :
 <td>accident</td>
 <td>married status</td>
 <td>gender</td>
-<td>conatct number</td>
+<td>contact number</td>
 </tr>
 
 
