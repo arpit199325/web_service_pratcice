@@ -128,5 +128,12 @@ public class MyResource {
 	}
 	
 	
+	@Path("/addtask1")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public 
+	
+	
 
 }

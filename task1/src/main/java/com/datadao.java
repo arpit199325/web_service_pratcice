@@ -207,4 +207,66 @@ public class datadao implements datadaoi
 		return list_vehicle;
 	}
 
+
+	@Override
+	public task1_model add(task1_model task1) {
+		
+		session=connection.gSession();
+		tx=session.beginTransaction();
+		
+		task1_model model=new task1_model();
+		
+		
+		model.setName(task1.getName());
+		model.setAddress(task1.getAddress());
+		model.setSsn(task1.getSsn());
+		
+		model.setDob(task1.getDob());
+		
+		Date currentdate=Calendar.getInstance().getTime();
+		
+		try {
+			Date dobdate=new SimpleDateFormat("mm/dd/yyyy").parse(task1.getDob());
+			if(currentdate.getYear()-dobdate.getYear()>=52) 
+			{
+				
+				System.out.println("Not eligible for the senior discount!!!");
+			}
+			else
+			{
+				
+				System.out.println("eligibkle for the senior discount");
+			}
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.setNumber_accident(task1.getNumber_accident());
+		
+		if (task1.getNumber_accident()>=3) 
+		{
+			System.out.println("eleigible for the good driver");
+		}
+		else
+		{
+			
+			System.out.println("not a good driver");
+			
+		}
+		
+		model.setMarital_status(task1.getMarital_status());
+		model.setGender(task1.getGender());
+		model.setContact_no(task1.getContact_no());
+		model.setYear(task1.getYear());
+		model.setVin(task1.getVin());
+		model.setModel(task1.getModel());
+		model.setBody_style(task1.getBody_style());
+		
+		
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

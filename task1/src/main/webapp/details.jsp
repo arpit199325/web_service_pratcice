@@ -11,8 +11,7 @@
 <body>
 
 <form action="" enctype="application/json" ng-controller="detailscntrl">
-
-
+Customer Details :
 <ul ng-repeat="customer in customer_result">
 <li> Customer Name : {{customer.name}}</li>
 <li> Customer Address : {{customer.address}}</li>
