@@ -143,9 +143,6 @@ Do You Have More Vehicles :
 
 <div>
 
-
-
-
 <h2> Types Of Available Coverage Are given As Below : </h2>
 
 <h3> Please select Coverage from the below list : </h3>
@@ -207,7 +204,7 @@ Your Limit is = $3,00,000<br>
 
 </div>
 
-<input type="submit" ng-submit="" value="Submit">
+<input type="submit" ng-click="submittask1()" value="Submit">
 <input type="button" value="Cancel"> 
 
 </form>

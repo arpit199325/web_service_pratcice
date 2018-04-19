@@ -11,6 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.datadao;
+import com.task1model;
 import com.coverage;
 import com.customer;
 import com.vehicle;
@@ -132,7 +133,11 @@ public class MyResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public 
+	public task1model add_data(task1model task1model) 
+	{
+		dao.add(task1model);
+		return task1model;
+	}
 	
 	
 

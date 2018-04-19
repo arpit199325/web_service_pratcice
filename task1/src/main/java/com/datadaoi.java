@@ -10,7 +10,7 @@ public interface datadaoi {
 	public customer add_cutomer(customer c);
 	public vehicle add_vehicle(vehicle v);
 	public coverage add_coverage(coverage c);
-	public task1_model add(task1_model task1);
+	public task1model add(task1model task1);
 	
 	public List<customer> customer_details();
 	public List<vehicle> vehicle_details();

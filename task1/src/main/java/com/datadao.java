@@ -16,6 +16,10 @@ public class datadao implements datadaoi
 	 Session session;
 	 Transaction tx=null;
 	 
+	 public static double deductible=1000;
+	 public static double premium=500;
+	 public static double limit=100000;
+	 
 
 	public customer add_cutomer(customer c) {
 		
@@ -209,14 +213,13 @@ public class datadao implements datadaoi
 
 
 	@Override
-	public task1_model add(task1_model task1) {
+	public task1model add(task1model task1) {
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
 		
-		task1_model model=new task1_model();
-		
-		
+		task1model model=new task1model();
+
 		model.setName(task1.getName());
 		model.setAddress(task1.getAddress());
 		model.setSsn(task1.getSsn());
@@ -227,7 +230,7 @@ public class datadao implements datadaoi
 		
 		try {
 			Date dobdate=new SimpleDateFormat("mm/dd/yyyy").parse(task1.getDob());
-			if(currentdate.getYear()-dobdate.getYear()>=52) 
+			if(currentdate.getYear()-dobdate.getYear()<=52) 
 			{
 				
 				System.out.println("Not eligible for the senior discount!!!");
@@ -235,7 +238,9 @@ public class datadao implements datadaoi
 			else
 			{
 				
-				System.out.println("eligibkle for the senior discount");
+				System.out.println("eligible for the senior discount");
+				
+				
 			}
 			
 		} catch (ParseException e) {
@@ -245,7 +250,7 @@ public class datadao implements datadaoi
 		
 		model.setNumber_accident(task1.getNumber_accident());
 		
-		if (task1.getNumber_accident()>=3) 
+		if (task1.getNumber_accident()<=3) 
 		{
 			System.out.println("eleigible for the good driver");
 		}
@@ -263,6 +268,21 @@ public class datadao implements datadaoi
 		model.setVin(task1.getVin());
 		model.setModel(task1.getModel());
 		model.setBody_style(task1.getBody_style());
+		model.setAnti_theft(task1.getAnti_theft());
+		model.setOwning_type(task1.getOwning_type());
+		model.setVehicle_usage(task1.getVehicle_usage());
+		model.setMileage(task1.getMileage());
+		model.setMore_vehicle(task1.getMore_vehicle());
+		model.setComprehensive_colision_coverage(task1.getComprehensive_colision_coverage());
+		model.setRental_coverage(task1.getRental_coverage());
+		model.setUnisured_underinsured_coverage(task1.getUnisured_underinsured_coverage());
+		model.setMedical_PIP_coverage(task1.getMedical_PIP_coverage());
+		
+		
+		session.save(task1);
+		tx.commit();
+		session.clear();
+		session.close();
 		
 		
 		// TODO Auto-generated method stub

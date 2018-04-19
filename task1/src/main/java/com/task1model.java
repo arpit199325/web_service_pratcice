@@ -4,10 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
-@Entity(name="Task1_Data")
-public class task1_model {
+@Entity
+@Table(name="task1data")
+public class task1model {
 	
 	
 	@Id
@@ -60,14 +62,14 @@ public class task1_model {
 	
 	
 	
-	public task1_model() {
+	public task1model() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 	
 	
-	public task1_model(int customer_id, String name, String address, int ssn, String dob, int number_accident,
+	public task1model(int customer_id, String name, String address, int ssn, String dob, int number_accident,
 			String marital_status, String gender, int contact_no, int year, long vin, String make, String model,
 			String body_style, String anti_theft, String owning_type, String vehicle_usage, long mileage,
 			String more_vehicle, String comprehensive_colision_coverage, String rental_coverage,
