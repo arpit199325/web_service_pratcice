@@ -18,32 +18,61 @@
 <div>
 
 <p> Vehicle made Year :
-<input type="text" name="yearj" ng-model="yearn"> 
+<input type="text" name="yearj" ng-model="yearn" required> 
 </p><br>
 
 <p> Vehicle VIN Number :
-<input type="text" name="vinj" ng-model="vinn">
+<input type="text" name="vinj" ng-model="vinn" required>
 </p><br>
 
-
-<p> Make : 
-<input type="text" name="makej" ng-model="maken">
+<p> Make :
+<select name="makej" ng-model="maken" required>
+<option></option>
+<option value="Honda">Honda</option>
+<option value="Acura">Acura</option>
+<option value="BMW">BMW</option>
+<option value="Audi">Audi</option>
+<option value="Ferrari">Ferrari</option>
+<option value="Ford">Ford</option>
+<option value="Fiat">Fiat</option>
+<option value="GMC">GMC</option>
+<option value="Hyundai">Hyundai</option>
+<option value="Infinity">Infinity</option>
+<option value="Jaguar">Jaguar</option>
+<option value="Jeep">Jeep</option>
+<option value="Kia">Kia</option>
+<option value="Lexus">Lexus</option>
+</select> 
 </p><br>
 
 <p> Model :
-<input type="text" name="modelj" ng-model="modeln"> 
+<input type="text" name="modelj" ng-model="modeln" required>
 </p><br>
 
+
 <p>Body Style :
-<input type="text" name="bodystylej" ng-model="bodystylen">
+<select name="bodystylej" ng-model="bodystylen">
+<option></option>
+<option value="SUV">SUV</option>
+<option value="Truck">Truck</option>
+<option value="Sedan">Sedan</option>
+<option value="Van">Van</option>
+<option value="Coupe">Coupe</option>
+<option value="Wagon">Wagon</option>
+<option value="Convertible">Convertible</option>
+<option value="Sports Car">Sports Car</option>
+<option value="Diesel">Diesel</option>
+<option value="Cross Over">Cross Over</option>
+<option value="Luxury Car">Luxury Car</option>
+<option value="Hybrid/Electric">Hybrid/Electric</option>
+<option value="Certified PreOwned">Certified PreOwned</option>
+</select>
 </p><br>
 
 <p> Anti Theft Device :
-<select name="theftdevicej" ng-model="theftdevicen">
-<option></option>
-<option value="yes"> YES </option>
-<option value="no"> NO </option>
-</select>
+<input type="radio" value="yes" name="theftdevicej" ng-model="theftdevicen">Yes
+<input type="radio" value="no" name="theftdevicej" ng-model="theftdevicen">No
+
 </p><br>
 
 
@@ -54,32 +83,18 @@
 </p><br>
 
 
-<p>Vehicle Use :
+<p>Vehicle Usage Type :
 
 <select name="vehicleusej" ng-model="vehicleusen">
 <option></option>
-<option value="day"> Day </option>
-<option value="week"> Week </option>
-<option value="year"> Year </option>
+<option value="school"> school </option>
+<option value="work"> work </option>
 </select><br>
-
-Enter The Average Mileage Details :<input type="text" name="milagej" ng-model="mileagen">
-
 </p><br>
 
 
 <p>
-Do You Have More Vehicles :
-<select name="numberofvehiclesj" ng-model="numberofvehiclesn">
-<option></option>
-<option value="yes"> YES </option>
-<option value="no"> NO </option>
-</select>
-</p><br>
-
-
-<p>
-<input type="submit" ng-click="submitvehicle()" value="Submit" >
+<input type="submit" ng-click="submitvehicle()" value="Continue" >
 <input type="button" value="Cancel">
 </p><br>
 
@@ -100,7 +115,7 @@ Do You Have More Vehicles :
 <td>Owning Type</td>
 <td>Vehicle Usage</td>
 <td>Mileage</td>
-<td>Number Of Vehicles</td>
+
 
 </tr>
 
@@ -117,8 +132,6 @@ Do You Have More Vehicles :
 <td>{{x.owning_type}}</td>
 <td>{{x.vehicle_usage}}</td>
 <td>{{x.mileage}}</td>
-<td>{{x.more_vehicle}}</td>
-
 
 </tr>
 

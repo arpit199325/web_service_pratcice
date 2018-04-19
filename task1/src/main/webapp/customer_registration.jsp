@@ -15,26 +15,26 @@
 
 <h1> Customer Registration Details : </h1>
 
-<div >
+<div>
 
-<p>Name : <input type="text" name="namej" ng-model="namen"></p>
+<p>Name : <input type="text" name="namej" ng-model="namen" required></p>
 
 <p>Address : 
-<textarea rows="5" cols="15" name="addressj" ng-model="addressn"></textarea>
+<textarea rows="5" cols="15" name="addressj" ng-model="addressn" required></textarea>
 </p><br>
 
 
 <p>
 Social Security Number : 
-<input type="text" name="ssnj" ng-model="ssnn"> 
+<input type="text" name="ssnj" ng-model="ssnn" ng-maxlength="9" required> 
 
 </p><br>
 
 
 <p>
-date Of Birth : 
+Date Of Birth : 
 
-<input type="text" name="dobj" ng-model="dobn"> 
+<input type="text" name="dobj" ng-model="dobn" required> 
 
 </p><br>
 
@@ -70,11 +70,11 @@ Gender :
 
 <p>
 Contact Number : 
-<input type="text" name="contactnumberj" ng-model="contactnumbern"> 
+<input type="text" name="contactnumberj" ng-model="contactnumbern" required> 
 </p><br>
 
 <p>
-<input type="submit" ng-click="submitbtn()" value="Submit" >
+<input type="submit" ng-click="submitcustomer()" value="Continue" >
 <input type="button" value="Cancel">
 </p>
 

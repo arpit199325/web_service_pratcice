@@ -14,7 +14,7 @@ function customerdetails($scope,$http)
 		
 			});
 	
-	 $scope.submitbtn=function()
+	 $scope.submitcustomer=function()
 	{
 		
 		$http({

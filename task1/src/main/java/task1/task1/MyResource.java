@@ -21,16 +21,44 @@ public class MyResource {
     
 	datadao dao=new datadao();
 	
-	@Path("/customer_summary/{id}")
-	@GET
+	
+	@Path("/addcustomer")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<customer> customer_summary_details(@PathParam("id") int customer_id)
+	public customer new_customer(customer new_customer) 
 	{
-		List<customer> customer_summary=dao.customer_all_details(customer_id);
-		return customer_summary;
+		dao.add_cutomer(new_customer);
+		System.out.println(new_customer);
+		
+		return new_customer;
 		
 	}
-    
+	
+	@Path("/addvehicle")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	
+	public vehicle new_vehicle(vehicle new_vehicle) 
+	{
+		
+		dao.add_vehicle(new_vehicle);
+		return new_vehicle;
+		
+	}
+	
+	@Path("/addcoverage")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	
+    public coverage new_coverage(coverage new_coverage) 
+	{
+		dao.add_coverage(new_coverage);
+		return new_coverage;
+		
+	}
 	
 	@Path("/customer_details")
 	@GET
@@ -38,32 +66,8 @@ public class MyResource {
 	public List<customer> customerlist()
 	{
 		
-		List<customer> list=dao.customer_details();
-		return list;
-		
-	}
-	
-	@Path("/addcustomer")
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public customer new_customer(customer c) 
-	{
-		dao.add_cutomer(c);
-		System.out.println(c);
-		
-		return c;
-		
-	}
-	
-
-	@Path("/vehicle_summary/{id}")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<vehicle> vehicle_summary_details(@PathParam("id") int vehicle_id)
-	{
-		List<vehicle> vehicle_summary=dao.vehicle_all_details(vehicle_id);
-		return vehicle_summary;
+		List<customer> customerlist=dao.customer_all_details();
+		return customerlist;
 		
 	}
 	
@@ -72,62 +76,49 @@ public class MyResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<vehicle> vehiclelist()
 	{
-		List<vehicle> vehiclelist=dao.vehicle_details();
+		List<vehicle> vehiclelist=dao.vehicle_all_details();
 		return vehiclelist;
-		
-	}
-	
-	
-	@Path("/addvehicle")
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	
-	public vehicle new_vehicle(vehicle v) 
-	{
-		
-		dao.add_vehicle(v);
-		return v;
-		
-	}
-	
-	
-
-	
-	
-	@Path("/coverage_summary/{id}")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<coverage> coverage_summary_details(@PathParam("id")int coverage_id)
-	{
-		List<coverage> coverage_summary=dao.coverage_all_details(coverage_id);
-		
-		return coverage_summary;
 		
 	}
 	
 	@Path("/coveragedetails")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<coverage> coverage_details()
+	public List<coverage> coveragelist()
 	{
-		List<coverage> coverage_list=dao.coverage_details();
-		return coverage_list;
+		List<coverage> coveragelist=dao.coverage_all_details();
+		return coveragelist;
 	}
 	
-	
-	@Path("/addcoverage")
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/customer_summary/{cutomer_id}")
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	
-    public coverage new_coverage(coverage c) 
+	public List<customer> customer_summary_details(@PathParam("cutomer_id") int customer_id)
 	{
-		dao.add_coverage(c);
-		return c;
+		List<customer> customer_summary=dao.customer_details_id(customer_id);
+		return customer_summary;
+		
+	}
+
+	@Path("/vehicle_summary/{vehicle_id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<vehicle> vehicle_summary_details(@PathParam("vehicle_id") int vehicle_id)
+	{
+		List<vehicle> vehicle_summary=dao.vehicle_details_id(vehicle_id);
+		return vehicle_summary;
 		
 	}
 	
+	@Path("/coverage_summary/{coverage_id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<coverage> coverage_summary_details(@PathParam("coverage_id")int coverage_id)
+	{
+		List<coverage> coverage_summary=dao.coverage_details_id(coverage_id);
+		return coverage_summary;
+		
+	}
 	
 	@Path("/addtask1")
 	@POST
@@ -138,7 +129,6 @@ public class MyResource {
 		dao.add(task1model);
 		return task1model;
 	}
-	
-	
+
 
 }

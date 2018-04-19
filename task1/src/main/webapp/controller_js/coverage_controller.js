@@ -15,6 +15,7 @@ function coveragefunction($scope,$http)
 										url:addcoverage,
 										data : 
 												{
+											liability_coverage:$scope.liability_coveragen,
 											comprehensive_colision_coverage:$scope.comprehensive_colision_coveragen,
 											rental_coverage:$scope.rental_coveragen,
 											unisured_underinsured_coverage:$scope.unisured_underinsured_coveragen,

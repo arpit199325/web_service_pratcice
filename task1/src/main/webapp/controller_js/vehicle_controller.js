@@ -30,8 +30,7 @@ function vehicledetails($scope,$http)
 					anti_theft : $scope.theftdevicen,
 					owning_type : $scope.ownedtypen,
 					vehicle_usage : $scope.vehicleusen,
-					mileage : $scope.mileagen,
-					more_vehicle : $scope.numberofvehiclesn
+					mileage : $scope.mileagen
 					}
 			}).then(function(response){
 				

@@ -3,7 +3,7 @@ app.controller("task1cntrl",task1function);
 
 function task1function($scope,$http)
 {
-	var addurl="http://localhost:8002/task1/webapi/task1/addtask1";
+	var add_data_url="http://localhost:8002/task1/webapi/task1/addtask1";
 	
 	
 	$scope.submittask1=function()
@@ -11,7 +11,7 @@ function task1function($scope,$http)
 		$http({
 			
 			method : 'POST',
-			url : addurl,
+			url : add_data_url,
 			data :
 				{
 				name : $scope.namen,

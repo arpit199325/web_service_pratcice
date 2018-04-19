@@ -16,32 +16,38 @@ public class datadao implements datadaoi
 	 Session session;
 	 Transaction tx=null;
 	 
-	 public static double deductible=1000;
-	 public static double premium=500;
-	 public static double limit=100000;
+	 public static double total_deductible=1000;
+	 public static double total_premium=500;
+	 public static double total_limit=100000;
 	 
-
-	public customer add_cutomer(customer c) {
+	 customer customermodel=new customer();
+	 vehicle vehiclemodel=new vehicle();
+	 coverage coveragemodel=new coverage();
+	 coverage_count count=new coverage_count();
+	 
+	 /*Add Details Section*/
+	@Override
+	public customer add_cutomer(customer new_customer) {
 		
-
 		session=connection.gSession();
 		tx=session.beginTransaction();
 		
-		customer cmodel=new customer();
-		
-		cmodel.setName(c.getName());
-		cmodel.setAddress(c.getAddress());
-		cmodel.setSsn(c.getSsn());
-		cmodel.setDob(c.getDob());
+		customermodel.setName(new_customer.getName());
+		customermodel.setAddress(new_customer.getAddress());
+		customermodel.setSsn(new_customer.getSsn());
+		customermodel.setDob(new_customer.getDob());
 		
 		Date currentdate=Calendar.getInstance().getTime();
 
 		try {
 			
-			Date dobdate=new SimpleDateFormat("mm/dd/yyyy").parse(c.getDob());
+			Date dobdate=new SimpleDateFormat("mm/dd/yyyy").parse(new_customer.getDob());
 			
 			if( (currentdate.getYear()-dobdate.getYear())>53) {
 				System.out.println("discount apply successfully for the age!!!");
+				
+				count.setAge_discount((total_premium*10)/100);   
+				
 			}
 			else
 			{
@@ -53,12 +59,12 @@ public class datadao implements datadaoi
 		}
 		
 		
-		cmodel.setNumber_accident(c.getNumber_accident());
-		cmodel.setMarital_status(c.getMarital_status());
-		cmodel.setGender(c.getGender());
-		cmodel.setContact_no(c.getContact_no());
+		customermodel.setNumber_accident(new_customer.getNumber_accident());
+		customermodel.setMarital_status(new_customer.getMarital_status());
+		customermodel.setGender(new_customer.getGender());
+		customermodel.setContact_no(new_customer.getContact_no());
 		
-		session.save(c);
+		session.save(new_customer);
 		tx.commit();
 		session.clear();
 		session.close();
@@ -68,32 +74,31 @@ public class datadao implements datadaoi
 		return null;
 	}
 
-
-	public vehicle add_vehicle(vehicle v) {
+	@Override
+	public vehicle add_vehicle(vehicle new_vehicle) {
 		
-
 		session=connection.gSession();
 		tx=session.beginTransaction();
 		
-		session.save(v);
+		session.save(new_vehicle);
 		
 		tx.commit();
 		session.clear();
 		session.close();
-		
 		
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public coverage add_coverage(coverage c) {
+	public coverage add_coverage(coverage new_coverage) {
 		
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
 		
-		session.save(c);
+		
+		session.save(new_coverage);
 		
 		tx.commit();
 		session.clear();
@@ -104,9 +109,9 @@ public class datadao implements datadaoi
 		return null;
 	}
 
-
-
-	public List<customer> customer_details() {
+	/*List Details Section*/
+	@Override
+	public List<customer> customer_all_details() {
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
@@ -121,10 +126,9 @@ public class datadao implements datadaoi
 		// TODO Auto-generated method stub
 		return customer_list;
 	}
-
-
+	
 	@Override
-	public List<vehicle> vehicle_details() {
+	public List<vehicle> vehicle_all_details() {
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
@@ -139,10 +143,9 @@ public class datadao implements datadaoi
 		// TODO Auto-generated method stub
 		return listofvehicles;
 	}
-
-
+	
 	@Override
-	public List<coverage> coverage_details() {
+	public List<coverage> coverage_all_details() {
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
@@ -158,26 +161,9 @@ public class datadao implements datadaoi
 		return list_coverage;
 	}
 
+	/*Details By Id*/
 	@Override
-	public List<coverage> coverage_all_details(int coverage_id) {
-		
-		session=connection.gSession();
-		tx=session.beginTransaction();
-		
-		Query q=session.createQuery("from coverage where coverage_id = "+coverage_id);
-		List<coverage> list_coverage=q.list();
-		
-		tx.commit();
-		session.clear();
-		session.close();
-		
-		// TODO Auto-generated method stub
-		return list_coverage;
-	}
-
-	
-	@Override
-	public List<customer> customer_all_details(int customer_id) {
+	public List<customer> customer_details_id(int customer_id) {
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
@@ -193,9 +179,8 @@ public class datadao implements datadaoi
 		return list_customer;
 	}
 
-
 	@Override
-	public List<vehicle> vehicle_all_details(int vehicle_id) {
+	public List<vehicle> vehicle_details_id(int vehicle_id) {
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
@@ -210,8 +195,27 @@ public class datadao implements datadaoi
 		// TODO Auto-generated method stub
 		return list_vehicle;
 	}
+	
+	@Override
+	public List<coverage> coverage_details_id(int coverage_id) {
+		
+		session=connection.gSession();
+		tx=session.beginTransaction();
+		
+		Query q=session.createQuery("from coverage where coverage_id = "+coverage_id);
+		List<coverage> list_coverage=q.list();
+		
+		tx.commit();
+		session.clear();
+		session.close();
+		
+		// TODO Auto-generated method stub
+		return list_coverage;
+	}
 
 
+
+	/*one page application details*/
 	@Override
 	public task1model add(task1model task1) {
 		
@@ -239,6 +243,7 @@ public class datadao implements datadaoi
 			{
 				
 				System.out.println("eligible for the senior discount");
+				double discount_deductible=(total_deductible*10)/100;
 				
 				
 			}
