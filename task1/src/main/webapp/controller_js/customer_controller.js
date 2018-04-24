@@ -7,7 +7,7 @@ function customerdetails($scope,$http)
 {
 	var addcustomer="http://localhost:8002/task1/webapi/task1/addcustomer";
 	var getcustomer="http://localhost:8002/task1/webapi/task1/customer_details";
-	
+
 	$http.get(getcustomer).then(function(response)
 			{
 				$scope.result=response.data;

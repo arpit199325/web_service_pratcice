@@ -16,7 +16,9 @@ public interface datadaoi {
 	public List<vehicle> vehicle_all_details();
 	public List<coverage> coverage_all_details();
 	
-	public List<customer> customer_details_id(int customer_id);
-	public List<vehicle> vehicle_details_id(int vehicle_id);
-	public List<coverage> coverage_details_id(int coverage_id);
+	public List<customer> customer_details_id();
+	public List<vehicle> vehicle_details_id();
+	public List<coverage> coverage_details_id();
+	
+	public List summary_details();
 }

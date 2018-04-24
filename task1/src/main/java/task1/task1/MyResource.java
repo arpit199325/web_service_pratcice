@@ -6,14 +6,13 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.datadao;
-import com.task1model;
 import com.coverage;
 import com.customer;
+import com.datadao;
+import com.task1model;
 import com.vehicle;
 
 @Path("/task1")
@@ -29,23 +28,17 @@ public class MyResource {
 	public customer new_customer(customer new_customer) 
 	{
 		dao.add_cutomer(new_customer);
-		System.out.println(new_customer);
-		
 		return new_customer;
-		
 	}
 	
 	@Path("/addvehicle")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	
 	public vehicle new_vehicle(vehicle new_vehicle) 
 	{
-		
 		dao.add_vehicle(new_vehicle);
 		return new_vehicle;
-		
 	}
 	
 	@Path("/addcoverage")
@@ -57,18 +50,18 @@ public class MyResource {
 	{
 		dao.add_coverage(new_coverage);
 		return new_coverage;
-		
 	}
+	
+	
+	
 	
 	@Path("/customer_details")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<customer> customerlist()
 	{
-		
 		List<customer> customerlist=dao.customer_all_details();
 		return customerlist;
-		
 	}
 	
 	@Path("/vehicledetails")
@@ -78,10 +71,9 @@ public class MyResource {
 	{
 		List<vehicle> vehiclelist=dao.vehicle_all_details();
 		return vehiclelist;
-		
 	}
 	
-	@Path("/coveragedetails")
+	@Path("/coverage_details")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<coverage> coveragelist()
@@ -90,35 +82,50 @@ public class MyResource {
 		return coveragelist;
 	}
 	
-	@Path("/customer_summary/{cutomer_id}")
+	
+	
+	@Path("/customer_summary")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<customer> customer_summary_details(@PathParam("cutomer_id") int customer_id)
+	public List<customer> customer_summary_details()
 	{
-		List<customer> customer_summary=dao.customer_details_id(customer_id);
+		List<customer> customer_summary=dao.customer_details_id();
 		return customer_summary;
-		
 	}
 
-	@Path("/vehicle_summary/{vehicle_id}")
+	@Path("/vehicle_summary")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<vehicle> vehicle_summary_details(@PathParam("vehicle_id") int vehicle_id)
+	public List<vehicle> vehicle_summary_details()
 	{
-		List<vehicle> vehicle_summary=dao.vehicle_details_id(vehicle_id);
+		List<vehicle> vehicle_summary=dao.vehicle_details_id();
 		return vehicle_summary;
 		
 	}
 	
-	@Path("/coverage_summary/{coverage_id}")
+	@Path("/coverage_summary")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<coverage> coverage_summary_details(@PathParam("coverage_id")int coverage_id)
+	public List<coverage> coverage_summary_details()
 	{
-		List<coverage> coverage_summary=dao.coverage_details_id(coverage_id);
+		List<coverage> coverage_summary=dao.coverage_details_id();
 		return coverage_summary;
 		
 	}
+	
+	@Path("/summary")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List summary_details() 
+	{
+		List details = dao.summary_details();
+		return details;
+	}
+	
+	
+	
+	
+	
 	
 	@Path("/addtask1")
 	@POST

@@ -18,11 +18,11 @@
 <div>
 
 <p> Vehicle made Year :
-<input type="text" name="yearj" ng-model="yearn" required> 
+<input type="text" name="yearj" ng-model="yearn" ng-trim="false" required> 
 </p><br>
 
 <p> Vehicle VIN Number :
-<input type="text" name="vinj" ng-model="vinn" required>
+<input type="text" name="vinj" ng-model="vinn" ng-trim="false" required>
 </p><br>
 
 <p> Make :
@@ -46,7 +46,7 @@
 </p><br>
 
 <p> Model :
-<input type="text" name="modelj" ng-model="modeln" required>
+<input type="text" name="modelj" ng-model="modeln" ng-trim="false" required>
 </p><br>
 
 
@@ -72,7 +72,6 @@
 <p> Anti Theft Device :
 <input type="radio" value="yes" name="theftdevicej" ng-model="theftdevicen">Yes
 <input type="radio" value="no" name="theftdevicej" ng-model="theftdevicen">No
-
 </p><br>
 
 
@@ -84,7 +83,6 @@
 
 
 <p>Vehicle Usage Type :
-
 <select name="vehicleusej" ng-model="vehicleusen">
 <option></option>
 <option value="school"> school </option>
@@ -102,7 +100,6 @@
 
 <table>
 
-
 <tr>
 
 <td>Vehicle ID</td>
@@ -114,8 +111,7 @@
 <td>Anti Theft Device</td>
 <td>Owning Type</td>
 <td>Vehicle Usage</td>
-<td>Mileage</td>
-
+<td>Customer ID</td>
 
 </tr>
 
@@ -131,11 +127,9 @@
 <td>{{x.anti_theft}}</td>
 <td>{{x.owning_type}}</td>
 <td>{{x.vehicle_usage}}</td>
-<td>{{x.mileage}}</td>
+<td>{{x.customerid}}</td>
 
 </tr>
-
-
 
 </table>
 

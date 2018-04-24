@@ -16,14 +16,13 @@ public class datadao implements datadaoi
 	 Session session;
 	 Transaction tx=null;
 	 
-	 public static double total_deductible=1000;
-	 public static double total_premium=500;
-	 public static double total_limit=100000;
-	 
 	 customer customermodel=new customer();
 	 vehicle vehiclemodel=new vehicle();
 	 coverage coveragemodel=new coverage();
 	 coverage_count count=new coverage_count();
+	 public static int fetched_id;
+	 public static float discount_amount=(float) 2.30;
+	 public static long increase_amount=2000;
 	 
 	 /*Add Details Section*/
 	@Override
@@ -43,48 +42,77 @@ public class datadao implements datadaoi
 			
 			Date dobdate=new SimpleDateFormat("mm/dd/yyyy").parse(new_customer.getDob());
 			
-			if( (currentdate.getYear()-dobdate.getYear())>53) {
-				System.out.println("discount apply successfully for the age!!!");
-				
-				count.setAge_discount((total_premium*10)/100);   
-				
+			if( (currentdate.getYear()-dobdate.getYear())>53) 
+			{
+				System.out.println("Eligible for the Age Based Discount");
+			
+				customermodel.setDiscount(discount_amount);
+	
 			}
 			else
 			{
-				System.out.println("erorrr discount not apply");
+				System.out.println("Not Eligible for the age based Discount!!!!");
+				customermodel.setDiscount(null);
 			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
 		customermodel.setNumber_accident(new_customer.getNumber_accident());
+		
+		if (new_customer.getNumber_accident()>=2) 
+		{
+			System.out.println("Not Eligible for A good driver discount !!!!");
+			customermodel.setIncrease_amount(increase_amount);
+		}
+		else
+		{
+			System.out.println("Eligible for A Good Driver Discount ");
+			customermodel.setIncrease_amount(null);
+			
+		}
+		
 		customermodel.setMarital_status(new_customer.getMarital_status());
 		customermodel.setGender(new_customer.getGender());
 		customermodel.setContact_no(new_customer.getContact_no());
 		
+		datadao dao=new datadao();
+		
 		session.save(new_customer);
 		tx.commit();
-		session.clear();
-		session.close();
 		
+		fetched_id= new_customer.getCustomer_id();
+		System.out.println(new_customer.getCustomer_id());
+		
+		
+//		
+//		Query q=session.createQuery("select * from customer where customer_id="+fetched_id);
+//		List<customer> fetched_customer_list=q.list();
+//		
+//		System.out.println(fetched_customer_list);
+//		
+		
+		
+//		Query q =session.createQuery("select customer_id from customer where ssn="+new_customer.getSsn());
+//		List list=q.list();
+//		
 		
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	
 	@Override
 	public vehicle add_vehicle(vehicle new_vehicle) {
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
-		
+		System.out.println("my fetched id is "+fetched_id);
+		new_vehicle.setCustomer_id(fetched_id);
 		session.save(new_vehicle);
 		
 		tx.commit();
-		session.clear();
-		session.close();
 		
 		// TODO Auto-generated method stub
 		return null;
@@ -93,12 +121,39 @@ public class datadao implements datadaoi
 	@Override
 	public coverage add_coverage(coverage new_coverage) {
 		
+		session=connection.gSession();
+		tx=session.beginTransaction();
+		System.out.println("my fetched id is "+fetched_id);
+		new_coverage.setCustomer_id(fetched_id);
+		session.save(new_coverage);
 		
+		tx.commit();
+		
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+	@Override
+	public List summary_details() 
+	{
 		session=connection.gSession();
 		tx=session.beginTransaction();
 		
+		/*logic 1 - make three query for all three tables and fetch the details*/
+		/*logic 2 - write sql inner join query in one call you will get all the details*/
 		
-		session.save(new_coverage);
+		System.out.println("the fetched id for the summary detais are given as "+fetched_id);
+		Query q=session.createQuery("SELECT customer.customer_id,customer.address,customer.contact_no,customer.dob,customer.gender,\r\n" + 
+				"customer.marital_status,customer.name,customer.number_accident,customer.ssn,vehicle.vehicle_id,vehicle.anti_theft,\r\n" + 
+				"vehicle.body_style,vehicle.customerid,vehicle.make,vehicle.model,vehicle.owning_type,vehicle.vehicle_usage,\r\n" + 
+				"vehicle.vin,vehicle.year,coverage.coverage_id,coverage.comprehensive_colision_coverage,coverage.customer_id,\r\n" + 
+				"coverage.liability_coverage,coverage.medical_PIP_coverage,coverage.rental_coverage,coverage.unisured_underinsured_coverage\r\n" + 
+				" FROM \r\n" + 
+				" task1.customer,task1.coverage,task1.vehicle where \r\n" + 
+				" customer.customer_id=" +fetched_id);
+		List details_list=q.list();
 		
 		tx.commit();
 		session.clear();
@@ -106,9 +161,13 @@ public class datadao implements datadaoi
 		
 		
 		// TODO Auto-generated method stub
-		return null;
+		return details_list;
 	}
 
+	
+	
+	
+	
 	/*List Details Section*/
 	@Override
 	public List<customer> customer_all_details() {
@@ -161,14 +220,17 @@ public class datadao implements datadaoi
 		return list_coverage;
 	}
 
+	
+	
+	
 	/*Details By Id*/
 	@Override
-	public List<customer> customer_details_id(int customer_id) {
+	public List<customer> customer_details_id() {
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
 		
-		Query q=session.createQuery("from customer where customer_id = "+customer_id);
+		Query q=session.createQuery("from customer where customer_id = "+fetched_id);
 		List<customer> list_customer=q.list();
 		
 		tx.commit();
@@ -180,12 +242,12 @@ public class datadao implements datadaoi
 	}
 
 	@Override
-	public List<vehicle> vehicle_details_id(int vehicle_id) {
+	public List<vehicle> vehicle_details_id() {
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
 		
-		Query q=session.createQuery("from vehicle where vehicle_id = "+vehicle_id);
+		Query q=session.createQuery("from vehicle where customer_id ="+fetched_id);
 		List<vehicle> list_vehicle=q.list();
 		
 		tx.commit();
@@ -197,12 +259,12 @@ public class datadao implements datadaoi
 	}
 	
 	@Override
-	public List<coverage> coverage_details_id(int coverage_id) {
+	public List<coverage> coverage_details_id() {
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
 		
-		Query q=session.createQuery("from coverage where coverage_id = "+coverage_id);
+		Query q=session.createQuery("from coverage where customer_id = "+fetched_id);
 		List<coverage> list_coverage=q.list();
 		
 		tx.commit();
@@ -213,8 +275,9 @@ public class datadao implements datadaoi
 		return list_coverage;
 	}
 
-
-
+	
+	
+	
 	/*one page application details*/
 	@Override
 	public task1model add(task1model task1) {
@@ -236,16 +299,11 @@ public class datadao implements datadaoi
 			Date dobdate=new SimpleDateFormat("mm/dd/yyyy").parse(task1.getDob());
 			if(currentdate.getYear()-dobdate.getYear()<=52) 
 			{
-				
 				System.out.println("Not eligible for the senior discount!!!");
 			}
 			else
 			{
-				
 				System.out.println("eligible for the senior discount");
-				double discount_deductible=(total_deductible*10)/100;
-				
-				
 			}
 			
 		} catch (ParseException e) {
@@ -283,7 +341,6 @@ public class datadao implements datadaoi
 		model.setUnisured_underinsured_coverage(task1.getUnisured_underinsured_coverage());
 		model.setMedical_PIP_coverage(task1.getMedical_PIP_coverage());
 		
-		
 		session.save(task1);
 		tx.commit();
 		session.clear();
@@ -294,4 +351,6 @@ public class datadao implements datadaoi
 		return null;
 	}
 
+
+	
 }

@@ -12,7 +12,7 @@ public class customer {
 	@GeneratedValue
 	private int customer_id;
 	
-	@Column
+	@Column(nullable=false)
 	private String name;
 	
 	
@@ -20,11 +20,11 @@ public class customer {
 	private String address;
 	
 	
-	@Column
+	@Column(unique=true,length=9)
 	private int ssn;
 	
 	
-	@Column
+	@Column(nullable=false)
 	private String dob;
 	
 	
@@ -43,14 +43,20 @@ public class customer {
 	
 	
 	@Column
-	private int contact_no;
+	private String contact_no;
+
+	@Column
+	private Float discount;
+	
+	@Column
+	private Long increase_amount;
 	
 	public customer() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public customer(int customer_id, String name, String address, int ssn, String dob, int number_accident,
-			String marital_status, String gender, int contact_no) {
+			String marital_status, String gender, String contact_no, Float discount, Long increase_amount) {
 		super();
 		this.customer_id = customer_id;
 		this.name = name;
@@ -61,6 +67,8 @@ public class customer {
 		this.marital_status = marital_status;
 		this.gender = gender;
 		this.contact_no = contact_no;
+		this.discount = discount;
+		this.increase_amount = increase_amount;
 	}
 
 	public int getCustomer_id() {
@@ -127,21 +135,40 @@ public class customer {
 		this.gender = gender;
 	}
 
-	public int getContact_no() {
+	public String getContact_no() {
 		return contact_no;
 	}
 
-	public void setContact_no(int contact_no) {
+	public void setContact_no(String contact_no) {
 		this.contact_no = contact_no;
+	}
+
+	public Float getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Float discount) {
+		this.discount = discount;
+	}
+
+	public Long getIncrease_amount() {
+		return increase_amount;
+	}
+
+	public void setIncrease_amount(Long increase_amount) {
+		this.increase_amount = increase_amount;
 	}
 
 	@Override
 	public String toString() {
 		return "customer [customer_id=" + customer_id + ", name=" + name + ", address=" + address + ", ssn=" + ssn
 				+ ", dob=" + dob + ", number_accident=" + number_accident + ", marital_status=" + marital_status
-				+ ", gender=" + gender + ", contact_no=" + contact_no + "]";
+				+ ", gender=" + gender + ", contact_no=" + contact_no + ", discount=" + discount + ", increase_amount="
+				+ increase_amount + "]";
 	}
 
+	
+	
 
-
+	
 }

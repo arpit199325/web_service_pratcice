@@ -7,10 +7,11 @@ function vehicledetails($scope,$http)
 {
 	var addvehicle="http://localhost:8002/task1/webapi/task1/addvehicle";
 	var getvehicle="http://localhost:8002/task1/webapi/task1/vehicledetails";
+
 	
 	$http.get(getvehicle).then(function(response)
 			{
-			$scope.result=response.data;
+				$scope.result=response.data;
 		
 			});
 	

@@ -25,5 +25,15 @@ function summarydetails($scope,$http)
 
 			});
 	
+	
+//	
+//	var details="http://localhost:8002/task1/webapi/task1/summary";
+//	
+//	$http.get(details).then(function(response)
+//			{
+//		$scope.customer_summary=response.data;
+//			});
+//	
+	
 }
 

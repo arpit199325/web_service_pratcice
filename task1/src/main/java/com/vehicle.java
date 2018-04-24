@@ -1,9 +1,15 @@
 package com;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 @Entity
 
@@ -28,13 +34,19 @@ public class vehicle {
 	private String owning_type;
 	@Column
 	private String vehicle_usage;
+//	@OneToOne(cascade=CascadeType.ALL)
+//	@JoinColumn(name="customer_id")
+//	private customer customer;
+	
+	@Column
+	private int customer_id;
 	
 	public vehicle() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public vehicle(int vehicle_id, int year, String vin, String make, String model, String body_style,
-			String anti_theft, String owning_type, String vehicle_usage) {
+			String anti_theft, String owning_type, String vehicle_usage, int customer_id) {
 		super();
 		this.vehicle_id = vehicle_id;
 		this.year = year;
@@ -45,6 +57,7 @@ public class vehicle {
 		this.anti_theft = anti_theft;
 		this.owning_type = owning_type;
 		this.vehicle_usage = vehicle_usage;
+		this.customer_id = customer_id;
 	}
 
 	public int getVehicle_id() {
@@ -119,11 +132,19 @@ public class vehicle {
 		this.vehicle_usage = vehicle_usage;
 	}
 
+	public int getCustomer_id() {
+		return customer_id;
+	}
+
+	public void setCustomer_id(int customer_id) {
+		this.customer_id = customer_id;
+	}
+
 	@Override
 	public String toString() {
 		return "vehicle [vehicle_id=" + vehicle_id + ", year=" + year + ", vin=" + vin + ", make=" + make + ", model="
 				+ model + ", body_style=" + body_style + ", anti_theft=" + anti_theft + ", owning_type=" + owning_type
-				+ ", vehicle_usage=" + vehicle_usage + "]";
+				+ ", vehicle_usage=" + vehicle_usage + ", customer_id=" + customer_id + "]";
 	}
 
 	
