@@ -8,7 +8,6 @@
 <script type="text/javascript" src="controller_js/angular.js"></script>
 <script type="text/javascript" src="controller_js/coverage_controller.js"></script>
 </head>
-
 <body>
 
 <form action="details.jsp" ng-controller="coveragecntrl" enctype="application/json">
@@ -23,60 +22,56 @@
 <h4>Available Coverage :</h4>
 
 <p>Select the Limit :
-<select ng-model="liability_limitn" >
+<select ng-model="liability_limitn" required>
 <option value="100000">$100000</option>
 <option value="90000">$90000</option>
 <option value="80000">$80000</option>
 <option value="70000">$70000</option>
 <option value="60000">$60000</option>
-</select>
-your selected limit : {{liability_limitn}}
+</select><br>
+your selected limit : {{liability_limitn}}<br>
 </p>
 
-<p ng-if="liability_limitn==100000">Select the Deductible :
-<select ng-model="liability_a_deductible" >
-<option value="45000">$45000</option>
-<option value="40000">$40000</option>
-</select>
+<ul type="disc" ng-show="liability_limitn==100000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-your selected deductible : {{liability_a_deductible}}
+<ul type="disc" ng-show="liability_limitn==90000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-</p>
 
-<p ng-if="liability_limitn==90000">Select the Deductible :
-<select ng-model="liability_b_deductible" >
-<option value="35000">$35000</option>
-<option value="30000">$30000</option>
-</select>
+<ul type="disc" ng-show="liability_limitn==80000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-your selected deductible : {{liability_b_deductible}}
+<ul type="disc" ng-show="liability_limitn==70000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-</p>
-
-<p ng-if="liability_limitn==80000">Select the Deductible :
-<select ng-model="liability_c_deductible" >
-<option value="25000">$25000</option>
-<option value="20000">$20000</option>
-</select>
-your selected deductible : {{liability_c_deductible}}
-
-</p>
-
-<p ng-if="liability_limitn==70000">Select the Deductible :
-<select ng-model="liability_d_deductible" >
-<option value="15000">$15000</option>
-<option value="10000">$10000</option>
-</select>
-your selected deductible : {{liability_d_deductible}}
-</p>
-
-<p ng-if="liability_limitn==60000">Select the Deductible :
-<select ng-model="liability_e_deductible" >
-<option value="5000">$5000</option>
-<option value="1000">$1000</option>
-</select>
-your selected deductible : {{liability_e_deductible}}
-</p>
+<ul type="disc" ng-show="liability_limitn==60000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
 <h3> COMPREHENSIVE AND COLLISION COVERAGE</h3>
 <h4>Available Coverage :</h4>
@@ -88,50 +83,49 @@ your selected deductible : {{liability_e_deductible}}
 <option value="80000">$80000</option>
 <option value="70000">$70000</option>
 <option value="60000">$60000</option>
-</select>
+</select><br>
+your selected limit : {{comprehensive_colision_limitn}}<br>
 </p>
 
-<p ng-if="comprehensive_colision_limitn==100000">Select the Deductible :
-<select ng-model="comprehensive_colision_a_deductible" >
-<option value="45000">$45000</option>
-<option value="40000">$40000</option>
-</select>
-your selected deductible : {{comprehensive_colision_a_deductible}}
-</p>
+<ul type="disc" ng-show="comprehensive_colision_limitn==100000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="comprehensive_colision_limitn==90000">Select the Deductible :
-<select ng-model="comprehensive_colision_b_deductible" >
-<option value="35000">$35000</option>
-<option value="30000">$30000</option>
-</select>
-your selected deductible : {{comprehensive_colision_b_deductible}}
-</p>
+<ul type="disc" ng-show="comprehensive_colision_limitn==90000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="comprehensive_colision_limitn==80000">Select the Deductible :
-<select ng-model="comprehensive_colision_c_deductible" >
-<option value="25000">$25000</option>
-<option value="20000">$20000</option>
-</select>
-your selected deductible : {{comprehensive_colision_c_deductible}}
-</p>
+<ul type="disc" ng-show="comprehensive_colision_limitn==80000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="comprehensive_colision_limitn==70000">Select the Deductible :
-<select ng-model="comprehensive_colision_d_deductible" >
-<option value="15000">$15000</option>
-<option value="10000">$10000</option>
-</select>
-your selected deductible : {{comprehensive_colision_d_deductible}}
-</p>
+<ul type="disc" ng-show=" comprehensive_colision_limitn == 70000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="comprehensive_colision_limitn==60000">Select the Deductible :
-<select ng-model="comprehensive_colision_e_deductible" >
-<option value="5000">$5000</option>
-<option value="1000">$1000</option>
-</select>
-your selected deductible : {{comprehensive_colision_e_deductible}}
-</p>
-
-
+<ul type="disc" ng-show="comprehensive_colision_limitn ==60000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
 <h3> RENTAL REIMBURSEMENT COVERAGE </h3>
 <h4>Available Coverage :</h4>
@@ -143,49 +137,49 @@ your selected deductible : {{comprehensive_colision_e_deductible}}
 <option value="80000">$80000</option>
 <option value="70000">$70000</option>
 <option value="60000">$60000</option>
-</select>
+</select><br>
+your selected limit : {{rental_limitn}}<br>
 </p>
 
-<p ng-if="rental_limitn==100000">Select the Deductible :
-<select ng-model="rental_a_deductible" >
-<option value="45000">$45000</option>
-<option value="40000">$40000</option>
-</select>
-your selected deductible : {{rental_a_deductible}}
-</p>
+<ul type="disc" ng-show="rental_limitn ==100000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="rental_limitn==90000">Select the Deductible :
-<select ng-model="rental_b_deductible" >
-<option value="35000">$35000</option>
-<option value="30000">$30000</option>
-</select>
-your selected deductible : {{rental_b_deductible}}
-</p>
+<ul type="disc" ng-show="rental_limitn ==90000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="rental_limitn==80000">Select the Deductible :
-<select ng-model="rental_c_deductible" >
-<option value="25000">$25000</option>
-<option value="20000">$20000</option>
-</select>
-your selected deductible : {{rental_c_deductible}}
-</p>
+<ul type="disc" ng-show="rental_limitn ==80000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="rental_limitn==70000">Select the Deductible :
-<select ng-model="rental_d_deductible" >
-<option value="15000">$15000</option>
-<option value="10000">$10000</option>
-</select>
-your selected deductible : {{rental_d_deductible}}
-</p>
+<ul type="disc" ng-show="rental_limitn ==70000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="rental_limitn==60000">Select the Deductible :
-<select ng-model="rental_e_deductible" >
-<option value="5000">$5000</option>
-<option value="1000">$1000</option>
-</select>
-your selected deductible : {{rental_e_deductible}}
-</p>
-
+<ul type="disc" ng-show="rental_limitn ==60000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
 <h3> UNINSURED AND UNDERINSURED MOTORIST COVERAGE </h3>
 <h4>Available Coverage :</h4>
@@ -197,53 +191,53 @@ your selected deductible : {{rental_e_deductible}}
 <option value="80000">$80000</option>
 <option value="70000">$70000</option>
 <option value="60000">$60000</option>
-</select>
+</select><br>
+your selected limit : {{unisured_underinsured_limitn}}<br>
 </p>
 
-<p ng-if="unisured_underinsured_limitn==100000">Select the Deductible :
-<select ng-model="unisured_underinsured_a_deductible" >
-<option value="45000">$45000</option>
-<option value="40000">$40000</option>
-</select>
-your selected deductible : {{unisured_underinsured_a_deductible}}
-</p>
+<ul type="disc" ng-show="unisured_underinsured_limitn ==100000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="unisured_underinsured_limitn==90000">Select the Deductible :
-<select ng-model="unisured_underinsured_b_deductible" >
-<option value="35000">$35000</option>
-<option value="30000">$30000</option>
-</select>
-your selected deductible : {{unisured_underinsured_b_deductible}}
-</p>
+<ul type="disc" ng-show="unisured_underinsured_limitn ==90000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="unisured_underinsured_limitn==80000">Select the Deductible :
-<select ng-model="unisured_underinsured_c_deductible" >
-<option value="25000">$25000</option>
-<option value="20000">$20000</option>
-</select>
-your selected deductible : {{unisured_underinsured_c_deductible}}
-</p>
 
-<p ng-if="unisured_underinsured_limitn==70000">Select the Deductible :
-<select ng-model="unisured_underinsured_d_deductible" >
-<option value="15000">$15000</option>
-<option value="10000">$10000</option>
-</select>
-your selected deductible : {{unisured_underinsured_d_deductible}}
-</p>
+<ul type="disc" ng-show="unisured_underinsured_limitn ==80000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="unisured_underinsured_limitn==60000">Select the Deductible :
-<select ng-model="unisured_underinsured_e_deductible" >
-<option value="5000">$5000</option>
-<option value="1000">$1000</option>
-</select>
-your selected deductible : {{unisured_underinsured_e_deductible}}
-</p>
+<ul type="disc" ng-show="unisured_underinsured_limitn ==70000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
+<ul type="disc" ng-show="unisured_underinsured_limitn ==60000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
 <h3> MEDICAL PAYMENTS COVERAGE/PERSONAL INJURY PROTECTION </h3>
 <h4>Available Coverage :</h4>
-
 
 <p>Select the limit :
 <select ng-model="medical_PIP_limitn" >
@@ -252,49 +246,49 @@ your selected deductible : {{unisured_underinsured_e_deductible}}
 <option value="80000">$80000</option>
 <option value="70000">$70000</option>
 <option value="60000">$60000</option>
-</select>
+</select><br>
+your selected limit : {{medical_PIP_limitn}}<br>
 </p>
 
-<p ng-if="medical_PIP_limitn==100000">Select the Deductible :
-<select ng-model="medical_PIP_a_deductible" >
-<option value="45000">$45000</option>
-<option value="40000">$40000</option>
-</select>
-your selected deductible : {{medical_PIP_a_deductible}}
-</p>
+<ul type="disc" ng-show="medical_PIP_limitn ==100000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="medical_PIP_limitn==90000">Select the Deductible :
-<select ng-model="medical_PIP_b_deductible" >
-<option value="35000">$35000</option>
-<option value="30000">$30000</option>
-</select>
-your selected deductible : {{medical_PIP_b_deductible}}
-</p>
+<ul type="disc" ng-show="medical_PIP_limitn ==90000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="medical_PIP_limitn==80000">Select the Deductible :
-<select ng-model="medical_PIP_c_deductible" >
-<option value="25000">$25000</option>
-<option value="20000">$20000</option>
-</select>
-your selected deductible : {{medical_PIP_c_deductible}}
-</p>
+<ul type="disc" ng-show="medical_PIP_limitn ==80000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="medical_PIP_limitn==70000">Select the Deductible :
-<select ng-model="medical_PIP_d_deductible" >
-<option value="15000">$15000</option>
-<option value="10000">$10000</option>
-</select>
-your selected deductible : {{medical_PIP_d_deductible}}
-</p>
+<ul type="disc" ng-show="medical_PIP_limitn ==70000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
-<p ng-if="medical_PIP_limitn==60000">Select the Deductible :
-<select ng-model="medical_PIP_e_deductible" >
-<option value="5000">$5000</option>
-<option value="1000">$1000</option>
-</select>
-your selected deductible : {{medical_PIP_e_deductible}}
-</p>
-
+<ul type="disc" ng-show="medical_PIP_limitn ==60000">
+<li> Your Deductible Will be : </li>
+<li> Your Monthly Premium Will Be : </li>
+<li> The maximum payment for bodily injury per person : </li>
+<li> The maximum payable for bodily injury per accident : </li>
+<li> The maximum payable for property damage : </li>
+</ul>
 
 </div>
 
@@ -302,7 +296,6 @@ your selected deductible : {{medical_PIP_e_deductible}}
 
 <p >
 Your Total Limit :{{total_limit}}<br>
-Your Total Deductible : {{totald}}<br>
 </p>
 
 <ul ng-repeate="x in get_customer">
@@ -310,8 +303,6 @@ Your Total Deductible : {{totald}}<br>
 <li> Your Increase Premium Amount based on number of accident will be :{{x.increase_amount}} </li>
 
 </ul>
-
-
 
 <input type="submit" ng-click="submitcoverage()" value="Submit">
 <input type="button" value="cancel"> 

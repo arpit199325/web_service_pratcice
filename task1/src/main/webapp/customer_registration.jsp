@@ -4,6 +4,19 @@
 <html ng-app="customerapp">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+
 <script type="text/javascript" src="controller_js/angular.js"></script>
 <script type="text/javascript" src="controller_js/customer_controller.js"></script>
 <title> Customer Registration Details </title>
@@ -17,7 +30,7 @@
 
 <div>
 
-<p>Name : <input type="text" name="namej" ng-model="namen" ng-trim="false" required>
+<p>Name : <input type="text" name="namej" pattern="(?=.*[a-z])(?=.*[A-Z]).{1,}" title="Please enter the name that must contain at least one Upper Case and One Lower case letter and must be at least 1 character long" ng-model="namen" ng-trim="false" required>
 </p><br>
 
 <p>Address : 
@@ -26,17 +39,17 @@
 
 <p>
 Social Security Number : 
-<input type="text" name="ssnj" ng-model="ssnn" ng-trim="false" required> 
+<input type="text" name="ssnj" pattern="(?=.*\d).{9,}" title="Please enter your 9 digit Social Security Number" ng-model="ssnn" ng-trim="false" required> 
 </p><br>
 
 <p>
 Date Of Birth : 
-<input type="text" name="dobj" ng-model="dobn" ng-trim="false" required> 
+<input type="text" id="datepicker" name="dobj" ng-model="dobn" ng-trim="false" required>
 </p><br>
 
 <p>
 Number Of Accident :
-<input type="text" name="accidentj" ng-model="accidentn" ng-trim="false"> 
+<input type="text" name="accidentj"  pattern="(?=.*\d).{1,}" title="Please enter number only" ng-model="accidentn" ng-trim="false"> 
 </p><br>
 
 <p>
@@ -57,7 +70,7 @@ Gender :
 
 <p>
 Contact Number : 
-<input type="text" name="contactnumberj" ng-model="contactnumbern" ng-trim="false" required> 
+<input type="text" name="contactnumberj" pattern="(?=.*\d).{10,}" title="Please enter your 10 digit Mobile Number" ng-model="contactnumbern" ng-trim="false" required> 
 </p><br>
 
 <p>

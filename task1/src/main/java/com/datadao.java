@@ -21,7 +21,7 @@ public class datadao implements datadaoi
 	 coverage coveragemodel=new coverage();
 	 coverage_count count=new coverage_count();
 	 public static int fetched_id;
-	 public static float discount_amount=(float) 2.30;
+	 public static float discount_amount=(float) 15.00;
 	 public static long increase_amount=2000;
 	 
 	 /*Add Details Section*/
@@ -68,7 +68,7 @@ public class datadao implements datadaoi
 		}
 		else
 		{
-			System.out.println("Eligible for A Good Driver Discount ");
+			System.out.println("Eligible for A Good Driver Discount");
 			customermodel.setIncrease_amount(null);
 			
 		}
@@ -97,6 +97,8 @@ public class datadao implements datadaoi
 //		Query q =session.createQuery("select customer_id from customer where ssn="+new_customer.getSsn());
 //		List list=q.list();
 //		
+		session.clear();
+		session.close();
 		
 		// TODO Auto-generated method stub
 		return null;
@@ -108,11 +110,16 @@ public class datadao implements datadaoi
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
+		
+		
 		System.out.println("my fetched id is "+fetched_id);
 		new_vehicle.setCustomer_id(fetched_id);
 		session.save(new_vehicle);
 		
 		tx.commit();
+		
+		session.clear();
+		session.close();
 		
 		// TODO Auto-generated method stub
 		return null;
@@ -129,6 +136,8 @@ public class datadao implements datadaoi
 		
 		tx.commit();
 		
+		session.clear();
+		session.close();
 		// TODO Auto-generated method stub
 		return null;
 	}

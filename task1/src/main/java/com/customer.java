@@ -15,32 +15,23 @@ public class customer {
 	@Column(nullable=false)
 	private String name;
 	
-	
 	@Column
 	private String address;
-	
-	
+
 	@Column(unique=true,length=9)
 	private int ssn;
-	
 	
 	@Column(nullable=false)
 	private String dob;
 	
-	
 	@Column
 	private int number_accident;
-	
-	
 	
 	@Column
 	private String marital_status;
 	
-	
-	
 	@Column
 	private String gender;
-	
 	
 	@Column
 	private String contact_no;
