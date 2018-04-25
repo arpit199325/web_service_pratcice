@@ -45,17 +45,19 @@ Social Security Number :
 <p>
 Date Of Birth : 
 <input type="text" id="datepicker" name="dobj" ng-model="dobn" ng-trim="false" required>
+<input type="hidden" ng-model="age_discountn">
 </p><br>
 
 <p>
 Number Of Accident :
 <input type="text" name="accidentj"  pattern="(?=.*\d).{1,}" title="Please enter number only" ng-model="accidentn" ng-trim="false"> 
+<input type="hidden" ng-model="accident_increasen">
 </p><br>
 
 <p>
 Marital Status : 
 <select name="marritalj" ng-model="marritaln">
-<option></option>
+  <option value="">None</option>
 <option value="single"> Single </option>
 <option value="married"> Married </option>
 <option value="divorsed"> Divorced </option>
@@ -93,6 +95,8 @@ Contact Number :
 <td>married status</td>
 <td>gender</td>
 <td>contact number</td>
+<td>discount</td>
+<td>increase_amount</td>
 </tr>
 
 
@@ -108,7 +112,8 @@ Contact Number :
 <td>{{x.marital_status}}</td>
 <td>{{x.gender}}</td>
 <td>{{x.contact_no}}</td>
-
+<td>{{x.discount}}</td>
+<td>{{x.increase_amount}}</td>
 </tr>
 
 

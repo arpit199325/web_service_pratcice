@@ -26,7 +26,8 @@
 <td>name</td>
 <td>number_accident</td>
 <td>ssn</td>
-
+<td>discount</td>
+<td>increase_amount</td>
 </tr>
 
 <tr ng-repeat="customer in customer_result">
@@ -40,7 +41,8 @@
 <td>{{customer.name}}</td>
 <td>{{customer.number_accident}}</td>
 <td>{{customer.ssn}}</td>
-
+<td>{{customer.discount}}</td>
+<td>{{customer.increase_amount}}</td>
 </tr>
 
 </table><br>

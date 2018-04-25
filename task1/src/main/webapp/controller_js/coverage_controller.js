@@ -71,8 +71,7 @@ function coveragefunction($scope,$http)
 											comprehensive_colision_coverage:$scope.comprehensive_colision_limitn,
 											rental_coverage:$scope.rental_limitn,
 											unisured_underinsured_coverage:$scope.unisured_underinsured_limitn,
-											medical_PIP_coverage:$scope.medical_PIP_limitn,
-																
+											medical_PIP_coverage:$scope.medical_PIP_limitn		
 												}
 									}).then(function(response)
 											{

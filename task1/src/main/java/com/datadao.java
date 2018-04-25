@@ -21,8 +21,8 @@ public class datadao implements datadaoi
 	 coverage coveragemodel=new coverage();
 	 coverage_count count=new coverage_count();
 	 public static int fetched_id;
-	 public static float discount_amount=(float) 15.00;
-	 public static long increase_amount=2000;
+//	 public static Float discount_amount=15.00F;
+//	 public static Long increase_amount=2000L;
 	 
 	 /*Add Details Section*/
 	@Override
@@ -37,7 +37,7 @@ public class datadao implements datadaoi
 		customermodel.setDob(new_customer.getDob());
 		
 		Date currentdate=Calendar.getInstance().getTime();
-
+		
 		try {
 			
 			Date dobdate=new SimpleDateFormat("mm/dd/yyyy").parse(new_customer.getDob());
@@ -46,13 +46,12 @@ public class datadao implements datadaoi
 			{
 				System.out.println("Eligible for the Age Based Discount");
 			
-				customermodel.setDiscount(discount_amount);
-	
+				customermodel.setDiscount(new_customer.getDiscount());
 			}
 			else
 			{
 				System.out.println("Not Eligible for the age based Discount!!!!");
-				customermodel.setDiscount(null);
+				new_customer.setDiscount(null);
 			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -61,16 +60,15 @@ public class datadao implements datadaoi
 		
 		customermodel.setNumber_accident(new_customer.getNumber_accident());
 		
-		if (new_customer.getNumber_accident()>=2) 
+		if (new_customer.getNumber_accident()<=3) 
 		{
-			System.out.println("Not Eligible for A good driver discount !!!!");
-			customermodel.setIncrease_amount(increase_amount);
+			System.out.println("Eligible for A Good Driver Discount");
+			new_customer.setIncrease_amount(null);
 		}
 		else
 		{
-			System.out.println("Eligible for A Good Driver Discount");
-			customermodel.setIncrease_amount(null);
-			
+			System.out.println("Not Eligible for A good driver discount !!!!");
+			customermodel.setIncrease_amount(new_customer.getIncrease_amount());
 		}
 		
 		customermodel.setMarital_status(new_customer.getMarital_status());

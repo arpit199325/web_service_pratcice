@@ -27,7 +27,7 @@
 
 <p> Make :
 <select name="makej" ng-model="maken" required>
-<option></option>
+  <option value="">None</option>
 <option value="Honda">Honda</option>
 <option value="Acura">Acura</option>
 <option value="BMW">BMW</option>
@@ -52,7 +52,7 @@
 
 <p>Body Style :
 <select name="bodystylej" ng-model="bodystylen">
-<option></option>
+  <option value="">None</option>
 <option value="SUV">SUV</option>
 <option value="Truck">Truck</option>
 <option value="Sedan">Sedan</option>
@@ -84,7 +84,7 @@
 
 <p>Vehicle Usage Type :
 <select name="vehicleusej" ng-model="vehicleusen" required>
-<option></option>
+  <option value="">None</option>
 <option value="school"> school </option>
 <option value="work"> work </option>
 </select><br>
