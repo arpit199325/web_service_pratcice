@@ -19,7 +19,7 @@ public class coverage {
 	@GeneratedValue
 	private int coverage_id;
 	
-	@Column
+	@Column(nullable=false)
 	private String liability_coverage;
 	@Column
 	private String comprehensive_colision_coverage;

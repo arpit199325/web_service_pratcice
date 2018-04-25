@@ -24,7 +24,7 @@ public class customer {
 	@Column(nullable=false)
 	private String dob;
 	
-	@Column
+	@Column(nullable=false)
 	private int number_accident;
 	
 	@Column
@@ -37,17 +37,17 @@ public class customer {
 	private String contact_no;
 
 	@Column
-	private Float discount;
+	private Float age_discount;
 	
 	@Column
-	private Long increase_amount;
+	private Long increase_accident;
 	
 	public customer() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public customer(int customer_id, String name, String address, int ssn, String dob, int number_accident,
-			String marital_status, String gender, String contact_no, Float discount, Long increase_amount) {
+			String marital_status, String gender, String contact_no, Float age_discount, Long increase_accident) {
 		super();
 		this.customer_id = customer_id;
 		this.name = name;
@@ -58,8 +58,8 @@ public class customer {
 		this.marital_status = marital_status;
 		this.gender = gender;
 		this.contact_no = contact_no;
-		this.discount = discount;
-		this.increase_amount = increase_amount;
+		this.age_discount = age_discount;
+		this.increase_accident = increase_accident;
 	}
 
 	public int getCustomer_id() {
@@ -134,32 +134,30 @@ public class customer {
 		this.contact_no = contact_no;
 	}
 
-	public Float getDiscount() {
-		return discount;
+	public Float getAge_discount() {
+		return age_discount;
 	}
 
-	public void setDiscount(Float discount) {
-		this.discount = discount;
+	public void setAge_discount(Float age_discount) {
+		this.age_discount = age_discount;
 	}
 
-	public Long getIncrease_amount() {
-		return increase_amount;
+	public Long getIncrease_accident() {
+		return increase_accident;
 	}
 
-	public void setIncrease_amount(Long increase_amount) {
-		this.increase_amount = increase_amount;
+	public void setIncrease_accident(Long increase_accident) {
+		this.increase_accident = increase_accident;
 	}
 
 	@Override
 	public String toString() {
 		return "customer [customer_id=" + customer_id + ", name=" + name + ", address=" + address + ", ssn=" + ssn
 				+ ", dob=" + dob + ", number_accident=" + number_accident + ", marital_status=" + marital_status
-				+ ", gender=" + gender + ", contact_no=" + contact_no + ", discount=" + discount + ", increase_amount="
-				+ increase_amount + "]";
+				+ ", gender=" + gender + ", contact_no=" + contact_no + ", age_discount=" + age_discount
+				+ ", increase_accident=" + increase_accident + "]";
 	}
 
-	
-	
 
 	
 }

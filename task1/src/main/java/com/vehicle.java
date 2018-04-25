@@ -18,21 +18,25 @@ public class vehicle {
 	@GeneratedValue
 	private int vehicle_id;
 	
-	@Column
+	@Column(nullable=false)
 	private int year;
 	@Column
+	private Double year_discount;
+	@Column(nullable=false)
 	private String vin;
-	@Column
+	@Column(nullable=false)
 	private String make;
-	@Column
+	@Column(nullable=false)
 	private String model;
 	@Column
 	private String body_style;
-	@Column
+	@Column(nullable=false)
 	private String anti_theft;
 	@Column
+	private Double anti_theft_discount;
+	@Column(nullable=false)
 	private String owning_type;
-	@Column
+	@Column(nullable=false)
 	private String vehicle_usage;
 //	@OneToOne(cascade=CascadeType.ALL)
 //	@JoinColumn(name="customer_id")
@@ -45,16 +49,19 @@ public class vehicle {
 		// TODO Auto-generated constructor stub
 	}
 
-	public vehicle(int vehicle_id, int year, String vin, String make, String model, String body_style,
-			String anti_theft, String owning_type, String vehicle_usage, int customer_id) {
+	public vehicle(int vehicle_id, int year, Double year_discount, String vin, String make, String model,
+			String body_style, String anti_theft, Double anti_theft_discount, String owning_type, String vehicle_usage,
+			int customer_id) {
 		super();
 		this.vehicle_id = vehicle_id;
 		this.year = year;
+		this.year_discount = year_discount;
 		this.vin = vin;
 		this.make = make;
 		this.model = model;
 		this.body_style = body_style;
 		this.anti_theft = anti_theft;
+		this.anti_theft_discount = anti_theft_discount;
 		this.owning_type = owning_type;
 		this.vehicle_usage = vehicle_usage;
 		this.customer_id = customer_id;
@@ -74,6 +81,14 @@ public class vehicle {
 
 	public void setYear(int year) {
 		this.year = year;
+	}
+
+	public Double getYear_discount() {
+		return year_discount;
+	}
+
+	public void setYear_discount(Double year_discount) {
+		this.year_discount = year_discount;
 	}
 
 	public String getVin() {
@@ -116,6 +131,14 @@ public class vehicle {
 		this.anti_theft = anti_theft;
 	}
 
+	public Double getAnti_theft_discount() {
+		return anti_theft_discount;
+	}
+
+	public void setAnti_theft_discount(Double anti_theft_discount) {
+		this.anti_theft_discount = anti_theft_discount;
+	}
+
 	public String getOwning_type() {
 		return owning_type;
 	}
@@ -142,8 +165,9 @@ public class vehicle {
 
 	@Override
 	public String toString() {
-		return "vehicle [vehicle_id=" + vehicle_id + ", year=" + year + ", vin=" + vin + ", make=" + make + ", model="
-				+ model + ", body_style=" + body_style + ", anti_theft=" + anti_theft + ", owning_type=" + owning_type
+		return "vehicle [vehicle_id=" + vehicle_id + ", year=" + year + ", year_discount=" + year_discount + ", vin="
+				+ vin + ", make=" + make + ", model=" + model + ", body_style=" + body_style + ", anti_theft="
+				+ anti_theft + ", anti_theft_discount=" + anti_theft_discount + ", owning_type=" + owning_type
 				+ ", vehicle_usage=" + vehicle_usage + ", customer_id=" + customer_id + "]";
 	}
 

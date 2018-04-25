@@ -34,8 +34,8 @@ function customerdetails($scope,$http)
 			marital_status :  $scope.marritaln,
 			gender :  $scope.gendern,
 			contact_no :  $scope.contactnumbern,
-			discount : $scope.age_discountn,
-			increase_amount : $scope.accident_increasen
+			age_discount : $scope.age_discountn,
+			increase_accident : $scope.accident_increasen
 			}
 		}).then(function(response){
 			$scope.result=response.data;

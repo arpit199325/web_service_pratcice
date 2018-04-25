@@ -19,6 +19,7 @@
 
 <p> Vehicle made Year :
 <input type="text" name="yearj" pattern="(?=.*\d).{4}" title="Please enter the four number for Year " ng-model="yearn" ng-trim="false" required> 
+<input type="hidden" ng-model="year_discountn">
 </p><br>
 
 <p> Vehicle VIN Number :
@@ -71,6 +72,7 @@
 
 <p> Anti Theft Device :
 <input type="radio" value="yes" name="theftdevicej" ng-model="theftdevicen" >Yes
+<input type="hidden" ng-model="anti_theft_discountn">
 <input type="radio" value="no" name="theftdevicej" ng-model="theftdevicen" >No
 </p><br>
 
@@ -101,34 +103,33 @@
 <table>
 
 <tr>
-
-<td>Vehicle ID</td>
-<td>Year</td>
-<td>VIN</td>
-<td>Make</td>
-<td>Model</td>
-<td>Body Style</td>
-<td>Anti Theft Device</td>
-<td>Owning Type</td>
-<td>Vehicle Usage</td>
-<td>Customer ID</td>
-
+<td>vehicle_id</td>
+<td>anti_theft</td>
+<td>anti_theft_discount</td>
+<td>body_style</td>
+<td>customer_id</td>
+<td>make</td>
+<td>model</td>
+<td>owning_type</td>
+<td>vehicle_usage</td>
+<td>vin</td>
+<td>year</td>
+<td>year_discount</td>
 </tr>
 
-
-<tr ng-repeat="x in result">
-
-<td>{{x.vehicle_id}}</td>
-<td>{{x.year}}</td>
-<td>{{x.vin}}</td>
-<td>{{x.make}}</td>
-<td>{{x.model}}</td>
-<td>{{x.body_style}}</td>
-<td>{{x.anti_theft}}</td>
-<td>{{x.owning_type}}</td>
-<td>{{x.vehicle_usage}}</td>
-<td>{{x.customerid}}</td>
-
+<tr ng-repeat="vehicle in result">
+<td>{{vehicle.vehicle_id}}</td>
+<td>{{vehicle.anti_theft}}</td>
+<td>{{vehicle.anti_theft_discount}}</td>
+<td>{{vehicle.body_style}}</td>
+<td>{{vehicle.customer_id}}</td>
+<td>{{vehicle.make}}</td>
+<td>{{vehicle.model}}</td>
+<td>{{vehicle.owning_type}}</td>
+<td>{{vehicle.vehicle_usage}}</td>
+<td>{{vehicle.vin}}</td>
+<td>{{vehicle.year}}</td>
+<td>{{vehicle.year_discount}}</td>
 </tr>
 
 </table>

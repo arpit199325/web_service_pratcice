@@ -19,30 +19,32 @@
 
 <td>customer_id</td>
 <td>address</td>
+<td>age_discount</td>
 <td>contact_no</td>
 <td>dob</td>
 <td>gender</td>
+<td>increase_accident</td>
 <td>marital_status</td>
 <td>name</td>
 <td>number_accident</td>
 <td>ssn</td>
-<td>discount</td>
-<td>increase_amount</td>
+
 </tr>
 
 <tr ng-repeat="customer in customer_result">
 
 <td>{{customer.customer_id}}</td>
 <td>{{customer.address}}</td>
+<td>{{customer.age_discount}}</td>
 <td>{{customer.contact_no}}</td>
 <td>{{customer.dob}}</td>
 <td>{{customer.gender}}</td>
+<td>{{customer.increase_accident}}</td>
 <td>{{customer.marital_status}}</td>
 <td>{{customer.name}}</td>
 <td>{{customer.number_accident}}</td>
 <td>{{customer.ssn}}</td>
-<td>{{customer.discount}}</td>
-<td>{{customer.increase_amount}}</td>
+
 </tr>
 
 </table><br>
@@ -53,19 +55,22 @@
 <tr>
 <td>vehicle_id</td>
 <td>anti_theft</td>
+<td>anti_theft_discount</td>
 <td>body_style</td>
-<td>customerid</td>
+<td>customer_id</td>
 <td>make</td>
 <td>model</td>
 <td>owning_type</td>
 <td>vehicle_usage</td>
 <td>vin</td>
 <td>year</td>
+<td>year_discount</td>
 </tr>
 
 <tr ng-repeat="vehicle in vehicle_result">
 <td>{{vehicle.vehicle_id}}</td>
 <td>{{vehicle.anti_theft}}</td>
+<td>{{vehicle.anti_theft_discount}}</td>
 <td>{{vehicle.body_style}}</td>
 <td>{{vehicle.customer_id}}</td>
 <td>{{vehicle.make}}</td>
@@ -74,7 +79,7 @@
 <td>{{vehicle.vehicle_usage}}</td>
 <td>{{vehicle.vin}}</td>
 <td>{{vehicle.year}}</td>
-
+<td>{{vehicle.year_discount}}</td>
 </tr>
 
 </table><br>

@@ -33,7 +33,18 @@ public class datadao implements datadaoi
 		
 		customermodel.setName(new_customer.getName());
 		customermodel.setAddress(new_customer.getAddress());
-		customermodel.setSsn(new_customer.getSsn());
+		
+		Query q=session.createQuery("from customer where ssn ="+new_customer.getSsn());
+		List<customer> ssn_list=q.list();
+		if(ssn_list.isEmpty()==false) 
+		{
+			return null;
+		}
+		else
+		{
+			customermodel.setSsn(new_customer.getSsn());
+		}
+		
 		customermodel.setDob(new_customer.getDob());
 		
 		Date currentdate=Calendar.getInstance().getTime();
@@ -46,12 +57,12 @@ public class datadao implements datadaoi
 			{
 				System.out.println("Eligible for the Age Based Discount");
 			
-				customermodel.setDiscount(new_customer.getDiscount());
+				customermodel.setAge_discount(new_customer.getAge_discount());
 			}
 			else
 			{
 				System.out.println("Not Eligible for the age based Discount!!!!");
-				new_customer.setDiscount(null);
+				new_customer.setAge_discount(null);
 			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -63,12 +74,12 @@ public class datadao implements datadaoi
 		if (new_customer.getNumber_accident()<=3) 
 		{
 			System.out.println("Eligible for A Good Driver Discount");
-			new_customer.setIncrease_amount(null);
+			new_customer.setIncrease_accident(null);
 		}
 		else
 		{
 			System.out.println("Not Eligible for A good driver discount !!!!");
-			customermodel.setIncrease_amount(new_customer.getIncrease_amount());
+			customermodel.setIncrease_accident(new_customer.getIncrease_accident());
 		}
 		
 		customermodel.setMarital_status(new_customer.getMarital_status());
@@ -109,6 +120,27 @@ public class datadao implements datadaoi
 		session=connection.gSession();
 		tx=session.beginTransaction();
 		
+		vehiclemodel.setYear(new_vehicle.getYear());
+		
+		if(new_vehicle.getYear()<=Calendar.getInstance().get(Calendar.YEAR)-1) 
+		{
+			vehiclemodel.setYear_discount(new_vehicle.getYear_discount());
+		}
+		else
+		{
+			new_vehicle.setYear_discount(null);
+		}
+		
+		vehiclemodel.setAnti_theft(new_vehicle.getAnti_theft());
+		
+		if(new_vehicle.getAnti_theft().equals("yes")) 
+		{
+			vehiclemodel.setAnti_theft_discount(new_vehicle.getAnti_theft_discount());
+		}
+		else
+		{
+			new_vehicle.setAnti_theft_discount(null);
+		}
 		
 		System.out.println("my fetched id is "+fetched_id);
 		new_vehicle.setCustomer_id(fetched_id);

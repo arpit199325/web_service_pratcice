@@ -86,34 +86,35 @@ Contact Number :
 <table  >
 
 <tr>
-<td>id</td>
-<td>name</td>
+
+<td>customer_id</td>
 <td>address</td>
-<td>ssn</td>
+<td>age_discount</td>
+<td>contact_no</td>
 <td>dob</td>
-<td>accident</td>
-<td>married status</td>
 <td>gender</td>
-<td>contact number</td>
-<td>discount</td>
-<td>increase_amount</td>
+<td>increase_accident</td>
+<td>marital_status</td>
+<td>name</td>
+<td>number_accident</td>
+<td>ssn</td>
+
 </tr>
 
+<tr ng-repeat="customer in result">
 
+<td>{{customer.customer_id}}</td>
+<td>{{customer.address}}</td>
+<td>{{customer.age_discount}}</td>
+<td>{{customer.contact_no}}</td>
+<td>{{customer.dob}}</td>
+<td>{{customer.gender}}</td>
+<td>{{customer.increase_accident}}</td>
+<td>{{customer.marital_status}}</td>
+<td>{{customer.name}}</td>
+<td>{{customer.number_accident}}</td>
+<td>{{customer.ssn}}</td>
 
-<tr ng-repeat="x in result">
-
-<td>{{x.customer_id}}</td>
-<td>{{x.name}}</td>
-<td>{{x.address}}</td>
-<td>{{x.ssn}}</td>
-<td>{{x.dob}}</td>
-<td>{{x.number_accident}}</td>
-<td>{{x.marital_status}}</td>
-<td>{{x.gender}}</td>
-<td>{{x.contact_no}}</td>
-<td>{{x.discount}}</td>
-<td>{{x.increase_amount}}</td>
 </tr>
 
 
