@@ -19,6 +19,4 @@ public interface datadaoi {
 	public List<customer> customer_details_id();
 	public List<vehicle> vehicle_details_id();
 	public List<coverage> coverage_details_id();
-	
-	public List summary_details();
 }

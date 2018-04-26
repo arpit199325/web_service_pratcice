@@ -82,17 +82,6 @@ public class MyResource {
 		return coveragelist;
 	}
 	
-	
-	
-	@Path("/customer_summary")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<customer> customer_summary_details()
-	{
-		List<customer> customer_summary=dao.customer_details_id();
-		return customer_summary;
-	}
-
 	@Path("/vehicle_summary")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -112,20 +101,6 @@ public class MyResource {
 		return coverage_summary;
 		
 	}
-	
-	@Path("/summary")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List summary_details() 
-	{
-		List details = dao.summary_details();
-		return details;
-	}
-	
-	
-	
-	
-	
 	
 	@Path("/addtask1")
 	@POST

@@ -21,8 +21,7 @@ public class datadao implements datadaoi
 	 coverage coveragemodel=new coverage();
 	 coverage_count count=new coverage_count();
 	 public static int fetched_id;
-//	 public static Float discount_amount=15.00F;
-//	 public static Long increase_amount=2000L;
+
 	 
 	 /*Add Details Section*/
 	@Override
@@ -122,7 +121,7 @@ public class datadao implements datadaoi
 		
 		vehiclemodel.setYear(new_vehicle.getYear());
 		
-		if(new_vehicle.getYear()<=Calendar.getInstance().get(Calendar.YEAR)-1) 
+		if(Calendar.getInstance().get(Calendar.YEAR)-new_vehicle.getYear()<=1) 
 		{
 			vehiclemodel.setYear_discount(new_vehicle.getYear_discount());
 		}
@@ -160,8 +159,10 @@ public class datadao implements datadaoi
 		
 		session=connection.gSession();
 		tx=session.beginTransaction();
+		
 		System.out.println("my fetched id is "+fetched_id);
 		new_coverage.setCustomer_id(fetched_id);
+		
 		session.save(new_coverage);
 		
 		tx.commit();
@@ -171,40 +172,6 @@ public class datadao implements datadaoi
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
-	
-	@Override
-	public List summary_details() 
-	{
-		session=connection.gSession();
-		tx=session.beginTransaction();
-		
-		/*logic 1 - make three query for all three tables and fetch the details*/
-		/*logic 2 - write sql inner join query in one call you will get all the details*/
-		
-		System.out.println("the fetched id for the summary detais are given as "+fetched_id);
-		Query q=session.createQuery("SELECT customer.customer_id,customer.address,customer.contact_no,customer.dob,customer.gender,\r\n" + 
-				"customer.marital_status,customer.name,customer.number_accident,customer.ssn,vehicle.vehicle_id,vehicle.anti_theft,\r\n" + 
-				"vehicle.body_style,vehicle.customerid,vehicle.make,vehicle.model,vehicle.owning_type,vehicle.vehicle_usage,\r\n" + 
-				"vehicle.vin,vehicle.year,coverage.coverage_id,coverage.comprehensive_colision_coverage,coverage.customer_id,\r\n" + 
-				"coverage.liability_coverage,coverage.medical_PIP_coverage,coverage.rental_coverage,coverage.unisured_underinsured_coverage\r\n" + 
-				" FROM \r\n" + 
-				" task1.customer,task1.coverage,task1.vehicle where \r\n" + 
-				" customer.customer_id=" +fetched_id);
-		List details_list=q.list();
-		
-		tx.commit();
-		session.clear();
-		session.close();
-		
-		
-		// TODO Auto-generated method stub
-		return details_list;
-	}
-
-	
-	
 	
 	
 	/*List Details Section*/
