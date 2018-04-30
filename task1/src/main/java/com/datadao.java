@@ -70,7 +70,7 @@ public class datadao implements datadaoi
 		
 		customermodel.setNumber_accident(new_customer.getNumber_accident());
 		
-		if (new_customer.getNumber_accident()<=3) 
+		if (new_customer.getNumber_accident()<=2) 
 		{
 			System.out.println("Eligible for A Good Driver Discount");
 			new_customer.setIncrease_accident(null);
@@ -173,7 +173,6 @@ public class datadao implements datadaoi
 		return null;
 	}
 	
-	
 	/*List Details Section*/
 	@Override
 	public List<customer> customer_all_details() {
@@ -225,8 +224,6 @@ public class datadao implements datadaoi
 		// TODO Auto-generated method stub
 		return list_coverage;
 	}
-
-	
 	
 	
 	/*Details By Id*/
@@ -280,83 +277,5 @@ public class datadao implements datadaoi
 		// TODO Auto-generated method stub
 		return list_coverage;
 	}
-
-	
-	
-	
-	/*one page application details*/
-	@Override
-	public task1model add(task1model task1) {
-		
-		session=connection.gSession();
-		tx=session.beginTransaction();
-		
-		task1model model=new task1model();
-
-		model.setName(task1.getName());
-		model.setAddress(task1.getAddress());
-		model.setSsn(task1.getSsn());
-		
-		model.setDob(task1.getDob());
-		
-		Date currentdate=Calendar.getInstance().getTime();
-		
-		try {
-			Date dobdate=new SimpleDateFormat("mm/dd/yyyy").parse(task1.getDob());
-			if(currentdate.getYear()-dobdate.getYear()<=52) 
-			{
-				System.out.println("Not eligible for the senior discount!!!");
-			}
-			else
-			{
-				System.out.println("eligible for the senior discount");
-			}
-			
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		model.setNumber_accident(task1.getNumber_accident());
-		
-		if (task1.getNumber_accident()<=3) 
-		{
-			System.out.println("eleigible for the good driver");
-		}
-		else
-		{
-			
-			System.out.println("not a good driver");
-			
-		}
-		
-		model.setMarital_status(task1.getMarital_status());
-		model.setGender(task1.getGender());
-		model.setContact_no(task1.getContact_no());
-		model.setYear(task1.getYear());
-		model.setVin(task1.getVin());
-		model.setModel(task1.getModel());
-		model.setBody_style(task1.getBody_style());
-		model.setAnti_theft(task1.getAnti_theft());
-		model.setOwning_type(task1.getOwning_type());
-		model.setVehicle_usage(task1.getVehicle_usage());
-		model.setMileage(task1.getMileage());
-		model.setMore_vehicle(task1.getMore_vehicle());
-		model.setComprehensive_colision_coverage(task1.getComprehensive_colision_coverage());
-		model.setRental_coverage(task1.getRental_coverage());
-		model.setUnisured_underinsured_coverage(task1.getUnisured_underinsured_coverage());
-		model.setMedical_PIP_coverage(task1.getMedical_PIP_coverage());
-		
-		session.save(task1);
-		tx.commit();
-		session.clear();
-		session.close();
-		
-		
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 	
 }

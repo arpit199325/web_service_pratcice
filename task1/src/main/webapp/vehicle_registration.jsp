@@ -11,7 +11,7 @@
 
 <body>
 
-<form action="coverage.jsp" enctype="application/json" ng-controller="vehiclecntrl">
+<form action="coverage.jsp" ng-submit="submitvehicle()" enctype="application/json" ng-controller="vehiclecntrl">
 
 <h1>  Vehicle Details : </h1>
 
@@ -94,7 +94,7 @@
 
 
 <p>
-<input type="submit" ng-click="submitvehicle()" value="Continue" >
+<input type="submit" value="Continue" >
 <input type="button" value="Cancel">
 </p><br>
 

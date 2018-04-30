@@ -12,7 +12,6 @@ import javax.ws.rs.core.MediaType;
 import com.coverage;
 import com.customer;
 import com.datadao;
-import com.task1model;
 import com.vehicle;
 
 @Path("/task1")
@@ -52,9 +51,6 @@ public class MyResource {
 		return new_coverage;
 	}
 	
-	
-	
-	
 	@Path("/customer_details")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -82,6 +78,15 @@ public class MyResource {
 		return coveragelist;
 	}
 	
+	@Path("/customer_summary")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<customer> customer_summary_details()
+	{
+		List<customer> customer_summary=dao.customer_details_id();
+		return customer_summary;
+	}
+	
 	@Path("/vehicle_summary")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -89,7 +94,6 @@ public class MyResource {
 	{
 		List<vehicle> vehicle_summary=dao.vehicle_details_id();
 		return vehicle_summary;
-		
 	}
 	
 	@Path("/coverage_summary")
@@ -99,17 +103,6 @@ public class MyResource {
 	{
 		List<coverage> coverage_summary=dao.coverage_details_id();
 		return coverage_summary;
-		
-	}
-	
-	@Path("/addtask1")
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public task1model add_data(task1model task1model) 
-	{
-		dao.add(task1model);
-		return task1model;
 	}
 
 

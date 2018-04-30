@@ -7,7 +7,6 @@ function coveragefunction($scope,$http)
 {
 	var addcoverage="http://localhost:8002/task1/webapi/task1/addcoverage";
 	
-	
 	$scope.showplan=function()
 	{
 		
@@ -19,6 +18,15 @@ function coveragefunction($scope,$http)
 		
 		$scope.total_limit_n=medical_PIP_limitv + unisured_underinsured_limitv + rental_limitv + comprehensive_colision_limitv + liability_limitv;
 		
+		var liability_a_deductiblev=Number($scope.liability_a_deductiblen || 0);
+		var liability_b_deductiblev=Number($scope.liability_b_deductiblen || 0);
+		var liability_c_deductiblev=Number($scope.liability_c_deductiblen || 0);
+		var liability_d_deductiblev=Number($scope.liability_d_deductiblen || 0);
+		var liability_e_deductiblev=Number($scope.liability_e_deductiblen || 0);
+		var liability_f_deductiblev=Number($scope.liability_f_deductiblen || 0);
+		
+		$scope.total_deductible_n=liability_a_deductiblev+liability_b_deductiblev+liability_c_deductiblev+liability_d_deductiblev+
+								  liability_e_deductiblev+liability_f_deductiblev;
 		
 	}
 	

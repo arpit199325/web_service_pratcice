@@ -24,7 +24,7 @@
 
 <body>
 
-<form action="vehicle_registration.jsp" enctype="application/json" ng-controller="customercntrl" name="customerform">
+<form action="vehicle_registration.jsp" ng-submit="submitcustomer()" enctype="application/json" ng-controller="customercntrl" name="customerform">
 
 <h1> Customer Registration Details : </h1>
 
@@ -39,7 +39,7 @@
 
 <p>
 Social Security Number : 
-<input type="text" name="ssnj" pattern="(?=.*\d).{9,}" title="Please enter your 9 digit Social Security Number" ng-model="ssnn" ng-trim="false" required> 
+<input type="text" name="ssnj" pattern="(?=.*\d).{9}" title="Please enter your 9 digit Social Security Number" ng-model="ssnn" ng-trim="false" required> 
 </p><br>
 
 <p>
@@ -72,11 +72,11 @@ Gender :
 
 <p>
 Contact Number : 
-<input type="text" name="contactnumberj" pattern="(?=.*\d).{10,}" title="Please enter your 10 digit Mobile Number" ng-model="contactnumbern" ng-trim="false" required> 
+<input type="text" name="contactnumberj" pattern="(?=.*\d).{10}" title="Please enter your 10 digit Mobile Number" ng-model="contactnumbern" ng-trim="false" required> 
 </p><br>
 
 <p>
-<input type="submit" ng-click="submitcustomer()" value="Continue" >
+<input type="submit" value="Continue" >
 <input type="button" value="Cancel">
 </p>
 

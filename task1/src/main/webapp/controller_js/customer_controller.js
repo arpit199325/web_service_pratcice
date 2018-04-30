@@ -9,7 +9,7 @@ function customerdetails($scope,$http)
 	var getcustomer="http://localhost:8002/task1/webapi/task1/customer_details";
 
 	$scope.age_discountn=15;
-	$scope.accident_increasen=125;
+	$scope.accident_increasen=12;
 	
 	$http.get(getcustomer).then(function(response)
 			{

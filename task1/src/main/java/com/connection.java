@@ -30,8 +30,7 @@ public class connection {
 		
 		Configuration conf=new Configuration();
 		conf.addPackage("com").addProperties(prop).addAnnotatedClass(customer.class)
-		.addAnnotatedClass(vehicle.class).addAnnotatedClass(coverage.class)
-		.addAnnotatedClass(task1model.class).addAnnotatedClass(coverage_count.class);
+		.addAnnotatedClass(vehicle.class).addAnnotatedClass(coverage.class).addAnnotatedClass(coverage_count.class);
 		
 		sr=new ServiceRegistryBuilder().applySettings(conf.getProperties()).buildServiceRegistry();
 		sf=conf.buildSessionFactory(sr);
