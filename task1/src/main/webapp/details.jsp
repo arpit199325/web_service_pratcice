@@ -85,7 +85,7 @@
 </table><br>
 
 <h3> Coverage Details : </h3><br>
-<table title="Coverage Details" width="3px" cellpadding="2px" cellspacing="2px" border="3px">
+<table title="Coverage Details" width="4px" cellpadding="2px" cellspacing="4px" border="2px">
 
 <tr>
 
@@ -111,9 +111,34 @@
 
 </tr>
 
-
 </table>
 
+
+
+<table title="All Coverage Details">
+<tr>
+<td>Total Limit</td>
+<td>Total Deductible</td>
+<td>Total Premium</td>
+<td>Age Discount</td>
+<td>Accident Increase Amount</td>
+<td>Anti Theft Discount</td>
+<td>Car Year Discount</td>
+<td>After Appyling Discount Total Premium</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
 
 
 </form>

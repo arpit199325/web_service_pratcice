@@ -1,15 +1,9 @@
 package com;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 @Entity
 
@@ -31,8 +25,6 @@ public class coverage {
 	private String medical_PIP_coverage;
 	@Column
 	private int customer_id;
-	@Column
-	private String total_limit;
 
 	
 	@Column
@@ -157,6 +149,13 @@ public class coverage {
 	@Column
 	private String medical_PIP_f_deductible;
 	
+	@Column
+	private String total_limit;
+	@Column
+	private String total_deductible;
+	@Column
+	private String total_premium;
+	
 //	@OneToOne(cascade=CascadeType.ALL)
 //	@JoinColumn(name="customer_id")
 //	private customer customer;
@@ -165,17 +164,15 @@ public class coverage {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	
 public coverage(int coverage_id, String liability_coverage, String comprehensive_colision_coverage,
 		String rental_coverage, String unisured_underinsured_coverage, String medical_PIP_coverage, int customer_id,
-		String total_limit, String liability_a_premium, String liability_b_premium, String liability_c_premium,
-		String liability_d_premium, String liability_e_premium, String liability_f_premium,
-		String comprehensive_colision_a_premium, String comprehensive_colision_b_premium,
-		String comprehensive_colision_c_premium, String comprehensive_colision_d_premium,
-		String comprehensive_colision_e_premium, String comprehensive_colision_f_premium, String rental_a_premium,
-		String rental_b_premium, String rental_c_premium, String rental_d_premium, String rental_e_premium,
-		String rental_f_premium, String unisured_underinsured_a_premium, String unisured_underinsured_b_premium,
+		String liability_a_premium, String liability_b_premium, String liability_c_premium, String liability_d_premium,
+		String liability_e_premium, String liability_f_premium, String comprehensive_colision_a_premium,
+		String comprehensive_colision_b_premium, String comprehensive_colision_c_premium,
+		String comprehensive_colision_d_premium, String comprehensive_colision_e_premium,
+		String comprehensive_colision_f_premium, String rental_a_premium, String rental_b_premium,
+		String rental_c_premium, String rental_d_premium, String rental_e_premium, String rental_f_premium,
+		String unisured_underinsured_a_premium, String unisured_underinsured_b_premium,
 		String unisured_underinsured_c_premium, String unisured_underinsured_d_premium,
 		String unisured_underinsured_e_premium, String unisured_underinsured_f_premium, String medical_PIP_a_premium,
 		String medical_PIP_b_premium, String medical_PIP_c_premium, String medical_PIP_d_premium,
@@ -190,7 +187,8 @@ public coverage(int coverage_id, String liability_coverage, String comprehensive
 		String unisured_underinsuredb_c_deductible, String unisured_underinsuredb_d_deductible,
 		String unisured_underinsuredb_e_deductible, String unisured_underinsuredb_f_deductible,
 		String medical_PIP_a_deductible, String medical_PIP_b_deductible, String medical_PIP_c_deductible,
-		String medical_PIP_d_deductible, String medical_PIP_e_deductible, String medical_PIP_f_deductible) {
+		String medical_PIP_d_deductible, String medical_PIP_e_deductible, String medical_PIP_f_deductible,
+		String total_limit, String total_deductible, String total_premium) {
 	super();
 	this.coverage_id = coverage_id;
 	this.liability_coverage = liability_coverage;
@@ -199,7 +197,6 @@ public coverage(int coverage_id, String liability_coverage, String comprehensive
 	this.unisured_underinsured_coverage = unisured_underinsured_coverage;
 	this.medical_PIP_coverage = medical_PIP_coverage;
 	this.customer_id = customer_id;
-	this.total_limit = total_limit;
 	this.liability_a_premium = liability_a_premium;
 	this.liability_b_premium = liability_b_premium;
 	this.liability_c_premium = liability_c_premium;
@@ -260,6 +257,9 @@ public coverage(int coverage_id, String liability_coverage, String comprehensive
 	this.medical_PIP_d_deductible = medical_PIP_d_deductible;
 	this.medical_PIP_e_deductible = medical_PIP_e_deductible;
 	this.medical_PIP_f_deductible = medical_PIP_f_deductible;
+	this.total_limit = total_limit;
+	this.total_deductible = total_deductible;
+	this.total_premium = total_premium;
 }
 
 public int getCoverage_id() {
@@ -316,14 +316,6 @@ public int getCustomer_id() {
 
 public void setCustomer_id(int customer_id) {
 	this.customer_id = customer_id;
-}
-
-public String getTotal_limit() {
-	return total_limit;
-}
-
-public void setTotal_limit(String total_limit) {
-	this.total_limit = total_limit;
 }
 
 public String getLiability_a_premium() {
@@ -806,16 +798,40 @@ public void setMedical_PIP_f_deductible(String medical_PIP_f_deductible) {
 	this.medical_PIP_f_deductible = medical_PIP_f_deductible;
 }
 
+public String getTotal_limit() {
+	return total_limit;
+}
+
+public void setTotal_limit(String total_limit) {
+	this.total_limit = total_limit;
+}
+
+public String getTotal_deductible() {
+	return total_deductible;
+}
+
+public void setTotal_deductible(String total_deductible) {
+	this.total_deductible = total_deductible;
+}
+
+public String getTotal_premium() {
+	return total_premium;
+}
+
+public void setTotal_premium(String total_premium) {
+	this.total_premium = total_premium;
+}
+
 @Override
 public String toString() {
 	return "coverage [coverage_id=" + coverage_id + ", liability_coverage=" + liability_coverage
 			+ ", comprehensive_colision_coverage=" + comprehensive_colision_coverage + ", rental_coverage="
 			+ rental_coverage + ", unisured_underinsured_coverage=" + unisured_underinsured_coverage
-			+ ", medical_PIP_coverage=" + medical_PIP_coverage + ", customer_id=" + customer_id + ", total_limit="
-			+ total_limit + ", liability_a_premium=" + liability_a_premium + ", liability_b_premium="
-			+ liability_b_premium + ", liability_c_premium=" + liability_c_premium + ", liability_d_premium="
-			+ liability_d_premium + ", liability_e_premium=" + liability_e_premium + ", liability_f_premium="
-			+ liability_f_premium + ", comprehensive_colision_a_premium=" + comprehensive_colision_a_premium
+			+ ", medical_PIP_coverage=" + medical_PIP_coverage + ", customer_id=" + customer_id
+			+ ", liability_a_premium=" + liability_a_premium + ", liability_b_premium=" + liability_b_premium
+			+ ", liability_c_premium=" + liability_c_premium + ", liability_d_premium=" + liability_d_premium
+			+ ", liability_e_premium=" + liability_e_premium + ", liability_f_premium=" + liability_f_premium
+			+ ", comprehensive_colision_a_premium=" + comprehensive_colision_a_premium
 			+ ", comprehensive_colision_b_premium=" + comprehensive_colision_b_premium
 			+ ", comprehensive_colision_c_premium=" + comprehensive_colision_c_premium
 			+ ", comprehensive_colision_d_premium=" + comprehensive_colision_d_premium
@@ -854,9 +870,12 @@ public String toString() {
 			+ ", medical_PIP_b_deductible=" + medical_PIP_b_deductible + ", medical_PIP_c_deductible="
 			+ medical_PIP_c_deductible + ", medical_PIP_d_deductible=" + medical_PIP_d_deductible
 			+ ", medical_PIP_e_deductible=" + medical_PIP_e_deductible + ", medical_PIP_f_deductible="
-			+ medical_PIP_f_deductible + "]";
+			+ medical_PIP_f_deductible + ", total_limit=" + total_limit + ", total_deductible=" + total_deductible
+			+ ", total_premium=" + total_premium + "]";
 }
 
+	
+	
 	
 
 	
