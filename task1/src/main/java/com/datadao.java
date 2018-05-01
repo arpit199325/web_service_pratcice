@@ -21,6 +21,8 @@ public class datadao implements datadaoi
 	 coverage coveragemodel=new coverage();
 	 coverage_count count=new coverage_count();
 	 public static int fetched_id;
+	 public static double total_discount=0.0;
+	 public static double total_increase=0.0;
 
 	 
 	 /*Add Details Section*/
@@ -57,6 +59,8 @@ public class datadao implements datadaoi
 				System.out.println("Eligible for the Age Based Discount");
 			
 				customermodel.setAge_discount(new_customer.getAge_discount());
+				
+				total_discount=total_discount+new_customer.getAge_discount();
 			}
 			else
 			{
@@ -79,6 +83,8 @@ public class datadao implements datadaoi
 		{
 			System.out.println("Not Eligible for A good driver discount !!!!");
 			customermodel.setIncrease_accident(new_customer.getIncrease_accident());
+			
+			total_increase=total_increase+new_customer.getIncrease_accident();
 		}
 		
 		customermodel.setMarital_status(new_customer.getMarital_status());
@@ -124,6 +130,7 @@ public class datadao implements datadaoi
 		if(Calendar.getInstance().get(Calendar.YEAR)-new_vehicle.getYear()<=1) 
 		{
 			vehiclemodel.setYear_discount(new_vehicle.getYear_discount());
+			total_discount=total_discount+new_vehicle.getYear_discount();
 		}
 		else
 		{
@@ -135,6 +142,7 @@ public class datadao implements datadaoi
 		if(new_vehicle.getAnti_theft().equals("yes")) 
 		{
 			vehiclemodel.setAnti_theft_discount(new_vehicle.getAnti_theft_discount());
+			total_discount=total_discount+new_vehicle.getAnti_theft_discount();
 		}
 		else
 		{
@@ -164,6 +172,8 @@ public class datadao implements datadaoi
 		new_coverage.setCustomer_id(fetched_id);
 		
 		session.save(new_coverage);
+		
+		System.out.println("Your total discount is = " + total_discount + " Your increase amount is = " +total_increase);
 		
 		tx.commit();
 		
@@ -268,6 +278,7 @@ public class datadao implements datadaoi
 		tx=session.beginTransaction();
 		
 		Query q=session.createQuery("from coverage where customer_id = "+fetched_id);
+		
 		List<coverage> list_coverage=q.list();
 		
 		tx.commit();

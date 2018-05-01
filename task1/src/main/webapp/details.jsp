@@ -96,11 +96,12 @@
 <td>medical_PIP_coverage</td>
 <td>rental_coverage</td>
 <td>unisured_underinsured_coverage</td>
-
+<td>total_deductible</td>
+<td>total_limit</td>
+<td>total_premium</td>
 </tr>
 
 <tr ng-repeat="coverage in coverage_result">
-
 <td>{{coverage.coverage_id}}</td>
 <td>{{coverage.comprehensive_colision_coverage}}</td>
 <td>{{coverage.customer_id}}</td>
@@ -108,38 +109,12 @@
 <td>{{coverage.medical_PIP_coverage}}</td>
 <td>{{coverage.rental_coverage}}</td>
 <td>{{coverage.unisured_underinsured_coverage}}</td>
-
+<td>{{coverage.total_deductible}}</td>
+<td>{{coverage.total_limit}}</td>
+<td>{{coverage.total_premium}}</td>
 </tr>
 
 </table>
-
-
-
-<table title="All Coverage Details">
-<tr>
-<td>Total Limit</td>
-<td>Total Deductible</td>
-<td>Total Premium</td>
-<td>Age Discount</td>
-<td>Accident Increase Amount</td>
-<td>Anti Theft Discount</td>
-<td>Car Year Discount</td>
-<td>After Appyling Discount Total Premium</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-
-</table>
-
 
 </form>
 
