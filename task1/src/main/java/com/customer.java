@@ -37,17 +37,17 @@ public class customer {
 	private String contact_no;
 
 	@Column
-	private Float age_discount;
+	private Double age_discount;
 	
 	@Column
-	private Long increase_accident;
+	private Double increase_accident;
 	
 	public customer() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public customer(int customer_id, String name, String address, int ssn, String dob, int number_accident,
-			String marital_status, String gender, String contact_no, Float age_discount, Long increase_accident) {
+			String marital_status, String gender, String contact_no, Double age_discount, Double increase_accident) {
 		super();
 		this.customer_id = customer_id;
 		this.name = name;
@@ -134,19 +134,19 @@ public class customer {
 		this.contact_no = contact_no;
 	}
 
-	public Float getAge_discount() {
+	public Double getAge_discount() {
 		return age_discount;
 	}
 
-	public void setAge_discount(Float age_discount) {
+	public void setAge_discount(Double age_discount) {
 		this.age_discount = age_discount;
 	}
 
-	public Long getIncrease_accident() {
+	public Double getIncrease_accident() {
 		return increase_accident;
 	}
 
-	public void setIncrease_accident(Long increase_accident) {
+	public void setIncrease_accident(Double increase_accident) {
 		this.increase_accident = increase_accident;
 	}
 
@@ -158,6 +158,11 @@ public class customer {
 				+ ", increase_accident=" + increase_accident + "]";
 	}
 
-
+	
+	
+	
+	
+	
+	
 	
 }

@@ -45,13 +45,11 @@ Social Security Number :
 <p>
 Date Of Birth : 
 <input type="text" id="datepicker" name="dobj" ng-model="dobn" ng-trim="false" required>
-<input type="hidden" ng-model="age_discountn">
 </p><br>
 
 <p>
 Number Of Accident :
 <input type="text" name="accidentj"  pattern="(?=.*\d).{1,}" title="Please enter number only" ng-model="accidentn" ng-trim="false"> 
-<input type="hidden" ng-model="accident_increasen">
 </p><br>
 
 <p>

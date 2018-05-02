@@ -7,9 +7,6 @@ function customerdetails($scope,$http)
 {
 	var addcustomer="http://localhost:8002/task1/webapi/task1/addcustomer";
 	var getcustomer="http://localhost:8002/task1/webapi/task1/customer_details";
-
-	$scope.age_discountn=15;
-	$scope.accident_increasen=12;
 	
 	$http.get(getcustomer).then(function(response)
 			{
@@ -33,9 +30,7 @@ function customerdetails($scope,$http)
 			number_accident :  $scope.accidentn,
 			marital_status :  $scope.marritaln,
 			gender :  $scope.gendern,
-			contact_no :  $scope.contactnumbern,
-			age_discount : $scope.age_discountn,
-			increase_accident : $scope.accident_increasen
+			contact_no :  $scope.contactnumbern
 			}
 		}).then(function(response){
 			$scope.result=response.data;

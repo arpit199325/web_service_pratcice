@@ -21,8 +21,12 @@ public class datadao implements datadaoi
 	 coverage coveragemodel=new coverage();
 	 coverage_count count=new coverage_count();
 	 public static int fetched_id;
-	 public static double total_discount=0.0;
-	 public static double total_increase=0.0;
+	 public static Double age_dicount_d=15.00;
+	 public static Double accident_increase_d=12.00;
+	 public static Double anti_theft_discount_d=10.00;
+	 public static Double year_discount_d=10.00;
+	 public static Double total_discount_d=0.0;
+	 public static Double total_increase_d=0.0;
 
 	 
 	 /*Add Details Section*/
@@ -58,9 +62,9 @@ public class datadao implements datadaoi
 			{
 				System.out.println("Eligible for the Age Based Discount");
 			
-				customermodel.setAge_discount(new_customer.getAge_discount());
+				new_customer.setAge_discount(age_dicount_d);
 				
-				total_discount=total_discount+new_customer.getAge_discount();
+				total_discount_d=total_discount_d+new_customer.getAge_discount();
 			}
 			else
 			{
@@ -82,9 +86,9 @@ public class datadao implements datadaoi
 		else
 		{
 			System.out.println("Not Eligible for A good driver discount !!!!");
-			customermodel.setIncrease_accident(new_customer.getIncrease_accident());
+			new_customer.setIncrease_accident(accident_increase_d);
 			
-			total_increase=total_increase+new_customer.getIncrease_accident();
+			total_increase_d=total_increase_d+new_customer.getIncrease_accident();
 		}
 		
 		customermodel.setMarital_status(new_customer.getMarital_status());
@@ -129,8 +133,8 @@ public class datadao implements datadaoi
 		
 		if(Calendar.getInstance().get(Calendar.YEAR)-new_vehicle.getYear()<=1) 
 		{
-			vehiclemodel.setYear_discount(new_vehicle.getYear_discount());
-			total_discount=total_discount+new_vehicle.getYear_discount();
+			new_vehicle.setYear_discount(year_discount_d);
+			total_discount_d=total_discount_d+new_vehicle.getYear_discount();
 		}
 		else
 		{
@@ -141,8 +145,8 @@ public class datadao implements datadaoi
 		
 		if(new_vehicle.getAnti_theft().equals("yes")) 
 		{
-			vehiclemodel.setAnti_theft_discount(new_vehicle.getAnti_theft_discount());
-			total_discount=total_discount+new_vehicle.getAnti_theft_discount();
+			new_vehicle.setAnti_theft_discount(anti_theft_discount_d);
+			total_discount_d=total_discount_d+new_vehicle.getAnti_theft_discount();
 		}
 		else
 		{
@@ -170,10 +174,10 @@ public class datadao implements datadaoi
 		
 		System.out.println("my fetched id is "+fetched_id);
 		new_coverage.setCustomer_id(fetched_id);
+		new_coverage.setTotal_discount(total_discount_d);  
+		new_coverage.setTotal_increase(total_increase_d);
 		
 		session.save(new_coverage);
-		
-		System.out.println("Your total discount is = " + total_discount + " Your increase amount is = " +total_increase);
 		
 		tx.commit();
 		

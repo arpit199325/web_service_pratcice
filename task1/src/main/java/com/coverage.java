@@ -155,6 +155,10 @@ public class coverage {
 	private String total_deductible;
 	@Column
 	private String total_premium;
+	@Column
+	private Double total_discount;
+	@Column
+	private Double total_increase;
 	
 //	@OneToOne(cascade=CascadeType.ALL)
 //	@JoinColumn(name="customer_id")
@@ -188,7 +192,8 @@ public coverage(int coverage_id, String liability_coverage, String comprehensive
 		String unisured_underinsuredb_e_deductible, String unisured_underinsuredb_f_deductible,
 		String medical_PIP_a_deductible, String medical_PIP_b_deductible, String medical_PIP_c_deductible,
 		String medical_PIP_d_deductible, String medical_PIP_e_deductible, String medical_PIP_f_deductible,
-		String total_limit, String total_deductible, String total_premium) {
+		String total_limit, String total_deductible, String total_premium, Double total_discount,
+		Double total_increase) {
 	super();
 	this.coverage_id = coverage_id;
 	this.liability_coverage = liability_coverage;
@@ -260,6 +265,8 @@ public coverage(int coverage_id, String liability_coverage, String comprehensive
 	this.total_limit = total_limit;
 	this.total_deductible = total_deductible;
 	this.total_premium = total_premium;
+	this.total_discount = total_discount;
+	this.total_increase = total_increase;
 }
 
 public int getCoverage_id() {
@@ -822,6 +829,22 @@ public void setTotal_premium(String total_premium) {
 	this.total_premium = total_premium;
 }
 
+public Double getTotal_discount() {
+	return total_discount;
+}
+
+public void setTotal_discount(Double total_discount) {
+	this.total_discount = total_discount;
+}
+
+public Double getTotal_increase() {
+	return total_increase;
+}
+
+public void setTotal_increase(Double total_increase) {
+	this.total_increase = total_increase;
+}
+
 @Override
 public String toString() {
 	return "coverage [coverage_id=" + coverage_id + ", liability_coverage=" + liability_coverage
@@ -871,12 +894,15 @@ public String toString() {
 			+ medical_PIP_c_deductible + ", medical_PIP_d_deductible=" + medical_PIP_d_deductible
 			+ ", medical_PIP_e_deductible=" + medical_PIP_e_deductible + ", medical_PIP_f_deductible="
 			+ medical_PIP_f_deductible + ", total_limit=" + total_limit + ", total_deductible=" + total_deductible
-			+ ", total_premium=" + total_premium + "]";
+			+ ", total_premium=" + total_premium + ", total_discount=" + total_discount + ", total_increase="
+			+ total_increase + "]";
 }
 
 	
-	
-	
 
+	
+	
+	
+	
 	
 }
