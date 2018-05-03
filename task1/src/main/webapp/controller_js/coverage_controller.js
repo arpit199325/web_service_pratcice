@@ -297,6 +297,8 @@ function coveragefunction($scope,$http)
 											total_deductible : $scope.total_deductible_n,
 											total_premium : $scope.total_premium_n
 											
+										
+											
 												}
 									}).then(function(response)
 											{

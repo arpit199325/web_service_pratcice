@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form action="details.jsp" ng-submit="submitcoverage()" ng-controller="coveragecntrl" enctype="application/json">
+<form action="details.jsp" ng-submit="submitcoverage()" ng-controller="coveragecntrl" enctype="application/json" name="coverageform">
 
 <h2> Types Of Available Coverage Are given As Below : </h2>
 
@@ -22,7 +22,7 @@
 <h4>Available Coverage :</h4>
 
 <p>Select the Limit :
-<input type="radio" ng-model="liability_limitn" value="90000"> $90,000
+<input type="radio" ng-model="liability_limitn" value="90000" required> $90,000
 <input type="radio" ng-model="liability_limitn" value="100000" > $1,00,000
 <input type="radio" ng-model="liability_limitn" value="200000" > $2,00,000
 <input type="radio" ng-model="liability_limitn" value="300000" > $3,00,000
@@ -33,7 +33,7 @@ your selected limit : {{liability_limitn}}<br>
 
 <p ng-show="liability_limitn == 90000">Select the Deductible Amount :
 <select ng-model="liability_a_deductiblen" >
-<option >Select One</option>
+<option>Select One</option>
 <option value="">None</option>
 <option value="125">$125</option>
 <option value="175">$175</option>
@@ -49,7 +49,7 @@ your selected limit : {{liability_limitn}}<br>
 <li> The maximum payable for property damage : $40,000</li>
 <li>Please Select Your Auto Liability Six Month Premium is : 
 <select ng-model="liability_a_premium_n" >
-<option >Select One</option>
+<option>Select One</option>
 <option value="">None</option>
 <option value="740" >$740</option>
 </select>
@@ -73,7 +73,7 @@ your selected limit : {{liability_limitn}}<br>
 <li> The maximum payable for property damage : $40,000</li>
 <li>Please Select Your Auto Liability Six Month Premium is : 
 <select ng-model="liability_a_premium_n" >
-<option >Select One</option>
+<option>Select One</option>
 <option value="">None</option>
 <option value="540" >$540</option>
 </select>
@@ -85,7 +85,7 @@ your selected limit : {{liability_limitn}}<br>
 <li> The maximum payable for property damage : $40,000</li>
 <li>Please Select Your Auto Liability Six Month Premium is : 
 <select ng-model="liability_a_premium_n" >
-<option >Select One</option>
+<option>Select One</option>
 <option value="">None</option>
 <option value="490" >$490</option>
 </select>
@@ -97,7 +97,7 @@ your selected limit : {{liability_limitn}}<br>
 <li> The maximum payable for property damage : $40,000</li>
 <li>Please Select Your Auto Liability Six Month Premium is : 
 <select ng-model="liability_a_premium_n" >
-<option >Select One</option>
+<option>Select One</option>
 <option value="">None</option>
 <option value="440" >$440</option>
 </select>

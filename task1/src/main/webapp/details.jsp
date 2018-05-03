@@ -99,6 +99,9 @@
 <td>total_deductible</td>
 <td>total_limit</td>
 <td>total_premium</td>
+<td>total_discount</td>
+<td>total_increase</td>
+<td>accepted_premium</td>
 </tr>
 
 <tr ng-repeat="coverage in coverage_result">
@@ -112,6 +115,9 @@
 <td>{{coverage.total_deductible}}</td>
 <td>{{coverage.total_limit}}</td>
 <td>{{coverage.total_premium}}</td>
+<td>{{coverage.total_discount}}</td>
+<td>{{coverage.total_increase}}</td>
+<td>{{coverage.accepted_premium}}</td>
 </tr>
 
 </table>

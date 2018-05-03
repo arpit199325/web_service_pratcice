@@ -11,14 +11,14 @@
 
 <body>
 
-<form action="coverage.jsp" ng-submit="submitvehicle()" enctype="application/json" ng-controller="vehiclecntrl">
+<form action="coverage.jsp" ng-submit="submitvehicle()" enctype="application/json" ng-controller="vehiclecntrl" name="vehicleform">
 
 <h1>  Vehicle Details : </h1>
 
 <div>
 
 <p> Vehicle made Year :
-<input type="text" name="yearj" pattern="(?=.*\d).{4}" title="Please enter the four number for Year " ng-model="yearn" ng-trim="false" required> 
+<input type="text" name="yearj" ng-model="yearn" pattern="(?=.*\d).{4}" title="Please enter the four number for Year " ng-trim="false" required> 
 </p><br>
 
 <p> Vehicle VIN Number :
@@ -90,29 +90,24 @@
 </select><br>
 </p><br>
 
-
-<p>
-<input type="button" value="Add Another Vehicle" ng-hide="new_vehicle">
-<input type="submit" value="Continue" >
-<input type="button" value="Cancel">
-</p><br>
+</div>
 
 
+Do you have More Vehicle ? <input type="checkbox" ng-model="vehicle_2_n">
 
-<div ng-model="show_vehicle">
 
-<h1>  Vehicle Details : </h1>
+<div ng-show="vehicle_2_n">
 
 <p> Vehicle made Year :
-<input type="text" name="yearj" pattern="(?=.*\d).{4}" title="Please enter the four number for Year " ng-model="yearn" ng-trim="false" required> 
+<input type="text" name="vehicle_2_yearj" ng-model="vehicle_2_yearn" pattern="(?=.*\d).{4}" title="Please enter the four number for Year " ng-trim="false" ng-required> 
 </p><br>
 
 <p> Vehicle VIN Number :
-<input type="text" name="vinj" ng-model="vinn" maxlength="16" title="Please enter the 16 number long VIN Number" ng-trim="false" required>
+<input type="text" name="vehicle_2_vinj" ng-model="vehicle_2_vinn" maxlength="16" title="Please enter the 16 number long VIN Number" ng-trim="false" required>
 </p><br>
 
 <p> Make :
-<select name="makej" ng-model="maken" required>
+<select name="vehicle_2_makej" ng-model="vehicle_2_maken" required>
   <option value="">None</option>
 <option value="Honda">Honda</option>
 <option value="Acura">Acura</option>
@@ -132,12 +127,12 @@
 </p><br>
 
 <p> Model :
-<input type="text" name="modelj" ng-model="modeln" ng-trim="false" required>
+<input type="text" name="vehicle_2_modelj" ng-model="vehicle_2_modeln" ng-trim="false" required>
 </p><br>
 
 
 <p>Body Style :
-<select name="bodystylej" ng-model="bodystylen">
+<select name="vehicle_2_bodystylej" ng-model="vehicle_2_bodystylen">
   <option value="">None</option>
 <option value="SUV">SUV</option>
 <option value="Truck">Truck</option>
@@ -156,20 +151,20 @@
 </p><br>
 
 <p> Anti Theft Device :
-<input type="radio" value="yes" name="theftdevicej" ng-model="theftdevicen" >Yes
-<input type="radio" value="no" name="theftdevicej" ng-model="theftdevicen" >No
+<input type="radio" value="yes" name="vehicle_2_theftdevicej" ng-model="vehicle_2_theftdevicen" >Yes
+<input type="radio" value="no" name="vehicle_2_theftdevicej" ng-model="vehicle_2_theftdevicen" >No
 </p><br>
 
 
 <p> Owning Details :
-<input type="radio" value="owned" name="ownedtypej" ng-model="ownedtypen"> OWNED
-<input type="radio" value="financed" name="ownedtypej" ng-model="ownedtypen"> FINANCED
-<input type="radio" value="leased" name="ownedtypej" ng-model="ownedtypen"> LEASED
+<input type="radio" value="owned" name="vehicle_2_ownedtypej" ng-model="vehicle_2_ownedtypen"> OWNED
+<input type="radio" value="financed" name="vehicle_2_ownedtypej" ng-model="vehicle_2_ownedtypen"> FINANCED
+<input type="radio" value="leased" name="vehicle_2_ownedtypej" ng-model="vehicle_2_ownedtypen"> LEASED
 </p><br>
 
 
 <p>Vehicle Usage Type :
-<select name="vehicleusej" ng-model="vehicleusen" required>
+<select name="vehicle_2_vehicleusej" ng-model="vehicle_2_vehicleusen" required>
   <option value="">None</option>
 <option value="school"> school </option>
 <option value="work"> work </option>
@@ -177,24 +172,100 @@
 </p><br>
 
 
-<p>
-<input type="button" value="Add Another Vehicle" ng-show="">
-<input type="submit" value="Continue" >
-<input type="button" value="Cancel">
+
+
+Do you have More Vehicle ?  <input type="checkbox" ng-model="vehicle_3_n">
+
+
+<div ng-show="vehicle_3_n">
+
+<p> Vehicle made Year :
+<input type="text" name="vehicle_3_yearj" ng-model="vehicle_3_yearn" pattern="(?=.*\d).{4}" title="Please enter the four number for Year " ng-trim="false" required> 
+</p><br>
+
+<p> Vehicle VIN Number :
+<input type="text" name="vehicle_3_vinj" ng-model="vehicle_3_vinn" maxlength="16" title="Please enter the 16 number long VIN Number" ng-trim="false" required>
+</p><br>
+
+<p> Make :
+<select name="vehicle_3_makej" ng-model="vehicle_3_maken" required>
+  <option value="">None</option>
+<option value="Honda">Honda</option>
+<option value="Acura">Acura</option>
+<option value="BMW">BMW</option>
+<option value="Audi">Audi</option>
+<option value="Ferrari">Ferrari</option>
+<option value="Ford">Ford</option>
+<option value="Fiat">Fiat</option>
+<option value="GMC">GMC</option>
+<option value="Hyundai">Hyundai</option>
+<option value="Infinity">Infinity</option>
+<option value="Jaguar">Jaguar</option>
+<option value="Jeep">Jeep</option>
+<option value="Kia">Kia</option>
+<option value="Lexus">Lexus</option>
+</select> 
+</p><br>
+
+<p> Model :
+<input type="text" name="vehicle_3_modelj" ng-model="vehicle_3_modeln" ng-trim="false" required>
+</p><br>
+
+
+<p>Body Style :
+<select name="vehicle_3_bodystylej" ng-model="vehicle_3_bodystylen">
+  <option value="">None</option>
+<option value="SUV">SUV</option>
+<option value="Truck">Truck</option>
+<option value="Sedan">Sedan</option>
+<option value="Van">Van</option>
+<option value="Coupe">Coupe</option>
+<option value="Wagon">Wagon</option>
+<option value="Convertible">Convertible</option>
+<option value="Sports Car">Sports Car</option>
+<option value="Diesel">Diesel</option>
+<option value="Cross Over">Cross Over</option>
+<option value="Luxury Car">Luxury Car</option>
+<option value="Hybrid/Electric">Hybrid/Electric</option>
+<option value="Certified PreOwned">Certified PreOwned</option>
+</select>
+</p><br>
+
+<p> Anti Theft Device :
+<input type="radio" value="yes" name="vehicle_3_theftdevicej" ng-model="vehicle_3_theftdevicen" >Yes
+<input type="radio" value="no" name="vehicle_3_theftdevicej" ng-model="vehicle_3_theftdevicen" >No
+</p><br>
+
+
+<p> Owning Details :
+<input type="radio" value="owned" name="vehicle_3_ownedtypej" ng-model="vehicle_3_ownedtypen"> OWNED
+<input type="radio" value="financed" name="vehicle_3_ownedtypej" ng-model="vehicle_3_ownedtypen"> FINANCED
+<input type="radio" value="leased" name="vehicle_3_ownedtypej" ng-model="vehicle_3_ownedtypen"> LEASED
+</p><br>
+
+
+<p>Vehicle Usage Type :
+<select name="vehicle_3_vehicleusej" ng-model="vehicle_3_vehicleusen" required>
+  <option value="">None</option>
+<option value="school"> school </option>
+<option value="work"> work </option>
+</select><br>
 </p><br>
 
 </div>
 
 
-
-
-
-
-
-
-
 </div>
 
+
+<div>
+
+<p>
+<input type="submit" value="Continue" >
+<input type="button" value="Cancel">
+</p><br>
+
+</div>
 
 
 

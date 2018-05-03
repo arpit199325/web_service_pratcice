@@ -155,6 +155,8 @@ public class datadao implements datadaoi
 		
 		System.out.println("my fetched id is "+fetched_id);
 		new_vehicle.setCustomer_id(fetched_id);
+		
+		
 		session.save(new_vehicle);
 		
 		tx.commit();
@@ -174,8 +176,17 @@ public class datadao implements datadaoi
 		
 		System.out.println("my fetched id is "+fetched_id);
 		new_coverage.setCustomer_id(fetched_id);
+		
 		new_coverage.setTotal_discount(total_discount_d);  
 		new_coverage.setTotal_increase(total_increase_d);
+		
+		String total_premium=new_coverage.getTotal_premium();
+		
+		Double d=Double.parseDouble(total_premium);
+		
+		Double total_premium_d=d-total_discount_d+total_increase_d;
+		
+		new_coverage.setAccepted_premium(total_premium_d);
 		
 		session.save(new_coverage);
 		
@@ -291,6 +302,21 @@ public class datadao implements datadaoi
 		
 		// TODO Auto-generated method stub
 		return list_coverage;
+	}
+	
+	public coverage final_premium()
+	{
+		Query q=session.createQuery("from coverage where customer_id = "+fetched_id);
+		
+		coveragemodel.getTotal_premium();
+		coveragemodel.getTotal_discount();
+		coveragemodel.getTotal_increase();
+		
+		
+		
+		return coveragemodel;
+		
+		
 	}
 	
 }
