@@ -141,6 +141,29 @@ public class datadao implements datadaoi
 			new_vehicle.setYear_discount(null);
 		}
 		
+		vehiclemodel.setVehicle_2_year(new_vehicle.getVehicle_2_year());
+		if (Calendar.getInstance().get(Calendar.YEAR)-new_vehicle.getVehicle_2_year()<=1)
+		{
+			new_vehicle.setVehicle_2_year_discount(year_discount_d);
+			total_discount_d=total_discount_d+new_vehicle.getVehicle_2_year_discount();
+		}
+		else
+		{
+			new_vehicle.setVehicle_2_year_discount(null);
+		}
+		
+		vehiclemodel.setVehicle_3_year(new_vehicle.getVehicle_3_year());
+		if (Calendar.getInstance().get(Calendar.YEAR)-new_vehicle.getVehicle_3_year()<=1)
+		{
+			new_vehicle.setVehicle_3_year_discount(year_discount_d);
+			total_discount_d=total_discount_d+new_vehicle.getVehicle_3_year_discount();
+		}
+		else
+		{
+			new_vehicle.setVehicle_3_year_discount(null);
+		}
+		
+		
 		vehiclemodel.setAnti_theft(new_vehicle.getAnti_theft());
 		
 		if(new_vehicle.getAnti_theft().equals("yes")) 
@@ -151,6 +174,27 @@ public class datadao implements datadaoi
 		else
 		{
 			new_vehicle.setAnti_theft_discount(null);
+		}
+		
+		
+		vehiclemodel.setVehicle_2_anti_theft(new_vehicle.getVehicle_2_anti_theft());
+		if (new_vehicle.getVehicle_2_anti_theft().equals("yes")) 
+		{
+			new_vehicle.setVehicle_2_anti_theft_discount(anti_theft_discount_d);
+			total_discount_d=total_discount_d+new_vehicle.getVehicle_2_anti_theft_discount();
+		} else
+		{
+			new_vehicle.setVehicle_2_anti_theft_discount(null);
+		}
+		
+		vehiclemodel.setVehicle_3_anti_theft(new_vehicle.getVehicle_3_anti_theft());
+		if (new_vehicle.getVehicle_3_anti_theft().equals("yes")) 
+		{
+			new_vehicle.setVehicle_3_anti_theft_discount(anti_theft_discount_d);
+			total_discount_d=total_discount_d+new_vehicle.getVehicle_3_anti_theft_discount();
+		} else
+		{
+			new_vehicle.setVehicle_3_anti_theft_discount(null);
 		}
 		
 		System.out.println("my fetched id is "+fetched_id);
@@ -311,9 +355,7 @@ public class datadao implements datadaoi
 		coveragemodel.getTotal_premium();
 		coveragemodel.getTotal_discount();
 		coveragemodel.getTotal_increase();
-		
-		
-		
+
 		return coveragemodel;
 		
 		

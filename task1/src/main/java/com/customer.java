@@ -22,6 +22,7 @@ public class customer {
 	private int ssn;
 	
 	@Column(nullable=false)
+	@Deprecated
 	private String dob;
 	
 	@Column(nullable=false)
