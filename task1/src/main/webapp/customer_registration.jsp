@@ -55,7 +55,7 @@ Number Of Accident :
 <p>
 Marital Status : 
 <select name="marritalj" ng-model="marritaln">
-  <option value="">None</option>
+<option>Select One</option>
 <option value="single"> Single </option>
 <option value="married"> Married </option>
 <option value="divorsed"> Divorced </option>

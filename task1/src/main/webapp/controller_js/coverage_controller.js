@@ -25,12 +25,19 @@ function coveragefunction($scope,$http)
 		var liability_e_deductiblev=Number($scope.liability_e_deductiblen || 0);
 		var liability_f_deductiblev=Number($scope.liability_f_deductiblen || 0);
 		
+		$scope.selected_liability_deductible_v=liability_a_deductiblev+liability_b_deductiblev+liability_c_deductiblev+liability_d_deductiblev+
+								 liability_e_deductiblev+liability_f_deductiblev;
+		
 		var comprehensive_colision_a_deductiblev=Number($scope.comprehensive_colision_a_deductiblen || 0);
 		var comprehensive_colision_b_deductiblev=Number($scope.comprehensive_colision_b_deductiblen || 0);
 		var comprehensive_colision_c_deductiblev=Number($scope.comprehensive_colision_c_deductiblen || 0);
 		var comprehensive_colision_d_deductiblev=Number($scope.comprehensive_colision_d_deductiblen || 0);
 		var comprehensive_colision_e_deductiblev=Number($scope.comprehensive_colision_e_deductiblen || 0);
 		var comprehensive_colision_f_deductiblev=Number($scope.comprehensive_colision_f_deductiblen || 0);
+		
+		$scope.selected_comprehensive_colision_deductiblev=comprehensive_colision_a_deductiblev+comprehensive_colision_b_deductiblev+
+		comprehensive_colision_c_deductiblev+comprehensive_colision_d_deductiblev+comprehensive_colision_e_deductiblev+
+		comprehensive_colision_f_deductiblev;
 		
 		var rental_a_deductiblev=Number($scope.rental_a_deductiblen || 0);
 		var rental_b_deductiblev=Number($scope.rental_b_deductiblen || 0);
@@ -39,6 +46,9 @@ function coveragefunction($scope,$http)
 		var rental_e_deductiblev=Number($scope.rental_e_deductiblen || 0);
 		var rental_f_deductiblev=Number($scope.rental_f_deductiblen || 0);
 		
+		$scope.selected_rental_deductiblev=rental_a_deductiblev+rental_b_deductiblev+rental_c_deductiblev+rental_d_deductiblev+
+		rental_e_deductiblev+rental_f_deductiblev;
+		
 		var unisured_underinsured_a_deductiblev=Number($scope.unisured_underinsured_a_deductiblen || 0);
 		var unisured_underinsured_b_deductiblev=Number($scope.unisured_underinsured_b_deductiblen || 0);
 		var unisured_underinsured_c_deductiblev=Number($scope.unisured_underinsured_c_deductiblen || 0);
@@ -46,12 +56,19 @@ function coveragefunction($scope,$http)
 		var unisured_underinsured_e_deductiblev=Number($scope.unisured_underinsured_e_deductiblen || 0);
 		var unisured_underinsured_f_deductiblev=Number($scope.unisured_underinsured_f_deductiblen || 0);
 		
+		$scope.selected_unisured_underinsured_deductiblev=unisured_underinsured_a_deductiblev+unisured_underinsured_b_deductiblev+
+		unisured_underinsured_c_deductiblev+unisured_underinsured_d_deductiblev+unisured_underinsured_e_deductiblev+
+		unisured_underinsured_f_deductiblev;
+		
 		var medical_PIP_a_deductiblev=Number($scope.medical_PIP_a_deductiblen || 0);
 		var medical_PIP_b_deductiblev=Number($scope.medical_PIP_b_deductiblen || 0);
 		var medical_PIP_c_deductiblev=Number($scope.medical_PIP_c_deductiblen || 0);
 		var medical_PIP_d_deductiblev=Number($scope.medical_PIP_d_deductiblen || 0);
 		var medical_PIP_e_deductiblev=Number($scope.medical_PIP_e_deductiblen || 0);
 		var medical_PIP_f_deductiblev=Number($scope.medical_PIP_f_deductiblen || 0);
+		
+		$scope.selected_medical_PIP_deductiblev=medical_PIP_a_deductiblev+medical_PIP_b_deductiblev+medical_PIP_c_deductiblev+
+		medical_PIP_d_deductiblev+medical_PIP_e_deductiblev+medical_PIP_f_deductiblev;
 		
 		$scope.total_deductible_n=liability_a_deductiblev+liability_b_deductiblev+liability_c_deductiblev+liability_d_deductiblev+
 								  liability_e_deductiblev+liability_f_deductiblev+comprehensive_colision_a_deductiblev+
@@ -70,12 +87,18 @@ function coveragefunction($scope,$http)
 		var liability_e_premium_v=Number($scope.liability_e_premium_n || 0);
 		var liability_f_premium_v=Number($scope.liability_f_premium_n || 0);
 		
+		$scope.selected_liability_premium_v=liability_a_premium_v+liability_b_premium_v+liability_c_premium_v+liability_d_premium_v+
+		liability_e_premium_v+liability_f_premium_v;
+		
 		var comprehensive_colision_a_premium_v=Number($scope.comprehensive_colision_a_premium_n || 0);
 		var comprehensive_colision_b_premium_v=Number($scope.comprehensive_colision_b_premium_n || 0);
 		var comprehensive_colision_c_premium_v=Number($scope.comprehensive_colision_c_premium_n || 0);
 		var comprehensive_colision_d_premium_v=Number($scope.comprehensive_colision_d_premium_n || 0);
 		var comprehensive_colision_e_premium_v=Number($scope.comprehensive_colision_e_premium_n || 0);
 		var comprehensive_colision_f_premium_v=Number($scope.comprehensive_colision_f_premium_n || 0);
+		
+		$scope.selected_comprehensive_colision_premium_v=comprehensive_colision_a_premium_v+comprehensive_colision_b_premium_v+
+		comprehensive_colision_c_premium_v+comprehensive_colision_d_premium_v+comprehensive_colision_e_premium_v+comprehensive_colision_f_premium_v;
 		
 		var rental_a_premium_v=Number($scope.rental_a_premium_n || 0);
 		var rental_b_premium_v=Number($scope.rental_b_premium_n || 0);
@@ -84,6 +107,9 @@ function coveragefunction($scope,$http)
 		var rental_e_premium_v=Number($scope.rental_e_premium_n || 0);
 		var rental_f_premium_v=Number($scope.rental_f_premium_n || 0);
 		
+		$scope.selected_rental_premium_v=rental_a_premium_v+rental_b_premium_v+rental_c_premium_v+rental_d_premium_v+rental_e_premium_v+
+		rental_f_premium_v;
+		
 		var unisured_underinsured_a_premium_v=Number($scope.unisured_underinsured_a_premium_n || 0);
 		var unisured_underinsured_b_premium_v=Number($scope.unisured_underinsured_b_premium_n || 0);
 		var unisured_underinsured_c_premium_v=Number($scope.unisured_underinsured_c_premium_n || 0);
@@ -91,12 +117,18 @@ function coveragefunction($scope,$http)
 		var unisured_underinsured_e_premium_v=Number($scope.unisured_underinsured_e_premium_n || 0);
 		var unisured_underinsured_f_premium_v=Number($scope.unisured_underinsured_f_premium_n || 0);
 		
+		$scope.selected_unisured_underinsured_premium_v=unisured_underinsured_a_premium_v+unisured_underinsured_b_premium_v+
+		unisured_underinsured_c_premium_v+unisured_underinsured_d_premium_v+unisured_underinsured_e_premium_v+unisured_underinsured_f_premium_v;
+		
 		var medical_PIP_a_premium_v=Number($scope.medical_PIP_a_premium_n || 0);
 		var medical_PIP_b_premium_v=Number($scope.medical_PIP_b_premium_n || 0);
 		var medical_PIP_c_premium_v=Number($scope.medical_PIP_c_premium_n || 0);
 		var medical_PIP_d_premium_v=Number($scope.medical_PIP_d_premium_n || 0);
 		var medical_PIP_e_premium_v=Number($scope.medical_PIP_e_premium_n || 0);
 		var medical_PIP_f_premium_v=Number($scope.medical_PIP_f_premium_n || 0);
+		
+		$scope.selcted_medical_PIP_premium_v=medical_PIP_a_premium_v+medical_PIP_b_premium_v+medical_PIP_c_premium_v+medical_PIP_d_premium_v
+		+medical_PIP_e_premium_v+medical_PIP_f_premium_v;
 		
 		 $scope.total_premium_n=liability_a_premium_v+liability_b_premium_v+liability_c_premium_v+liability_d_premium_v+liability_e_premium_v+
 		  						liability_f_premium_v+comprehensive_colision_a_premium_v+comprehensive_colision_b_premium_v+
@@ -112,7 +144,6 @@ function coveragefunction($scope,$http)
 	
 	$scope.submitcoverage=function(){
 		
-
 		var medical_PIP_limitv=Number($scope.medical_PIP_limitn || 0);
 		var unisured_underinsured_limitv=Number($scope.unisured_underinsured_limitn || 0);
 		var rental_limitv=Number($scope.rental_limitn || 0);
@@ -127,6 +158,7 @@ function coveragefunction($scope,$http)
 		var liability_d_deductiblev=Number($scope.liability_d_deductiblen || 0);
 		var liability_e_deductiblev=Number($scope.liability_e_deductiblen || 0);
 		var liability_f_deductiblev=Number($scope.liability_f_deductiblen || 0);
+		
 		
 		var comprehensive_colision_a_deductiblev=Number($scope.comprehensive_colision_a_deductiblen || 0);
 		var comprehensive_colision_b_deductiblev=Number($scope.comprehensive_colision_b_deductiblen || 0);

@@ -30,6 +30,7 @@ public class datadao implements datadaoi
 
 	 
 	 /*Add Details Section*/
+	@SuppressWarnings("deprecation")
 	@Override
 	public customer add_cutomer(customer new_customer) {
 		
@@ -40,6 +41,7 @@ public class datadao implements datadaoi
 		customermodel.setAddress(new_customer.getAddress());
 		
 		Query q=session.createQuery("from customer where ssn ="+new_customer.getSsn());
+		@SuppressWarnings("unchecked")
 		List<customer> ssn_list=q.list();
 		if(ssn_list.isEmpty()==false) 
 		{
@@ -94,8 +96,6 @@ public class datadao implements datadaoi
 		customermodel.setMarital_status(new_customer.getMarital_status());
 		customermodel.setGender(new_customer.getGender());
 		customermodel.setContact_no(new_customer.getContact_no());
-		
-		datadao dao=new datadao();
 		
 		session.save(new_customer);
 		tx.commit();
@@ -250,6 +250,7 @@ public class datadao implements datadaoi
 		tx=session.beginTransaction();
 		
 		Query q=session.createQuery("from customer");
+		@SuppressWarnings("unchecked")
 		List<customer> customer_list= q.list();
 		
 		tx.commit();
@@ -267,6 +268,7 @@ public class datadao implements datadaoi
 		tx=session.beginTransaction();
 		
 		Query q=session.createQuery("from vehicle");
+		@SuppressWarnings("unchecked")
 		List<vehicle> listofvehicles=q.list();
 		
 		tx.commit();
@@ -284,6 +286,7 @@ public class datadao implements datadaoi
 		tx=session.beginTransaction();
 		
 		Query q=session.createQuery("from coverage");
+		@SuppressWarnings("unchecked")
 		List<coverage> list_coverage=q.list();
 		
 		tx.commit();
@@ -303,6 +306,7 @@ public class datadao implements datadaoi
 		tx=session.beginTransaction();
 		
 		Query q=session.createQuery("from customer where customer_id = "+fetched_id);
+		@SuppressWarnings("unchecked")
 		List<customer> list_customer=q.list();
 		
 		tx.commit();
@@ -320,6 +324,7 @@ public class datadao implements datadaoi
 		tx=session.beginTransaction();
 		
 		Query q=session.createQuery("from vehicle where customer_id ="+fetched_id);
+		@SuppressWarnings("unchecked")
 		List<vehicle> list_vehicle=q.list();
 		
 		tx.commit();
@@ -337,7 +342,7 @@ public class datadao implements datadaoi
 		tx=session.beginTransaction();
 		
 		Query q=session.createQuery("from coverage where customer_id = "+fetched_id);
-		
+		@SuppressWarnings("unchecked")
 		List<coverage> list_coverage=q.list();
 		
 		tx.commit();
@@ -350,7 +355,7 @@ public class datadao implements datadaoi
 	
 	public coverage final_premium()
 	{
-		Query q=session.createQuery("from coverage where customer_id = "+fetched_id);
+//		Query q=session.createQuery("from coverage where customer_id = "+fetched_id);
 		
 		coveragemodel.getTotal_premium();
 		coveragemodel.getTotal_discount();

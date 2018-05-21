@@ -29,6 +29,7 @@ public class datadao {
 		if (equality_core.equals(">")) 
 		{
 			Query q=session.createQuery("from model where risk_level > "+risk_core);
+			@SuppressWarnings("unchecked")
 			List<model> data=q.list();
 			return data;
 			
@@ -36,6 +37,7 @@ public class datadao {
 		else if (equality_core.equals("<")) 
 		{
 			Query q=session.createQuery("from model where risk_level < "+risk_core);
+			@SuppressWarnings("unchecked")
 			List<model> data=q.list();
 			return data;
 			
@@ -43,6 +45,7 @@ public class datadao {
 		else if (equality_core.equals(">=")) 
 		{
 			Query q=session.createQuery("from model where risk_level >= "+risk_core);
+			@SuppressWarnings("unchecked")
 			List<model> data=q.list();
 			return data;
 			
@@ -50,6 +53,7 @@ public class datadao {
 		else if (equality_core.equals("<=")) 
 		{
 			Query q=session.createQuery("from model where risk_level <= "+risk_core);
+			@SuppressWarnings("unchecked")
 			List<model> data=q.list();
 			return data;
 			
@@ -57,6 +61,7 @@ public class datadao {
 		else if (equality_core.equals("=")) 
 		{
 			Query q=session.createQuery("from model where risk_level = "+risk_core);
+			@SuppressWarnings("unchecked")
 			List<model> data=q.list();
 			return data;
 			
@@ -64,19 +69,17 @@ public class datadao {
 		else if (equality_core.equals("!=")) 
 		{
 			Query q=session.createQuery("from model where risk_level != "+risk_core);
+			@SuppressWarnings("unchecked")
 			List<model> data=q.list();
 			return data;
 			
 		}
 		else if (equality_core.equals(" ")) 
 		{
-			
-			return null;
-			
+			return null;	
 		}
 		
 		tx.commit();
-		
 		
 		return null;
 		
@@ -91,7 +94,8 @@ public class datadao {
         tx = session.beginTransaction();
         
        	Query query = session.createQuery("from model where zipcode = " +m.getZipcode());
-    	List return_data=query.list();
+       	@SuppressWarnings("unchecked")
+       	List<model> return_data=query.list();
     
     	if(m.getZipcode() > 0 && return_data.isEmpty() == false ) 
     	{
@@ -121,7 +125,8 @@ public class datadao {
         tx = session.beginTransaction();
         
        	Query query = session.createQuery("from model where zipcode = " +m.getZipcode());
-    	List return_data=query.list();
+       	@SuppressWarnings("unchecked")
+       	List<model> return_data=query.list();
     
     	if(return_data.isEmpty()==false) 
     	{
@@ -161,6 +166,7 @@ public class datadao {
          session = sessionutil.gSession(); 
          tx=session.beginTransaction();
         Query query = session.createQuery("from model");
+        @SuppressWarnings("unchecked")
         List<model> alldata = query.list();
         
         tx.commit();
@@ -173,6 +179,7 @@ public class datadao {
         session = sessionutil.gSession();   
         tx=session.beginTransaction();
         Query query = session.createQuery("from model where zipcode ="+zipcode);
+        @SuppressWarnings("unchecked")
         List<model> alldata = query.list();
         
         tx.commit();

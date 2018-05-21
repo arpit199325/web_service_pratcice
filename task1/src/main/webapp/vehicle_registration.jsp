@@ -27,7 +27,7 @@
 
 <p> Make :
 <select name="makej" ng-model="maken" required>
-  <option value="">None</option>
+<option>Select One</option>
 <option value="Honda">Honda</option>
 <option value="Acura">Acura</option>
 <option value="BMW">BMW</option>
@@ -52,7 +52,7 @@
 
 <p>Body Style :
 <select name="bodystylej" ng-model="bodystylen">
-  <option value="">None</option>
+<option>Select One</option>
 <option value="SUV">SUV</option>
 <option value="Truck">Truck</option>
 <option value="Sedan">Sedan</option>
@@ -84,7 +84,7 @@
 
 <p>Vehicle Usage Type :
 <select name="vehicleusej" ng-model="vehicleusen" required>
-  <option value="">None</option>
+<option>Select One</option>
 <option value="school"> school </option>
 <option value="work"> work </option>
 </select><br>
@@ -99,7 +99,7 @@ Do you have More Vehicle ? <input type="checkbox" ng-model="vehicle_2_n">
 <div ng-show="vehicle_2_n">
 
 <p> Vehicle made Year :
-<input type="text" name="vehicle_2_yearj" ng-model="vehicle_2_yearn" pattern="(?=.*\d).{4}" title="Please enter the four number for Year " ng-trim="false" ng-required> 
+<input type="text" name="vehicle_2_yearj" ng-model="vehicle_2_yearn" pattern="(?=.*\d).{4}" title="Please enter the four number for Year " ng-trim="false" required> 
 </p><br>
 
 <p> Vehicle VIN Number :
@@ -108,7 +108,7 @@ Do you have More Vehicle ? <input type="checkbox" ng-model="vehicle_2_n">
 
 <p> Make :
 <select name="vehicle_2_makej" ng-model="vehicle_2_maken" required>
-  <option value="">None</option>
+<option>Select One</option>
 <option value="Honda">Honda</option>
 <option value="Acura">Acura</option>
 <option value="BMW">BMW</option>
@@ -133,7 +133,7 @@ Do you have More Vehicle ? <input type="checkbox" ng-model="vehicle_2_n">
 
 <p>Body Style :
 <select name="vehicle_2_bodystylej" ng-model="vehicle_2_bodystylen">
-  <option value="">None</option>
+<option>Select One</option>
 <option value="SUV">SUV</option>
 <option value="Truck">Truck</option>
 <option value="Sedan">Sedan</option>
@@ -151,8 +151,8 @@ Do you have More Vehicle ? <input type="checkbox" ng-model="vehicle_2_n">
 </p><br>
 
 <p> Anti Theft Device :
-<input type="radio" value="yes" name="vehicle_2_theftdevicej" ng-model="vehicle_2_theftdevicen" >Yes
-<input type="radio" value="no" name="vehicle_2_theftdevicej" ng-model="vehicle_2_theftdevicen" >No
+<input type="radio" value="yes" name="vehicle_2_theftdevicej" ng-model="vehicle_2_theftdevicen" ng-required="!vehicle_2_theftdevicen"  >Yes
+<input type="radio" value="no" name="vehicle_2_theftdevicej" ng-model="vehicle_2_theftdevicen" ng-required="!vehicle_2_theftdevicen" >No
 </p><br>
 
 
@@ -165,7 +165,7 @@ Do you have More Vehicle ? <input type="checkbox" ng-model="vehicle_2_n">
 
 <p>Vehicle Usage Type :
 <select name="vehicle_2_vehicleusej" ng-model="vehicle_2_vehicleusen" required>
-  <option value="">None</option>
+<option>Select One</option>
 <option value="school"> school </option>
 <option value="work"> work </option>
 </select><br>
@@ -189,7 +189,7 @@ Do you have More Vehicle ?  <input type="checkbox" ng-model="vehicle_3_n">
 
 <p> Make :
 <select name="vehicle_3_makej" ng-model="vehicle_3_maken" required>
-  <option value="">None</option>
+<option>Select One</option>
 <option value="Honda">Honda</option>
 <option value="Acura">Acura</option>
 <option value="BMW">BMW</option>
@@ -214,7 +214,7 @@ Do you have More Vehicle ?  <input type="checkbox" ng-model="vehicle_3_n">
 
 <p>Body Style :
 <select name="vehicle_3_bodystylej" ng-model="vehicle_3_bodystylen">
-  <option value="">None</option>
+<option>Select One</option>
 <option value="SUV">SUV</option>
 <option value="Truck">Truck</option>
 <option value="Sedan">Sedan</option>
@@ -232,8 +232,8 @@ Do you have More Vehicle ?  <input type="checkbox" ng-model="vehicle_3_n">
 </p><br>
 
 <p> Anti Theft Device :
-<input type="radio" value="yes" name="vehicle_3_theftdevicej" ng-model="vehicle_3_theftdevicen" >Yes
-<input type="radio" value="no" name="vehicle_3_theftdevicej" ng-model="vehicle_3_theftdevicen" >No
+<input type="radio" value="yes" name="vehicle_3_theftdevicej" ng-model="vehicle_3_theftdevicen" ng-required="!vehicle_3_theftdevicen" >Yes
+<input type="radio" value="no" name="vehicle_3_theftdevicej" ng-model="vehicle_3_theftdevicen" ng-required="!vehicle_3_theftdevicen"  >No
 </p><br>
 
 
@@ -246,7 +246,7 @@ Do you have More Vehicle ?  <input type="checkbox" ng-model="vehicle_3_n">
 
 <p>Vehicle Usage Type :
 <select name="vehicle_3_vehicleusej" ng-model="vehicle_3_vehicleusen" required>
-  <option value="">None</option>
+<option>Select One</option>
 <option value="school"> school </option>
 <option value="work"> work </option>
 </select><br>

@@ -84,6 +84,72 @@
 
 </table><br>
 
+<h3> Second Vehicle Details : </h3><br>
+
+<table title="Second Vehicle Details" width="3px" cellpadding="2px" cellspacing="2px" border="2px">
+<tr>
+<td>vehicle_id</td>
+<td>vehicle_2_anti_theft</td>
+<td>vehicle_2_anti_theft_discount</td>
+<td>body_style</td>
+<td>make</td>
+<td>model</td>
+<td>owning_type</td>
+<td>vehicle_usage</td>
+<td>vin</td>
+<td>year</td>
+<td>year_discount</td>
+</tr>
+
+<tr ng-repeat="vehicle in vehicle_result">
+<td>{{vehicle.vehicle_id}}</td>
+<td>{{vehicle.vehicle_2_anti_theft}}</td>
+<td>{{vehicle.vehicle_2_anti_theft_discount}}</td>
+<td>{{vehicle.vehicle_2_body_style}}</td>
+<td>{{vehicle.vehicle_2_make}}</td>
+<td>{{vehicle.vehicle_2_model}}</td>
+<td>{{vehicle.vehicle_2_owning_type}}</td>
+<td>{{vehicle.vehicle_2_vehicle_usage}}</td>
+<td>{{vehicle.vehicle_2_vin}}</td>
+<td>{{vehicle.vehicle_2_year}}</td>
+<td>{{vehicle.vehicle_2_year_discount}}</td>
+</tr>
+
+</table><br>
+
+<h3> Third Vehicle Details : </h3><br>
+
+<table title="Third Vehicle Details" width="3px" cellpadding="2px" cellspacing="2px" border="2px">
+<tr>
+<td>vehicle_id</td>
+<td>vehicle_3_anti_theft</td>
+<td>anti_theft_discount</td>
+<td>body_style</td>
+<td>make</td>
+<td>model</td>
+<td>owning_type</td>
+<td>vehicle_usage</td>
+<td>vin</td>
+<td>year</td>
+<td>year_discount</td>
+</tr>
+
+<tr ng-repeat="vehicle in vehicle_result">
+<td>{{vehicle.vehicle_id}}</td>
+<td>{{vehicle.vehicle_3_anti_theft}}</td>
+<td>{{vehicle.vehicle_3_anti_theft_discount}}</td>
+<td>{{vehicle.vehicle_3_body_style}}</td>
+<td>{{vehicle.vehicle_3_make}}</td>
+<td>{{vehicle.vehicle_3_model}}</td>
+<td>{{vehicle.vehicle_3_owning_type}}</td>
+<td>{{vehicle.vehicle_3_vehicle_usage}}</td>
+<td>{{vehicle.vehicle_3_vin}}</td>
+<td>{{vehicle.vehicle_3_year}}</td>
+<td>{{vehicle.vehicle_3_year_discount}}</td>
+</tr>
+
+</table><br>
+
 <h3> Coverage Details : </h3><br>
 <table title="Coverage Details" width="4px" cellpadding="2px" cellspacing="4px" border="2px">
 

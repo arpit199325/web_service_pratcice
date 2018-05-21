@@ -7,6 +7,7 @@
 <title> Coverage Details </title>
 <script type="text/javascript" src="controller_js/angular.js"></script>
 <script type="text/javascript" src="controller_js/coverage_controller.js"></script>
+
 </head>
 <body>
 
@@ -22,12 +23,12 @@
 <h4>Available Coverage :</h4>
 
 <p>Select the Limit :
-<input type="radio" ng-model="liability_limitn" value="90000" required> $90,000
-<input type="radio" ng-model="liability_limitn" value="100000" > $1,00,000
-<input type="radio" ng-model="liability_limitn" value="200000" > $2,00,000
-<input type="radio" ng-model="liability_limitn" value="300000" > $3,00,000
-<input type="radio" ng-model="liability_limitn" value="400000" > $4,00,000
-<input type="radio" ng-model="liability_limitn" value="500000" > $5,00,000
+<input type="radio" name="liability_limitj" ng-model="liability_limitn" value="90000" ng-required="!liability_limitn" > $90,000
+<input type="radio" name="liability_limitj" ng-model="liability_limitn" value="100000" ng-required="!liability_limitn"> $1,00,000
+<input type="radio" name="liability_limitj" ng-model="liability_limitn" value="200000" ng-required="!liability_limitn"> $2,00,000
+<input type="radio" name="liability_limitj" ng-model="liability_limitn" value="300000" ng-required="!liability_limitn"> $3,00,000
+<input type="radio" name="liability_limitj" ng-model="liability_limitn" value="400000" ng-required="!liability_limitn"> $4,00,000
+<input type="radio" name="liability_limitj" ng-model="liability_limitn" value="500000" ng-required="!liability_limitn"> $5,00,000
 </p>
 your selected limit : {{liability_limitn}}<br>
 
@@ -2006,6 +2007,16 @@ your selected limit : {{medical_PIP_limitn}}<br>
 <p>Your Total Limit = {{total_limit_n}} </p>
 <p>Your Total deductible = {{total_deductible_n}}</p>
 <p>Your Total Premium ={{total_premium_n}}</p>
+<p>Your selected selected_liability_deductible_v = {{selected_liability_deductible_v}}</p>
+<p>Your selected selected_comprehensive_colision_deductiblev = {{selected_comprehensive_colision_deductiblev}}</p>
+<p>Your selected selected_rental_deductiblev = {{selected_rental_deductiblev}}</p>
+<p>Your selected selected_unisured_underinsured_deductiblev = {{selected_unisured_underinsured_deductiblev}}</p>
+<p>Your selected selected_medical_PIP_deductiblev = {{selected_medical_PIP_deductiblev}}</p>
+<p>Your selected selected_liability_premium_v = {{selected_liability_premium_v}}</p>
+<p>Your selected selected_comprehensive_colision_premium_v = {{selected_comprehensive_colision_premium_v}}</p>
+<p>Your selected selected_rental_premium_v = {{selected_rental_premium_v}}</p>
+<p>Your selected selected_unisured_underinsured_premium_v = {{selected_unisured_underinsured_premium_v}}</p>
+<p>Your selected selcted_medical_PIP_premium_v = {{selcted_medical_PIP_premium_v}}</p>
 
 
 <input type="submit" value="Submit">

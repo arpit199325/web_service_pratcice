@@ -27,7 +27,7 @@ app.controller("myctrl", alldatarequest);
 	var riskbyurl="http://localhost:8002/AngularHibernateRest/webapi/testing/riskdatasearch";
 	var editdataurl="http://localhost:8002/AngularHibernateRest/webapi/testing/update";
 	
-	$scope.evalues=[">","<",">=","<=","==","!="];
+	$scope.evalues=[">","<",">=","<=","=","!="];
 	$scope.statedata=["IL","AR","FL","Hawai","CA","NJ","NY"];
 	
 	$scope.sortingorder=function(x)
@@ -109,10 +109,9 @@ app.controller("myctrl", alldatarequest);
 
 <fieldset>
 
-<table cellpadding="2" cellspacing="2">
-
 	<legend> Add Information </legend>
-	
+
+<table cellpadding="2" cellspacing="2">
 	<tr>
 	<td> City : </td>
 	<td><input type="text" name="cityj" ng-model="cityn"></td>
@@ -132,9 +131,8 @@ app.controller("myctrl", alldatarequest);
 	</tr>
 	
 	<tr>
-	<td> Zip code : </td>
+	<td> zip code : </td>
 	<td><input type="text" name="zipcodej" ng-model="zipcoden" ng-maxlength="6"></td>
-	<h1>{{zipcode.$valid}}</h1>
 	</tr>
 	
 	<tr>
@@ -148,7 +146,7 @@ app.controller("myctrl", alldatarequest);
 
 <div>
 
-<p> Filter Your Data :  <input type="text" ng-model="data_filter"> </p></n>
+<p> Filter Your Data :  <input type="text" ng-model="data_filter"> </p><br>
 
 <p> Risk Level : 
 
@@ -158,10 +156,7 @@ app.controller("myctrl", alldatarequest);
 
 <input type="button" ng-model="myfilter" ng-click="riskbyfilter()" value="Search">
 
-</p></n>
-
-
-<p>
+</p><br>
 
 <table cellpadding="6" cellspacing="2" border="3" width="100%">
 <tr>
@@ -172,7 +167,6 @@ app.controller("myctrl", alldatarequest);
 <th ng-click="sortingorder('risk_level')"> Risk Level </th>
 </tr>
 
-
 <tr ng-repeat="x in result | filter : data_filter : myfilter | orderBy : sortbydata">
 <td>{{x.id}}</td>
 <td>{{x.zipcode}}</td>
@@ -180,10 +174,7 @@ app.controller("myctrl", alldatarequest);
 <td>{{x.state}}</td>
 <td>{{x.risk_level}}</td>
 </tr>
-
 </table>
-
-</p>
 
 
 </div>
